@@ -12,6 +12,16 @@ package hospital;
  * 	LeerValidarEjecutar
  * 	Mientras QuieraEjecutar
  * 		PrintMenuLeerValidarOpcion
+ * 		si opción != 0
+ * 			según (opción)
+ * 				caso 1: Introducir un paciente
+ * 				caso 2: Obtener porcentaje de pacientes hospitalizados
+ * 				caso 3: Obtener datos de un paciente
+ * 				caso 4: Calcular porcentaje de pacientes con seguro privado
+ * 				caso 5: 
+ * 				caso X: Lo que le salga de los genitales poner a Jaranator
+ * 			fin_según
+ * 		fin_si
  * 		LeerValidarVolverEjecutar
  * 	Fin_Mientras
  * Fin
@@ -21,5 +31,8 @@ package hospital;
 
 public class MainHospital 
 {
-
+	public static void main (String [] args)
+	{
+		
+	}
 }
