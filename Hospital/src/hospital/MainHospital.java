@@ -1,5 +1,8 @@
 package hospital;
 
+import java.util.*;
+import java.io.*;
+
 /* Nombre del programa: MainHospital
  * Breve comentario: Clase principal del proyecto Hospital.
  * Entradas: Validaciones
@@ -11,26 +14,88 @@ package hospital;
  * Inicio
  * 	LeerValidarEjecutar
  * 	Mientras QuieraEjecutar
- * 		PrintMenuLeerValidarOpcion
+ * 		PrintMenuPrincipalLeerValidarOpcion*
  * 		si opción != 0
  * 			según (opción)
- * 				caso 1: Introducir un paciente
- * 				caso 2: Obtener porcentaje de pacientes hospitalizados
- * 				caso 3: Obtener datos de un paciente
- * 				caso 4: Calcular porcentaje de pacientes con seguro privado
- * 				caso 5: 
- * 				caso X: Lo que le salga de los genitales poner a Jaranator
+ * 				caso 1: Pacientes
+ * 				caso 2: Medicos
+ * 				caso 3: Centro		//POR HACER
+ * 				caso 4: Estadísticas	//POR HACER
  * 			fin_según
  * 		fin_si
  * 		LeerValidarVolverEjecutar
  * 	Fin_Mientras
  * Fin
  * 
+ * 
+ * PG Nivel 1 Pacientes
+ * 
+ * Inicio
+ * 	PrintMenuPacientesLeerValidarOpcion*
+ * 	si opcion != 0
+ * 		segun (opcion)
+ * 			caso 1: Dar de alta un paciente. *
+ * 			caso 2: Dar de baja un paciente. *
+ * 			caso 3: Listar pacientes.
+ * 		fin_segun
+ * 	fin_si
+ * Fin
+ * 
+ * PG Nivel 1 Medicos
+ * 
+ * Inicio
+ * 	PrintMenuMedicosLeerValidarOpcion
+ * 	si opcion != 0
+ * 		segun (opcion)
+ * 			caso 1: Contratar a un médico. *
+ * 			caso 2: Despedir a un médico. *
+ * 			caso 3: Listar los médicos.
+ * 			caso 4: Asignar un paciente. *
+ * 		fin_segun
+ * 	fin_si
+ * Fin
+ * 
+ * 
+ * PG Nivel 2 Listar pacientes
+ * 
+ * Inicio
+ * 	PreguntarDeseaListar
+ * 	Mientras QuieraListar
+ * 		PrintMenuListaPLeerValidarOpcion*
+ * 		si opcion != 0
+ * 			segun (opcion)
+ * 				caso 1: Por departamento
+ * 				caso 2: Por edad
+ * 				caso 3: Por género
+ * 			fin_segun
+ * 		fin_si
+ * 		Preguntar ListarOtraVez
+ * 	Fin_Mientras
+ * Fin
+ * 
+ * PG Nivel 2 Listar Medicos
+ * 
+ * Inicio
+ * 	PreguntarDeseaListar
+ * 	Mientras QuieraListar
+ * 		PrintMenuListaMLeerValidarOpcion*
+ * 		si opcion != 0
+ * 			segun (opcion)
+ * 				caso 1: Por departamento
+ * 				caso 2: Por edad
+ * 				caso 3: Pacientes asignados
+ * 			fin_segun
+ * 		fin_si
+ * 		Preguntar ListarOtraVez
+ * 	Fin_Mientras
+ * Fin
  */
 
 
 public class MainHospital 
 {
+	//Introducir menús de mierda aquí.
+	
 	public static void main (String [] args)
 	{
 		

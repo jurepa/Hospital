@@ -1,0 +1,43 @@
+package hospital;
+
+/* Nombre del programa: MainHospital
+ * Breve comentario: Clase principal del proyecto Hospital.
+ * Entradas: Validaciones
+ * Salidas: Mensajes
+ * Restricciones: Ninguna
+ * 
+ * P.G
+ * 
+ * Inicio
+ * 	LeerValidarEjecutar
+ * 	Mientras QuieraEjecutar
+ * 		PrintMenuLeerValidarOpcion
+ * 		si opción != 0
+ * 			según (opción)
+ * 				caso 1: Pacientes
+ * 				caso 2: Medicos
+ * 				caso 3: Centro
+ * 				caso 4: Estadísticas
+ * 			fin_según
+ * 		fin_si
+ * 		LeerValidarVolverEjecutar
+ * 	Fin_Mientras
+ * Fin
+ * 
+ * 
+ * PG Nivel 1 Pacientes
+ * 
+ * Inicio
+ * 
+ * Fin
+ * 
+ */
+
+
+public class MainHospital 
+{
+	public static void main (String [] args)
+	{
+		
+	}
+}
