@@ -7,12 +7,6 @@ import java.util.Objects;
  * 
  * Propiedades básicas:
  * 
- * nombre String, consultable y modificable
- * DNI String, consultable y modificable
- * edad int, consultable y modificable
- * sexo char, consultable y modificable
- * domicilio Domicilio, consultable y modificable
- * telefono int, consultable y modificable
  * seguroPrivado String, consultable y modificable
  * 
  * Propiedades derivadas: No hay
@@ -20,27 +14,12 @@ import java.util.Objects;
  * 
  * Métodos consultores y modificadores:
  * 
- * void setNombre(String nombre)
- * void setEdad(int edad)
- * void setSexo(char sexo)
- * void setDomicilio(Domicilio d)
- * void setDNI(String dni)
  * void setSeguroPrivado(String seguroPrivado)
  * 
- * String getNombre()
- * String getDNI()
- * int getEdad()
- * char getSexo()
- * Domicilio getDomicilio()
- * int getTelefono()
  * String seguroPrivado()
  * 
  * Restricciones: 
- * 	-El DNI solo puede tener 8 números y una letra calculada
- * 	-La edad debe ser mayor a 0
- * 	-El sexo solo puede ser 'm' o 'h'
- * 	-El domicilio no puede ser null
- * 	-El telefono tiene una longitud de 9 números
+ * No hay
  * 
  * Métodos añadidos:
  * 
@@ -55,7 +34,7 @@ public class Paciente  extends Persona implements Comparable<Persona>, Cloneable
 		super();
 		seguroPrivado="";
 	}
-	public Paciente(String nombre, int edad, String dni, char sexo, Domicilio domicilio, int telefono, String seguroPrivado)
+	public Paciente(String nombre, int edad, String dni, char sexo, Domicilio domicilio, String telefono, String seguroPrivado) throws HospitalException
 	{
 		super(nombre,edad,dni,sexo,telefono,domicilio);
 		this.seguroPrivado=seguroPrivado;
@@ -101,12 +80,12 @@ public class Paciente  extends Persona implements Comparable<Persona>, Cloneable
 		return igual;	
 	}
 	//Criterio de comparación: Seguirá el compareTo de persona
-	public int compareTo(Paciente paciente)
+	/*public int compareTo(Paciente paciente)
 	{
 		int compara=0;
 		compara=super.compareTo(paciente);
 		return compara;
-	}
+	}*/
 	
 	/*@Override
 	public Paciente clone()
