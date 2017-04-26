@@ -16,10 +16,6 @@ public class TestDomicilio
 		System.out.println("Numero: "+domicilio1.getNumero());
 		domicilio1.setNumero(1);
 		System.out.println("Nuevo numero: "+domicilio1.getNumero());
-		System.out.println("hashCode: "+domicilio1.hashCode());
-		System.out.println("toString: "+domicilio1.toString());
-		System.out.println("equals: "+domicilio1.equals(domicilio2));
-		System.out.println("clone: "+domicilio1.clone());
 	}
 	
 }

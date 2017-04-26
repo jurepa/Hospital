@@ -64,6 +64,5 @@ public class TestPersona
 		System.out.println("toString: "+persona1.toString());
 		System.out.println("compareTo: "+persona1.compareTo(persona2));
 		System.out.println("equals: "+persona1.equals(persona2));
-		System.out.println("clone: "+persona1.clone());
 	}
 }
