@@ -12,19 +12,18 @@ import java.io.*;
  * P.G
  * 
  * Inicio
- * 	LeerValidarEjecutar
- * 	Mientras QuieraEjecutar
+ * Repetir
  * 		PrintMenuPrincipalLeerValidarOpcion*
  * 		si opción != 0
  * 			según (opción)
  * 				caso 1: Pacientes
  * 				caso 2: Medicos
- * 				caso 3: Centro		//POR HACER
+ * 				caso 3: Centro			//POR HACER
  * 				caso 4: Estadísticas	//POR HACER
  * 			fin_según
  * 		fin_si
- * 		LeerValidarVolverEjecutar
- * 	Fin_Mientras
+ * 		LeerValidarElegirOpcion
+ * 	Fin_Mientras QuieraElegirOpcion
  * Fin
  * 
  * 
@@ -90,14 +89,62 @@ import java.io.*;
  * 	Fin_Mientras
  * Fin
  */
-
-
 public class MainHospital 
 {
 	//Introducir menús de mierda aquí.
 	
 	public static void main (String [] args)
 	{
+		//Inicio
+		InputStreamReader flujo = new InputStreamReader (System.in);
+		BufferedReader tecladoString = new BufferedReader (flujo);
+		Scanner teclado = new Scanner (System.in);
+		char ejecutar = ' ';
+		int opcion = 0;
 		
-	}
-}
+		do
+		{
+			//PrintMenuPrincipalLeerValidarOpcion*
+			//Fin PrintMenuPrincipalLeerValidarOpcion
+			
+			if (opcion != 0)
+			{
+				switch (opcion)
+				{
+					//caso 1: Pacientes
+					case 1:
+					break;
+					//Fin caso 1: Pacientes
+					
+					//caso 2: Medicos
+					case 2:
+					break;
+					//Fin caso 2: Medicos
+					
+					//caso 3: Centro
+					case 3:
+					break;
+					//Fin caso 3: Centro	
+					
+					//caso 4: Estadísticas
+					case 4:
+					break;
+					//Fin caso 4: Estadísticas
+						
+				}//fin_según
+			}//fin_si
+		
+			//LeerValidarElegirOpcion
+			do
+			{
+				System.out.println("Desea volver al menu? S/N");
+				ejecutar = Character.toLowerCase(teclado.next().charAt(0));
+			}
+			while (ejecutar != 's' && ejecutar != 'n');
+			//Fin LeerValidarElegirOpcion
+		
+		}
+		while (ejecutar == 's');//Fin_Mientras QuieraElegirOpcion
+		
+	}//fin_main
+}//fin_clase
