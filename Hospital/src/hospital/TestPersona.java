@@ -33,14 +33,6 @@ public class TestPersona
 		}
 		System.out.println("Nueva Edad: "+persona1.getEdad());
 		System.out.println("DNI: "+persona1.getDNI());
-		try
-		{
-			persona1.setDNI("123456r8");
-		}catch(HospitalException mensaje)
-		{
-			System.out.println(mensaje);
-		}
-		System.out.println("Nuevo DNI: "+persona1.getDNI());
 		System.out.println("Domicilio: "+persona1.getDomicilio());
 		System.out.println("Sexo: "+persona1.getSexo());
 		try

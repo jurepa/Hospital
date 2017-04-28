@@ -178,18 +178,6 @@ public class Persona implements Cloneable, Comparable <Persona>{
 	{
 		return dni;
 	}
-	public void setDNI(String dni) throws HospitalException 
-	{
-		if(dni.length()==8&&validarNumerosDNI(dni))
-		{
-			this.dni=dni+calcularLetra(dni);
-		}
-		else
-		{
-			throw new HospitalException("DNI incorrecto, debes introducir los 8 números de tu DNI");
-		}
-		
-	}
 	public char getSexo()
 	{
 		return sexo;

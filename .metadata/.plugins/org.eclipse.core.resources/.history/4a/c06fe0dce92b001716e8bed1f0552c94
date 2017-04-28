@@ -1,0 +1,24 @@
+package hospital;
+
+public class TestPaciente {
+
+	public static void main(String[] args) {
+		
+		Paciente paciente1=null;
+		Paciente paciente2=null;
+				
+		try
+		{
+			paciente1=new Paciente("Pepe",23,"73826490",'h',new Domicilio("Almirante Topete", "Sevilla",6),"653706957","Mapfre");
+			paciente2=new Paciente("AFK", 21,"42839475",'m',new Domicilio("Felipe II","Villanueva del Trabuco",2),"7362518347","No");
+		}catch(HospitalException mensaje)
+		{
+			System.out.println(mensaje);
+		}
+		System.out.println("Nombre: "+paciente1.getNombre());
+		System.out.println("Edad: "+paciente1.getEdad());
+		System.out.println("DNI: "+paciente1.getDNI());
+
+	}
+
+}
