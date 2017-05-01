@@ -58,18 +58,17 @@ import java.io.*;
  * PG Nivel 2 Listar pacientes
  * 
  * Inicio
- * 	PreguntarDeseaListar
- * 	Mientras QuieraListar
+ * 	Repetir
  * 		PrintMenuListaPLeerValidarOpcion*
  * 		si opcion != 0
  * 			segun (opcion)
- * 				caso 1: Por departamento
- * 				caso 2: Por edad
- * 				caso 3: Por género
+ * 				caso 1: Por departamento *
+ * 				caso 2: Por edad *
+ * 				caso 3: Por género *
  * 			fin_segun
  * 		fin_si
  * 		Preguntar ListarOtraVez
- * 	Fin_Mientras
+ * 	Fin_Mientras QuieraListarOtraVez
  * Fin
  * 
  * PG Nivel 2 Listar Medicos
@@ -80,9 +79,9 @@ import java.io.*;
  * 		PrintMenuListaMLeerValidarOpcion*
  * 		si opcion != 0
  * 			segun (opcion)
- * 				caso 1: Por departamento
- * 				caso 2: Por edad
- * 				caso 3: Pacientes asignados
+ * 				caso 1: Por departamento *
+ * 				caso 2: Por edad *
+ * 				caso 3: Pacientes asignados *
  * 			fin_segun
  * 		fin_si
  * 		Preguntar ListarOtraVez
@@ -96,7 +95,7 @@ public class MainHospital
 	/* Prototipo: menuPrincipal
 	 * Breve comentario: Menu principal del programa.
 	 * Precondiciones: Ninguna
-	 * Entradas: Un entero
+	 * Entradas: Ninguna
 	 * Salidas: Ninguna
 	 * Entradas/Salidas: Ninguna
 	 * Postcondiciones: Ninguna
@@ -108,28 +107,19 @@ public class MainHospital
 	 */
 	public static void menuHospital ()
 	{
-		Scanner teclado = new Scanner (System.in);
-		
-		int opcion = 0;
-		
-		do
-		{
 			System.out.println("--------------------------------------------------------");
 			System.out.println("------ Bienvenidos al hospital 'Habersinomemuero' ------");
 			System.out.println("--------------------- 1. Pacientes ---------------------");
 			System.out.println("---------------------- 2. Médicos ----------------------");
 			System.out.println("-------------------- 3. Estadísticas -------------------");
 			System.out.println("--------------------------------------------------------");
-			opcion = teclado.nextInt();
-		}
-		while (opcion < 0 || opcion > 3);
 	}
 	//fin menuPrincipal
 	
 	/* Prototipo: menuPacientes
 	 * Breve comentario: Menu de pacientes del programa.
 	 * Precondiciones: Ninguna
-	 * Entradas: Un entero
+	 * Entradas: Ninguna
 	 * Salidas: Ninguna
 	 * Entradas/Salidas: Ninguna
 	 * Postcondiciones: Ninguna
@@ -141,28 +131,19 @@ public class MainHospital
 	 */
 	public static void menuPacientes ()
 	{
-		Scanner teclado = new Scanner (System.in);
-		
-		int opcion = 0;
-		
-		do
-		{
 			System.out.println("------------------------------------------------------------------------------");
 			System.out.println("------ Bienvenidos al menu de pacientes del hospital 'Habersinomemuero' ------");
 			System.out.println("------------------------- 1. Dar de baja un paciente -------------------------");
 			System.out.println("------------------------- 2. Dar de alta un paciente -------------------------");
 			System.out.println("----------------------------- 3. Listar pacientes ----------------------------");
 			System.out.println("------------------------------------------------------------------------------");
-			opcion = teclado.nextInt();
-		}
-		while (opcion < 0 || opcion > 3);
 	}
 	//fin menuPacientes
 	
 	/* Prototipo: menuMedicos
 	 * Breve comentario: Menu de medicos del programa.
 	 * Precondiciones: Ninguna
-	 * Entradas: Un entero
+	 * Entradas: Ninguna
 	 * Salidas: Ninguna
 	 * Entradas/Salidas: Ninguna
 	 * Postcondiciones: Ninguna
@@ -174,24 +155,63 @@ public class MainHospital
 	 */
 	public static void menuMedicos ()
 	{
-		Scanner teclado = new Scanner (System.in);
-		
-		int opcion = 0;
-		
-		do
-		{
 			System.out.println("------------------------------------------------------------------------------");
 			System.out.println("------- Bienvenidos al menu de medicos del hospital 'Habersinomemuero' -------");
 			System.out.println("-------------------------- 1. Contratar a un médico --------------------------");
 			System.out.println("-------------------------- 2. Despedir a un médico ---------------------------");
 			System.out.println("------------------------------ 3. Listar médicos -----------------------------");
-			System.out.println("---------------------------- 3. Asignar un paciente --------------------------");
+			System.out.println("-----------------------------4. Asignar un paciente --------------------------");
 			System.out.println("------------------------------------------------------------------------------");
-			opcion = teclado.nextInt();
-		}
-		while (opcion < 0 || opcion > 3);
 	}
 	//fin menuMedicos
+	
+	/* Prototipo: menuListarMedicos
+	 * Breve comentario: Menu listar medicos del programa.
+	 * Precondiciones: Ninguna
+	 * Entradas: Ninguna
+	 * Salidas: Ninguna
+	 * Entradas/Salidas: Ninguna
+	 * Postcondiciones: Ninguna
+	 * 
+	 * Resguardo: public void menuListarMedicos ()
+		{
+			System.out.println("Llamada al metodo menuListarMedicos");
+		}
+	 */
+	public static void menuListarMedicos ()
+	{
+			System.out.println("-------------------------------------------------------------------------------------");
+			System.out.println("------- Bienvenidos al menu de listar medicos del hospital 'Habersinomemuero' -------");
+			System.out.println("-------------------------------- 1. Por departamento --------------------------------");
+			System.out.println("------------------------------------ 2. Por edad ------------------------------------");
+			System.out.println("------------------------------- 3. Pacientes asignados ------------------------------");
+			System.out.println("-------------------------------------------------------------------------------------");
+	}
+	//fin menuListarMedicos
+	
+	/* Prototipo: menuListarPacientes
+	 * Breve comentario: Menu listar pacientes del programa.
+	 * Precondiciones: Ninguna
+	 * Entradas: Ninguna
+	 * Salidas: Ninguna
+	 * Entradas/Salidas: Ninguna
+	 * Postcondiciones: Ninguna
+	 * 
+	 * Resguardo: public void menuListarPacientes ()
+		{
+			System.out.println("Llamada al metodo menuListarPacientes");
+		}
+	 */
+	public static void menuListarPacientes ()
+	{
+			System.out.println("---------------------------------------------------------------------------------------");
+			System.out.println("------- Bienvenidos al menu de listar pacientes del hospital 'Habersinomemuero' -------");
+			System.out.println("--------------------------------- 1. Por departamento ---------------------------------");
+			System.out.println("------------------------------------- 2. Por edad -------------------------------------");
+			System.out.println("------------------------------------- 3. Por género -----------------------------------");
+			System.out.println("---------------------------------------------------------------------------------------");
+	}
+	//fin menuListarPacientes
 	
 	
 	
@@ -201,12 +221,21 @@ public class MainHospital
 		BufferedReader tecladoString = new BufferedReader (new InputStreamReader (System.in));
 		Scanner teclado = new Scanner (System.in);
 		char ejecutar = ' ';
+		char listarPacientes = ' ';
 		int opcion = 0;
+		int opcion2 = 0;
+		int opcion3 = 0;
+		int opcion4 = 0;
 		
 		do
 		{
 			//PrintMenuPrincipalLeerValidarOpcion*
-			MainHospital.menuHospital();
+			do
+			{
+				MainHospital.menuHospital();
+				opcion = teclado.nextInt ();
+			}
+			while (opcion < 0 || opcion > 3);
 			//Fin PrintMenuPrincipalLeerValidarOpcion
 			
 			if (opcion != 0)
@@ -215,27 +244,84 @@ public class MainHospital
 				{
 					//caso 1: Pacientes
 					case 1:
-					
-				 	//PrintMenuPacientesLeerValidarOpcion*
-					MainHospital.menuPacientes();
-					//Fin PrintMenuPacientesLeerValidarOpcion*
-					
-						if (opcion != 0)
+						
+					 	//PrintMenuPacientesLeerValidarOpcion*
+						do
 						{
-							switch (opcion)
+							MainHospital.menuPacientes();
+							opcion2 = teclado.nextInt();
+						}
+						while (opcion2 < 0 || opcion2 > 3);
+						//Fin PrintMenuPacientesLeerValidarOpcion*
+						
+							if (opcion2 != 0)
 							{
-					 			//caso 1: Dar de alta un paciente. *
-								case 1:
-								break;
-					 			//caso 2: Dar de baja un paciente. *
-								case 2:
-								break;
-					 			//caso 3: Listar pacientes.
-								case 3:
-								break;
-							}//fin_segun
-						}//fin_si
-					
+								switch (opcion2)
+								{
+						 			//caso 1: Dar de alta un paciente. *
+									case 1:
+									break;
+									//Fin caso 1: Dar de alta un paciente.
+									
+						 			//caso 2: Dar de baja un paciente. *
+									case 2:
+									break;
+									//Fin caso 2: Dar de baja un paciente.
+									
+						 			//caso 3: Listar pacientes.
+									case 3:
+										
+										do
+										{
+										
+											//PrintMenuListaPLeerValidarOpcion
+											do
+											{
+												MainHospital.menuListarPacientes();
+												opcion3 = teclado.nextInt();
+											}
+											while (opcion3 < 0 || opcion3 > 3);
+											//Fin PrintMenuListaPLeerValidarOpcion
+											
+											if (opcion3 != 0)
+											{
+												switch (opcion3)
+												{
+													//caso 1: Por departamento *
+													case 1:
+													break;
+													//caso 1: Por departamento
+												
+													//caso 2: Por edad *
+													case 2:
+													break;
+													//Fin caso 2: Por edad
+												
+													//caso 3: Por género *
+													case 3:
+													break;
+													//Fin caso 3: Por género
+												
+												}//fin_segun
+											}//fin_si
+											
+											//Preguntar ListarOtraVez
+											do
+											{
+												System.out.println("Desea volver a listar los pacientes por otra opción? S/N");
+												listarPacientes = Character.toLowerCase(teclado.next().charAt(0));
+											}
+											while (listarPacientes != 's' && listarPacientes != 'n');
+											//Fin Preguntar ListarOtraVez
+										}
+										while (listarPacientes == 's');//Fin_Mientras
+										
+									break;
+									//Fin caso 3: Listar pacientes.
+									
+								}//fin_segun
+							}//fin_si
+						
 					break;
 					//Fin caso 1: Pacientes
 					
