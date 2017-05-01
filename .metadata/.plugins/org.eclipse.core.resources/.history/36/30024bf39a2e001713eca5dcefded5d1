@@ -221,12 +221,10 @@ public class MainHospital
 		Scanner teclado = new Scanner (System.in);
 		char ejecutar = ' ';
 		char listarPacientes = ' ';
-		char listarMedicos = ' ';
 		int opcion = 0;
 		int opcion2 = 0;
 		int opcion3 = 0;
 		int opcion4 = 0;
-		int opcion5 = 0;
 		
 		do
 		{
@@ -329,84 +327,17 @@ public class MainHospital
 					//caso 2: Medicos
 					case 2:
 						//PrintMenuMedicosLeerValidarOpcion
-						do
-						{
-							MainHospital.menuMedicos();
-							opcion4 = teclado.nextInt();
-						}
-						while (opcion4 < 0 || opcion4 > 4);
+							
 						//Fin PrintMenuMedicosLeerValidarOpcion
 						
-						if (opcion4 != 0)
-						{
-							switch (opcion4)
-							{
+						//si opcion != 0
+							//segun (opcion)
 								//caso 1: Contratar a un médico. *
-								case 1:
-								break;
-								//Fin caso 1: Contratar a un médico.
-							
 								//caso 2: Despedir a un médico. *
-								case 2:
-								break;
-								//Fin caso 2: Despedir a un médico.
-							
 								//caso 3: Listar los médicos.
-								case 3:
-									
-									do
-									{
-										//PrintMenuListaMLeerValidarOpcion*
-										do
-										{
-											MainHospital.menuListarMedicos();
-											opcion5 = teclado.nextInt();
-										}
-										while(opcion5 < 0 || opcion5 > 3);
-										//Fin PrintMenuListaMLeerValidarOpcion
-										
-										if (opcion5 != 0)
-										{
-											switch (opcion5)
-											{
-												//caso 1: Por departamento *
-												case 1:
-												break;
-												//Fin caso 1: Por departamento
-											
-												//caso 2: Por edad *
-												case 2:
-												break;
-												//Fin caso 2: Por edad
-											
-												//caso 3: Pacientes asignados *
-												case 3:
-												break;
-												//Fin caso 3: Pacientes asignados
-											}//fin_segun
-										}//fin_si
-										
-										//Preguntar ListarOtraVez
-										do
-										{
-											System.out.println("Desea volver a listar los medicos por otra opción? S/N");
-											listarMedicos = Character.toLowerCase(teclado.next().charAt(0));
-										}
-										while (listarMedicos != 's' && listarMedicos != 'n');
-										//Fin Preguntar ListarOtraVez
-									}
-									while (listarMedicos == 's');//Fin_Mientras QuieraListarOtraVez
-									
-								break;
-								//Fin caso 3: Listar los médicos.
-							
 								//caso 4: Asignar un paciente. *
-								case 4:
-								break;
-								//Fin caso 4: Asignar un paciente.
-							
-							}//fin_segun
-						}//fin_si
+							//fin_segun
+						//fin_si
 					break;
 					//Fin caso 2: Medicos
 					

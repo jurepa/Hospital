@@ -339,7 +339,7 @@ public class MainHospital
 						
 						if (opcion4 != 0)
 						{
-							switch (opcion4)
+							switch (opcion)
 							{
 								//caso 1: Contratar a un médico. *
 								case 1:
@@ -360,28 +360,20 @@ public class MainHospital
 										do
 										{
 											MainHospital.menuListarMedicos();
-											opcion5 = teclado.nextInt();
+											opcion4 = teclado.nextInt();
 										}
-										while(opcion5 < 0 || opcion5 > 3);
+										while(opcion4 < 0 || opcion > 3);
 										//Fin PrintMenuListaMLeerValidarOpcion
 										
-										if (opcion5 != 0)
+										if (opcion4 != 0)
 										{
-											switch (opcion5)
+											switch (opcion)
 											{
 												//caso 1: Por departamento *
-												case 1:
-												break;
 												//Fin caso 1: Por departamento
-											
 												//caso 2: Por edad *
-												case 2:
-												break;
 												//Fin caso 2: Por edad
-											
 												//caso 3: Pacientes asignados *
-												case 3:
-												break;
 												//Fin caso 3: Pacientes asignados
 											}//fin_segun
 										}//fin_si

@@ -339,7 +339,7 @@ public class MainHospital
 						
 						if (opcion4 != 0)
 						{
-							switch (opcion4)
+							switch (opcion)
 							{
 								//caso 1: Contratar a un médico. *
 								case 1:
@@ -359,41 +359,18 @@ public class MainHospital
 										//PrintMenuListaMLeerValidarOpcion*
 										do
 										{
-											MainHospital.menuListarMedicos();
-											opcion5 = teclado.nextInt();
+											
 										}
-										while(opcion5 < 0 || opcion5 > 3);
+										while();
 										//Fin PrintMenuListaMLeerValidarOpcion
-										
-										if (opcion5 != 0)
-										{
-											switch (opcion5)
-											{
+										//si opcion != 0
+											//segun (opcion)
 												//caso 1: Por departamento *
-												case 1:
-												break;
-												//Fin caso 1: Por departamento
-											
 												//caso 2: Por edad *
-												case 2:
-												break;
-												//Fin caso 2: Por edad
-											
 												//caso 3: Pacientes asignados *
-												case 3:
-												break;
-												//Fin caso 3: Pacientes asignados
-											}//fin_segun
-										}//fin_si
-										
+											//fin_segun
+										//fin_si
 										//Preguntar ListarOtraVez
-										do
-										{
-											System.out.println("Desea volver a listar los medicos por otra opción? S/N");
-											listarMedicos = Character.toLowerCase(teclado.next().charAt(0));
-										}
-										while (listarMedicos != 's' && listarMedicos != 'n');
-										//Fin Preguntar ListarOtraVez
 									}
 									while (listarMedicos == 's');//Fin_Mientras QuieraListarOtraVez
 									
