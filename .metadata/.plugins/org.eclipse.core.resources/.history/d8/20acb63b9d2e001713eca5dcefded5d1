@@ -110,8 +110,7 @@ public class MainHospital
 			System.out.println("------ Bienvenidos al hospital 'Habersinomemuero' ------");
 			System.out.println("--------------------- 1. Pacientes ---------------------");
 			System.out.println("---------------------- 2. Médicos ----------------------");
-			System.out.println("----------------------- 3. Centro ----------------------");
-			System.out.println("-------------------- 4. Estadísticas -------------------");
+			System.out.println("-------------------- 3. Estadísticas -------------------");
 			System.out.println("--------------------------------------------------------");
 	}
 	//fin menuPrincipal
