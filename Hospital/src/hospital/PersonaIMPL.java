@@ -22,7 +22,7 @@ public interface PersonaIMPL
 	Domicilio getDomicilio ();
 	void setDomicilio (Domicilio domicilio);
 	
-	char calcularLetra (String dni);
-	boolean validarNumerosTelefono (String telefono);
-	boolean validarNumerosDNI (String dni);
+	char calcularLetra (String dni); //No se puede poner private, hablar con Asun.
+	public boolean validarNumerosTelefono (String telefono);
+	public boolean validarNumerosDNI (String dni);
 }
