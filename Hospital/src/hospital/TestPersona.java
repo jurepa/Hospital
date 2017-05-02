@@ -18,6 +18,7 @@ public class TestPersona
 		try
 		{
 			persona1.setNombre("Ultimate Chavalator-3000");
+			persona1.setNombre("Jaranator Boosted");
 		}catch(HospitalException mensaje)
 		{
 			System.out.println(mensaje);
