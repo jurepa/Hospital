@@ -54,6 +54,36 @@ import java.io.*;
  * 	fin_si
  * Fin
  * 
+ * PG Nivel 1 Estadísticas
+ * 
+ * Inicio
+ * 	PrintMenuEstadisticasLeerValidarOpcion*
+ * 	si opcion != 0
+ * 		segun (opcion)
+ * 			caso 1: Porcentaje pacientes hospitalizados
+ * 			caso 2: Porcentaje mujeres y hombres hospitalizados *
+ * 			caso 3: Porcentaje de pacientes con seguro privado *
+ * 		fin_segun
+ * 	fin_si
+ * Fin
+ * 
+ * 
+ * PG Nivel 2 Pacientes hospitalizados
+ * 
+ * Inicio
+ * 	Repetir
+ * 		PrintMenuPacientesHospitalizadosLeerValidarOpcion
+ * 		si opcion !=0
+ * 			segun (opcion)
+ * 				caso 1: niños
+ * 				caso 2: jovenes
+ * 				caso 3: adultos
+ * 			fin_segun
+ * 		fin_si
+ * 		Preguntar ListarOtraVez
+ * 	Fin_Mientras QuieraListarOtraVez
+ * 
+ * Fin
  * 
  * PG Nivel 2 Listar pacientes
  * 
@@ -223,11 +253,14 @@ public class MainHospital
 		char ejecutar = ' ';
 		char listarPacientes = ' ';
 		char listarMedicos = ' ';
+		char listarEstadisticas = ' ';
 		int opcion = 0;
 		int opcion2 = 0;
 		int opcion3 = 0;
 		int opcion4 = 0;
 		int opcion5 = 0;
+		int opcion6 = 0;
+		int opcion7 = 0;
 		
 		do
 		{
@@ -420,6 +453,73 @@ public class MainHospital
 					
 					//caso 4: Estadísticas
 					case 4:
+						
+					//PrintMenuEstadisticasLeerValidarOpcion*
+					
+					//Fin PrintMenuEstadisticasLeerValidarOpcion
+						
+						if (opcion6 != 0)
+						{
+							switch (opcion6)
+							{
+							
+								//caso 1: Porcentaje pacientes hospitalizados
+								case 1:
+									
+								do
+								{
+									
+								//PrintMenuPacientesHospitalizadosLeerValidarOpcion
+								//Fin PrintMenuPacientesHospitalizadosLeerValidarOpcion
+									
+								if (opcion7 != 0)
+								{
+									switch (opcion7)
+									{
+									
+										//caso 1: niños
+										case 1:
+										break;
+										//Fin caso 1: niños
+									
+										//caso 2: jovenes
+										case 2:
+										break;
+										//Fin caso 2: jovenes
+									
+										//caso 3: adultos
+										case 3:
+										break;
+										//Fin caso 3: adultos
+									
+									}//fin_segun
+								}//fin_si
+									
+								//Preguntar ListarOtraVez
+								
+								/* TOCA ESTO */
+								
+								//Fin Preguntar ListarOtraVez
+									
+								}
+								while (listarEstadisticas == 's');//Fin_Mientras QuieraListarOtraVez
+								
+								break;
+								//Fin caso 1: Porcentaje pacientes hospitalizados
+							
+								//caso 2: Porcentaje mujeres y hombres hospitalizados *
+								case 2:
+								break;
+								//Fin caso 2: Porcentaje mujeres y hombres hospitalizados
+							
+								//caso 3: Porcentaje de pacientes con seguro privado *
+								case 3:
+								break;
+								//Fin caso 3: Porcentaje de pacientes con seguro privado
+							
+							}//fin_segun
+						}//fin_si
+						
 					break;
 					//Fin caso 4: Estadísticas
 						
