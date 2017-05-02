@@ -296,6 +296,7 @@ public class MainHospital
 												
 													//caso 2: Por edad *
 													case 2:
+														
 													break;
 													//Fin caso 2: Por edad
 												
