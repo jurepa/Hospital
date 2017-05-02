@@ -8,6 +8,7 @@ import java.util.Objects;
  * Propiedades básicas:
  * 
  * Nombre-> String Consultable y modificable
+ * Apellidos-> String Consultable y modificable
  * Edad-> Entero consultable y modificable
  * DNI-> String consultable
  * Sexo-> Char consultable y modificable
@@ -25,6 +26,8 @@ import java.util.Objects;
  * 
  * String getNombre();
  * void setNombre(String Nombre)
+ * String getApellidos()
+ * void setApellidos(String apellidos)
  * 
  * int getEdad();
  * void setEdad(int edad)
@@ -60,6 +63,7 @@ import java.util.Objects;
 public class Persona implements Cloneable, Comparable <Persona>{
 	
 	private String nombre;
+	private String apellidos;
 	private int edad;
 	private String dni;
 	private char sexo;
@@ -70,7 +74,8 @@ public class Persona implements Cloneable, Comparable <Persona>{
 	//vacÃ­o
 	public Persona()
 	{
-		nombre="Paco";
+		nombre="Default";
+		apellidos="Default";
 		edad=0;
 		dni="12345678"+calcularLetra(dni);
 		sexo='h';
@@ -81,6 +86,7 @@ public class Persona implements Cloneable, Comparable <Persona>{
 	public Persona(Persona persona)
 	{
 		this.nombre=persona.nombre;
+		this.apellidos=persona.apellidos;
 		this.edad=persona.edad;
 		this.dni=persona.dni;
 		this.sexo=persona.sexo;
@@ -88,9 +94,17 @@ public class Persona implements Cloneable, Comparable <Persona>{
 		this.domicilio=persona.domicilio;
 	}
 	//Ordinario
-	public Persona (String nombre, int edad, String dni, char sexo, String telefono, Domicilio domicilio) throws HospitalException 
+	public Persona (String nombre, String apellidos, int edad, String dni, char sexo, String telefono, Domicilio domicilio) throws HospitalException 
 	{
 			if(nombre==""||nombre==null)
+			{
+					throw new HospitalException("Nombre incorrecto");	
+			}
+			else
+			{
+				this.apellidos=apellidos;
+			}
+			if(apellidos==""||apellidos==null)
 			{
 					throw new HospitalException("Nombre incorrecto");	
 			}
@@ -157,6 +171,14 @@ public class Persona implements Cloneable, Comparable <Persona>{
 			this.nombre=nombre;
 		}
 	}
+	public String getApellidos()
+	{
+		return apellidos;
+	}
+	public void setApellidos(String apellidos)
+	{
+		this.apellidos=apellidos;
+	}
 	public int getEdad()
 	{
 		return edad;
@@ -214,11 +236,12 @@ public class Persona implements Cloneable, Comparable <Persona>{
 	{
 		if(domicilio==null||domicilio.getCalle()==""||domicilio.getCiudad()==""||domicilio.getNumero()<=0)
 		{
-			this.domicilio=domicilio;
+			
+			throw new HospitalException("El domicilio debe tener una calle, una ciudad y un numero mayor que 0");
 		}
 		else
 		{
-			throw new HospitalException("El domicilio debe tener una calle, una ciudad y un numero mayor que 0");
+			this.domicilio=domicilio;
 		}
 	}
 	public Domicilio getDomicilio()
@@ -284,7 +307,7 @@ public class Persona implements Cloneable, Comparable <Persona>{
 	 * Interfaz
 	 * 
 	 * Este método valida que los primeros 7 números de un dni sean números
-	 * Prototipo: boolean validarNumerosDNI()
+	 * Prototipo: boolean validarNumerosDNI(String dni)
 	 * Precondiciones: No hay
 	 * Entradas: Una cadena
 	 * Salidas: Un valor booleano
@@ -307,7 +330,7 @@ public class Persona implements Cloneable, Comparable <Persona>{
 	 * Interfaz
 	 * 
 	 * Este método valida que el telefono son numeros
-	 * Prototipo: boolean validarNumerosTelefono()
+	 * Prototipo: boolean validarNumerosTelefono(String telefono)
 	 * Precondiciones: No hay
 	 * Entradas: No hay
 	 * Salidas: Un valor booleano
@@ -330,7 +353,7 @@ public class Persona implements Cloneable, Comparable <Persona>{
 	 * Interfaz
 	 * 
 	 * Este método calcula la letra de un dni
-	 * Prototipo: char calcularLetra()
+	 * Prototipo: char calcularLetra(String dni)
 	 * Precondiciones: Un dni sin letra
 	 * Entrada: Una cadena
 	 * Salida: Un char

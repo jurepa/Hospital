@@ -31,10 +31,10 @@ public class Medico extends Persona {
 		super();
 		especialidad="";
 	}
-	public Medico(String nombre, int edad, String dni, char sexo, Domicilio domicilio, String telefono,String especialidad) throws HospitalException
+	public Medico(String nombre,String apellidos, int edad, String dni, char sexo, Domicilio domicilio, String telefono,String especialidad) throws HospitalException
 	{
 
-		super(nombre,edad,dni,sexo,telefono,domicilio);
+		super(nombre,apellidos,edad,dni,sexo,telefono,domicilio);
 		
 		this.especialidad=especialidad;
 	}

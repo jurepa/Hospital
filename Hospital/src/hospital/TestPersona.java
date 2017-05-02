@@ -8,8 +8,8 @@ public class TestPersona
 		Persona persona2=null;
 		try
 		{
-			persona1=new Persona("Pepe",69,"78937263",'h',"954611957", new Domicilio("Almirante Topete","Sevilla",6));
-			persona2=new Persona("Java",50,"72358351",'m',"237424442",new Domicilio("PorAqui","Villanueva del Trabuco",2));
+			persona1=new Persona("Pepe","jimene",69,"78937263",'h',"954611957", new Domicilio("Almirante Topete","Sevilla",6));
+			persona2=new Persona("Java","vs Cobol",50,"72358351",'m',"237424442",new Domicilio("PorAqui","Villanueva del Trabuco",2));
 		}catch(HospitalException mensaje)
 		{
 			System.out.println(mensaje);

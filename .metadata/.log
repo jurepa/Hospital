@@ -544,3 +544,64 @@ This warning can be switched off on the Team > Git > Confirmations and Warnings 
 
 !ENTRY org.eclipse.e4.ui.workbench 2 0 2017-05-01 18:23:05.462
 !MESSAGE Removing part descriptor with the 'org.eclipse.wst.xsl.ui.view.outline' id and the 'Stylesheet Model' description. Points to the invalid 'bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityView' class.
+!SESSION 2017-05-02 10:38:55.256 -----------------------------------------------
+eclipse.buildId=4.6.2.M20161124-1400
+java.version=1.8.0_25
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=es_ES
+Framework arguments:  -product org.eclipse.epp.package.jee.product
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 -product org.eclipse.epp.package.jee.product
+
+!ENTRY org.eclipse.core.resources 2 10035 2017-05-02 10:38:58.834
+!MESSAGE The workspace exited with unsaved changes in the previous session; refreshing workspace to recover changes.
+
+!ENTRY org.eclipse.egit.ui 2 0 2017-05-02 10:39:09.154
+!MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
+user global configuration and to define the default location to store repositories: 'C:\Users\pjarana'. If this is
+not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
+EGit might behave differently since they see different configuration options.
+This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+
+!ENTRY org.eclipse.e4.ui.workbench 2 0 2017-05-02 10:39:12.118
+!MESSAGE Removing part descriptor with the 'org.eclipse.buildship.ui.views.taskview' id and the 'Gradle Tasks' description. Points to the invalid 'bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityView' class.
+
+!ENTRY org.eclipse.e4.ui.workbench 2 0 2017-05-02 10:39:12.122
+!MESSAGE Removing part descriptor with the 'org.eclipse.buildship.ui.views.executionview' id and the 'Gradle Executions' description. Points to the invalid 'bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityView' class.
+
+!ENTRY org.eclipse.e4.ui.workbench 2 0 2017-05-02 10:39:12.122
+!MESSAGE Removing part descriptor with the 'org.eclipse.mylyn.builds.navigator.builds' id and the 'Builds' description. Points to the invalid 'bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityView' class.
+
+!ENTRY org.eclipse.e4.ui.workbench 2 0 2017-05-02 10:39:12.123
+!MESSAGE Removing part descriptor with the 'org.eclipse.recommenders.snipmatch.rcp.views.snippets' id and the 'Snippets' description. Points to the invalid 'bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityView' class.
+
+!ENTRY org.eclipse.oomph.setup.ui 2 0 2017-05-02 10:39:18.854
+!MESSAGE POST https://api.eclipse.org/api/user/login HTTP/1.1 403 : The username  has not been activated or is blocked.
+!STACK 0
+org.eclipse.userstorage.util.ProtocolException: POST https://api.eclipse.org/api/user/login HTTP/1.1 403 : The username  has not been activated or is blocked.
+	at org.eclipse.userstorage.internal.Session$RequestTemplate.getStatusCode(Session.java:656)
+	at org.eclipse.userstorage.internal.Session$RequestTemplate.authenticate(Session.java:471)
+	at org.eclipse.userstorage.internal.Session$RequestTemplate.send(Session.java:396)
+	at org.eclipse.userstorage.internal.Session.retrieveBlob(Session.java:226)
+	at org.eclipse.userstorage.internal.StorageService.retrieveBlob(StorageService.java:273)
+	at org.eclipse.userstorage.internal.Storage.retrieveBlob(Storage.java:369)
+	at org.eclipse.userstorage.internal.Blob.getContents(Blob.java:108)
+	at org.eclipse.oomph.setup.internal.sync.RemoteDataProvider.retrieve(RemoteDataProvider.java:89)
+	at org.eclipse.oomph.setup.internal.sync.Snapshot.createWorkingCopy(Snapshot.java:110)
+	at org.eclipse.oomph.setup.internal.sync.Synchronization.createWorkingCopy(Synchronization.java:152)
+	at org.eclipse.oomph.setup.internal.sync.Synchronization.<init>(Synchronization.java:92)
+	at org.eclipse.oomph.setup.internal.sync.Synchronizer.createSynchronization(Synchronizer.java:126)
+	at org.eclipse.oomph.setup.internal.sync.Synchronizer.synchronize(Synchronizer.java:103)
+	at org.eclipse.oomph.setup.internal.sync.SynchronizerJob.run(SynchronizerJob.java:144)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+
+!ENTRY org.eclipse.jface.text 2 0 2017-05-02 10:40:10.656
+!MESSAGE Duplicate template id: 'org.eclipse.wst.xslt.templates.xpath.number'
+
+!ENTRY org.eclipse.jface.text 2 0 2017-05-02 10:40:10.657
+!MESSAGE Duplicate template id: 'org.eclipse.wst.xslt.templates.xpath.round'
+
+!ENTRY org.eclipse.jface.text 2 0 2017-05-02 11:49:02.084
+!MESSAGE Duplicate template id: 'org.eclipse.wst.xslt.templates.xpath.number'
+
+!ENTRY org.eclipse.jface.text 2 0 2017-05-02 11:49:02.084
+!MESSAGE Duplicate template id: 'org.eclipse.wst.xslt.templates.xpath.round'

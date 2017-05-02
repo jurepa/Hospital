@@ -34,9 +34,9 @@ public class Paciente  extends Persona implements Comparable<Persona>, Cloneable
 		super();
 		seguroPrivado="";
 	}
-	public Paciente(String nombre, int edad, String dni, char sexo, Domicilio domicilio, String telefono, String seguroPrivado) throws HospitalException
+	public Paciente(String nombre,String apellidos, int edad, String dni, char sexo, Domicilio domicilio, String telefono, String seguroPrivado) throws HospitalException
 	{
-		super(nombre,edad,dni,sexo,telefono,domicilio);
+		super(nombre,apellidos,edad,dni,sexo,telefono,domicilio);
 		this.seguroPrivado=seguroPrivado;
 	}
 	public Paciente(Paciente paciente)

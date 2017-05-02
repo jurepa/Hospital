@@ -10,8 +10,8 @@ public class TestPaciente {
 				
 		try
 		{
-			paciente1=new Paciente("Pepe",23,"73826490",'h',new Domicilio("Almirante Topete", "Sevilla",6),"653706957","Mapfre");
-			paciente2=new Paciente("AFK", 21,"42839475",'m',new Domicilio("Felipe II","Villanueva del Trabuco",2),"7362518347","No");
+			paciente1=new Paciente("Pepe","Jimene",23,"73826490",'h',new Domicilio("Almirante Topete", "Sevilla",6),"653706957","Mapfre");
+			paciente2=new Paciente("AFK","Attempting to reconnect", 21,"42839475",'m',new Domicilio("Felipe II","Villanueva del Trabuco",2),"736251834","No");
 		}catch(HospitalException mensaje)
 		{
 			System.out.println(mensaje);
@@ -34,7 +34,16 @@ public class TestPaciente {
 		{
 			System.out.println(mensaje);
 		}
-		
+		System.out.println("Nuevo Nombre: "+paciente1.getNombre());
+		System.out.println("Nuevo Edad: "+paciente1.getEdad());
+		System.out.println("Nuevo Sexo: "+paciente1.getSexo());
+		System.out.println("Nuevo Domicilio: "+paciente1.getDomicilio());
+		System.out.println("Nuevo Telefono: "+paciente1.getTelefono());
+		System.out.println("Nuevo Seguro Privado: "+paciente1.getSeguroPrivado());
+		System.out.println("hashCode: "+paciente1.hashCode());
+		System.out.println("toString: "+paciente1.toString());
+		System.out.println("compareTo: "+paciente1.compareTo(paciente2));
+		System.out.println("equals: "+paciente1.equals(paciente2));
 
 	}
 
