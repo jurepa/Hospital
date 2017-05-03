@@ -146,7 +146,7 @@ public class Persona implements Cloneable, Comparable <Persona>{
 				throw new HospitalException("El telefono debe contener 9 numeros");
 			}
 			
-			if(domicilio==null||domicilio.getCalle()==""||domicilio.getCiudad()==""||domicilio.getNumero()<=0)
+			if(domicilio==null||domicilio.getCalle().equals("")||domicilio.getCiudad().equals("")||domicilio.getNumero()<=0)
 			{
 				throw new HospitalException("El domicilio debe tener una calle, una ciudad y un numero mayor que 0");
 			}
@@ -235,7 +235,7 @@ public class Persona implements Cloneable, Comparable <Persona>{
 	}
 	public void setDomicilio(Domicilio domicilio) throws HospitalException
 	{
-		if(domicilio==null||domicilio.getCalle()==""||domicilio.getCiudad()==""||domicilio.getNumero()<=0)
+		if(domicilio==null||domicilio.getCalle().equals("")||domicilio.getCiudad().equals("")||domicilio.getNumero()<=0)
 		{
 			
 			throw new HospitalException("El domicilio debe tener una calle, una ciudad y un numero mayor que 0");
@@ -275,11 +275,12 @@ public class Persona implements Cloneable, Comparable <Persona>{
 		}
 		return compara;
 	}
+	
 	@Override
 	public boolean equals(Object x)
 	{
 		boolean igual=false;
-		if(x!=null && x instanceof Persona)
+		if(x != null && x instanceof Persona)
 		{
 			Persona persona=(Persona) x;
 			if(this.getNombre().equals(persona.getNombre())
@@ -292,6 +293,7 @@ public class Persona implements Cloneable, Comparable <Persona>{
 		}
 		return igual;
 	}
+	
 	@Override
 	public Persona clone()
 	{
