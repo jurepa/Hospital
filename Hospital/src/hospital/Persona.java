@@ -97,7 +97,7 @@ public class Persona implements Cloneable, Comparable <Persona>{
 	//Ordinario
 	public Persona (String nombre, String apellidos, int edad, String dni, char sexo, String telefono, Domicilio domicilio) throws HospitalException 
 	{
-			if(nombre==""||nombre==null)
+			if(nombre.equals("")||nombre.equals(null))
 			{
 					throw new HospitalException("Nombre incorrecto");	
 			}
@@ -105,7 +105,7 @@ public class Persona implements Cloneable, Comparable <Persona>{
 			{
 				this.apellidos=apellidos;
 			}
-			if(apellidos==""||apellidos==null)
+			if(apellidos.equals("")||apellidos.equals(null))
 			{
 					throw new HospitalException("Nombre incorrecto");	
 			}
@@ -163,7 +163,7 @@ public class Persona implements Cloneable, Comparable <Persona>{
 	}
 	public void setNombre(String nombre) throws HospitalException
 	{
-		if(nombre==""||nombre==null)
+		if(nombre.equals("")||nombre.equals(null))
 		{
 				throw new HospitalException("Nombre incorrecto");	
 		}
@@ -282,7 +282,10 @@ public class Persona implements Cloneable, Comparable <Persona>{
 		if(x!=null && x instanceof Persona)
 		{
 			Persona persona=(Persona) x;
-			if(getNombre()==persona.getNombre()&&getEdad()==persona.getEdad()&&getSexo()==persona.getSexo()&&getDNI()==persona.getDNI())
+			if(this.getNombre().equals(persona.getNombre())
+				&& this.getEdad() == persona.getEdad()
+				&& this.getSexo() == persona.getSexo()
+				&& this.getDNI().equals(persona.getDNI()))
 			{
 				igual=true;
 			}

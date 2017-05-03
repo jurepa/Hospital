@@ -163,8 +163,8 @@ public class MainHospital
 	{
 			System.out.println("------------------------------------------------------------------------------");
 			System.out.println("------ Bienvenidos al menu de pacientes del hospital 'Habersinomemuero' ------");
-			System.out.println("------------------------- 1. Dar de baja un paciente -------------------------");
-			System.out.println("------------------------- 2. Dar de alta un paciente -------------------------");
+			System.out.println("------------------------- 1. Dar de alta un paciente -------------------------");
+			System.out.println("------------------------- 2. Dar de baja un paciente -------------------------");
 			System.out.println("----------------------------- 3. Listar pacientes ----------------------------");
 			System.out.println("------------------------------------------------------------------------------");
 	}
@@ -495,6 +495,9 @@ public class MainHospital
 					
 					//caso 3: Centro
 					case 3:
+						
+						/* TODAVIA NO SABEMOS QUE METER AQUI */
+						
 					break;
 					//Fin caso 3: Centro	
 					
@@ -522,46 +525,46 @@ public class MainHospital
 								do
 								{
 									
-								//PrintMenuPacientesHospitalizadosLeerValidarOpcion
-								do
-								{
-									MainHospital.menuEstadisticasPacientesHospitalizados();
-									opcion7 = teclado.nextInt ();
-								}
-								while (opcion7 < 0 || opcion7 > 3);
-								//Fin PrintMenuPacientesHospitalizadosLeerValidarOpcion
-									
-								if (opcion7 != 0)
-								{
-									switch (opcion7)
+									//PrintMenuPacientesHospitalizadosLeerValidarOpcion
+									do
 									{
-									
-										//caso 1: niños
-										case 1:
-										break;
-										//Fin caso 1: niños
-									
-										//caso 2: jovenes
-										case 2:
-										break;
-										//Fin caso 2: jovenes
-									
-										//caso 3: adultos
-										case 3:
-										break;
-										//Fin caso 3: adultos
-									
-									}//fin_segun
-								}//fin_si
-									
-								//Preguntar ListarOtraVez
-								do
-								{
-									System.out.println("Desea volver a ver los porcentajes de los pacientes hospitalizados? S/N");
-									listarEstadisticas = Character.toLowerCase(teclado.next().charAt(0));
-								}
-								while (listarEstadisticas != 's' && listarEstadisticas != 'n');
-								//Fin Preguntar ListarOtraVez
+										MainHospital.menuEstadisticasPacientesHospitalizados();
+										opcion7 = teclado.nextInt ();
+									}
+									while (opcion7 < 0 || opcion7 > 3);
+									//Fin PrintMenuPacientesHospitalizadosLeerValidarOpcion
+										
+									if (opcion7 != 0)
+									{
+										switch (opcion7)
+										{
+										
+											//caso 1: niños
+											case 1:
+											break;
+											//Fin caso 1: niños
+										
+											//caso 2: jovenes
+											case 2:
+											break;
+											//Fin caso 2: jovenes
+										
+											//caso 3: adultos
+											case 3:
+											break;
+											//Fin caso 3: adultos
+										
+										}//fin_segun
+									}//fin_si
+										
+									//Preguntar ListarOtraVez
+									do
+									{
+										System.out.println("Desea volver a ver los porcentajes de los pacientes hospitalizados? S/N");
+										listarEstadisticas = Character.toLowerCase(teclado.next().charAt(0));
+									}
+									while (listarEstadisticas != 's' && listarEstadisticas != 'n');
+									//Fin Preguntar ListarOtraVez
 									
 								}
 								while (listarEstadisticas == 's');//Fin_Mientras QuieraListarOtraVez

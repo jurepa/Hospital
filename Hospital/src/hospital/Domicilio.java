@@ -104,7 +104,9 @@ public class Domicilio {
 		if(x!=null&& x instanceof Domicilio)
 		{
 			Domicilio domicilio=(Domicilio)x;
-			if(getCalle()==domicilio.getCalle()&&getNumero()==domicilio.getNumero()&&getCiudad()==domicilio.getCiudad())
+			if(this.getCalle().equals(domicilio.getCalle())
+				&& this.getNumero() == domicilio.getNumero()
+				&& this.getCiudad().equals(domicilio.getCiudad()))
 			{
 				igual=true;
 			}

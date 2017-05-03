@@ -71,7 +71,8 @@ public class Medico extends Persona {
 		if(x!=null && x instanceof Medico)
 		{
 			Medico paciente=(Medico)x;
-			if(super.equals(x)==true&&getEspecialidad()==paciente.getEspecialidad())
+			if(super.equals(x)==true
+				&& getEspecialidad().equals(paciente.getEspecialidad()))
 			{
 				igual=true;
 			}

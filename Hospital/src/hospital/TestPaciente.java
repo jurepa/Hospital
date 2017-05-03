@@ -10,8 +10,8 @@ public class TestPaciente {
 				
 		try
 		{
-			paciente1=new Paciente("Pepe","Jimene",23,"73826490",'h',new Domicilio("Almirante Topete", "Sevilla",6),"653706957","Mapfre");
-			paciente2=new Paciente("AFK","Attempting to reconnect", 21,"42839475",'m',new Domicilio("Felipe II","Villanueva del Trabuco",2),"736251834","No");
+			paciente1=new Paciente("Pepe","Jimene",23,"73826490",'h',new Domicilio("Almirante Topete", "Sevilla",6),"653706957","Mapfre", true);
+			paciente2=new Paciente("AFK","Attempting to reconnect", 21,"42839475",'m',new Domicilio("Felipe II","Villanueva del Trabuco",2),"736251834","No", false);
 		}catch(HospitalException mensaje)
 		{
 			System.out.println(mensaje);

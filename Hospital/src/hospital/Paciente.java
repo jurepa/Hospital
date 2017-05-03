@@ -8,15 +8,19 @@ import java.util.Objects;
  * Propiedades básicas:
  * 
  * seguroPrivado String, consultable y modificable
+ * ingresado Boolean, consultable y modificable
  * 
  * Propiedades derivadas: No hay
  * Propiedades compartidas: No hay
  * 
  * Métodos consultores y modificadores:
  * 
- * void setSeguroPrivado(String seguroPrivado)
+ * void setSeguroPrivado(String seguroPrivado);
+ * void setIngresado (boolean Ingresado);
  * 
- * String seguroPrivado()
+ * String getSeguroPrivado();
+ * 
+ * boolean getIngresado ();
  * 
  * Restricciones: 
  * No hay
@@ -28,21 +32,25 @@ import java.util.Objects;
 public class Paciente  extends Persona implements Comparable<Persona>, Cloneable
 {
 	private String seguroPrivado;
+	private boolean ingresado;
 	
 	public Paciente()
 	{
 		super();
 		seguroPrivado="";
+		ingresado = false;
 	}
-	public Paciente(String nombre,String apellidos, int edad, String dni, char sexo, Domicilio domicilio, String telefono, String seguroPrivado) throws HospitalException
+	public Paciente(String nombre,String apellidos, int edad, String dni, char sexo, Domicilio domicilio, String telefono, String seguroPrivado, boolean ingresado) throws HospitalException
 	{
 		super(nombre,apellidos,edad,dni,sexo,telefono,domicilio);
 		this.seguroPrivado=seguroPrivado;
+		this.ingresado = ingresado;
 	}
 	public Paciente(Paciente paciente)
 	{
 		super(paciente);
 		this.seguroPrivado=paciente.seguroPrivado;
+		this.ingresado = paciente.ingresado;
 	}
 	//Métodos modificadores y consultores
 	public void setSeguroPrivado(String seguroPrivado)
@@ -53,6 +61,16 @@ public class Paciente  extends Persona implements Comparable<Persona>, Cloneable
 	{
 		return seguroPrivado;
 	}
+	
+	public boolean getIngresado ()
+	{
+		return ingresado;
+	}
+	
+	public void setIngresado (boolean ingresado)
+	{
+		this.ingresado = ingresado;
+	}
 	//Métodos sobreescritos y sobrecargados
 	@Override
 	public int hashCode()
@@ -62,7 +80,7 @@ public class Paciente  extends Persona implements Comparable<Persona>, Cloneable
 	@Override
 	public String toString()
 	{
-		return super.toString()+", "+seguroPrivado;	
+		return super.toString()+", "+this.getSeguroPrivado () + ", "+this.getIngresado();	
 	}
 	//Criterio de igualdad: Dos pacientes serán iguales si todos sun atributos son iguales.
 	@Override
@@ -72,7 +90,8 @@ public class Paciente  extends Persona implements Comparable<Persona>, Cloneable
 		if(x!=null&& x instanceof Paciente)
 		{
 			Paciente paciente=(Paciente)x;
-			if(super.equals(x)==true&&paciente.getSeguroPrivado()==getSeguroPrivado())
+			if(super.equals(x)==true
+				&& paciente.getSeguroPrivado().equals(getSeguroPrivado()))
 			{
 				igual=true;
 			}
