@@ -26,6 +26,7 @@ import java.util.Objects;
  * 
  * String getNombre();
  * void setNombre(String Nombre)
+ * 
  * String getApellidos()
  * void setApellidos(String apellidos)
  * 

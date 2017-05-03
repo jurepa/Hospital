@@ -243,6 +243,54 @@ public class MainHospital
 	}
 	//fin menuListarPacientes
 	
+	/* Prototipo: menuEstadisticas
+	 * Breve comentario: Menu estadisticas del programa.
+	 * Precondiciones: Ninguna
+	 * Entradas: Ninguna
+	 * Salidas: Ninguna
+	 * Entradas/Salidas: Ninguna
+	 * Postcondiciones: Ninguna
+	 * 
+	 * Resguardo: public void menuListarEstadisticas ()
+		{
+			System.out.println("Llamada al metodo menuListarEstadisticas");
+		}
+	 */
+	public static void menuListarEstadisticas ()
+	{
+			System.out.println("------------------------------------------------------------------------------------------------------------------------------");
+			System.out.println("----------------------------- Bienvenidos al menu de estadísticas del hospital 'Habersinomemuero' ----------------------------");
+			System.out.println("----------------------------------------- 1. Porcentaje de pacientes hospitalizados ------------------------------------------");
+			System.out.println("------------------------------------- 2. Porcentajes de mujeres y hombres hospitalizados -------------------------------------");
+			System.out.println("----------------------------------------- 3. Porcentaje de pacientes con seguro privado --------------------------------------");
+			System.out.println("------------------------------------------------------------------------------------------------------------------------------");
+	}
+	//fin menuListarEstadisticas
+	
+	/* Prototipo: menuEstadisticasPacientesHospitalizados
+	 * Breve comentario: Menu estadisticas de pacientes hospitalizados del programa.
+	 * Precondiciones: Ninguna
+	 * Entradas: Ninguna
+	 * Salidas: Ninguna
+	 * Entradas/Salidas: Ninguna
+	 * Postcondiciones: Ninguna
+	 * 
+	 * Resguardo: public void menuEstadisticasPacientesHospitalizados ()
+		{
+			System.out.println("Llamada al metodo menuEstadisticasPacientesHospitalizados");
+		}
+	 */
+	public static void menuEstadisticasPacientesHospitalizados ()
+	{
+			System.out.println("-------------------------------------------------------------------------------------------------------------------------------------------");
+			System.out.println("----------------------------- Bienvenidos al menu de estadísticas de pacientes del hospital 'Habersinomemuero' ----------------------------");
+			System.out.println("----------------------------------------------------------------- 1. Niños ----------------------------------------------------------------");
+			System.out.println("----------------------------------------------------------------- 2. Jovenes --------------------------------------------------------------");
+			System.out.println("----------------------------------------------------------------- 3. Adultos --------------------------------------------------------------");
+			System.out.println("-------------------------------------------------------------------------------------------------------------------------------------------");
+	}
+	//fin menuEstadisticasPacientesHospitalizados
+	
 	
 	
 	public static void main (String [] args)
@@ -270,7 +318,7 @@ public class MainHospital
 				MainHospital.menuHospital();
 				opcion = teclado.nextInt ();
 			}
-			while (opcion < 0 || opcion > 3);
+			while (opcion < 0 || opcion > 4);
 			//Fin PrintMenuPrincipalLeerValidarOpcion
 			
 			if (opcion != 0)
@@ -454,9 +502,14 @@ public class MainHospital
 					//caso 4: Estadísticas
 					case 4:
 						
-					//PrintMenuEstadisticasLeerValidarOpcion*
-					
-					//Fin PrintMenuEstadisticasLeerValidarOpcion
+						//PrintMenuEstadisticasLeerValidarOpcion*
+						do
+						{
+							MainHospital.menuListarEstadisticas();
+							opcion6 = teclado.nextInt ();
+						}
+						while (opcion6 < 0 || opcion6 > 3);
+						//Fin PrintMenuEstadisticasLeerValidarOpcion
 						
 						if (opcion6 != 0)
 						{
@@ -470,6 +523,12 @@ public class MainHospital
 								{
 									
 								//PrintMenuPacientesHospitalizadosLeerValidarOpcion
+								do
+								{
+									MainHospital.menuEstadisticasPacientesHospitalizados();
+									opcion7 = teclado.nextInt ();
+								}
+								while (opcion7 < 0 || opcion7 > 3);
 								//Fin PrintMenuPacientesHospitalizadosLeerValidarOpcion
 									
 								if (opcion7 != 0)
@@ -496,9 +555,12 @@ public class MainHospital
 								}//fin_si
 									
 								//Preguntar ListarOtraVez
-								
-								/* TOCA ESTO */
-								
+								do
+								{
+									System.out.println("Desea volver a ver los porcentajes de los pacientes hospitalizados? S/N");
+									listarEstadisticas = Character.toLowerCase(teclado.next().charAt(0));
+								}
+								while (listarEstadisticas != 's' && listarEstadisticas != 'n');
 								//Fin Preguntar ListarOtraVez
 									
 								}

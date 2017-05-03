@@ -22,7 +22,5 @@ public interface PersonaIMPL
 	Domicilio getDomicilio ();
 	void setDomicilio (Domicilio domicilio);
 	
-	char calcularLetra (String dni); //No se puede poner private, hablar con Asun.
-	public boolean validarNumerosTelefono (String telefono);
-	public boolean validarNumerosDNI (String dni);
+	//No pongo los metodos porque no veo conveniente que todas las clases personas se implementen igual.
 }
