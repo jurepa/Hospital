@@ -496,7 +496,7 @@ public class MainHospital
 					//caso 3: Centro
 					case 3:
 						
-						/* TODAVIA NO SABEMOS QUE METER AQUI */
+						/* TODAVIA NO SABEMOS QUE METER AQUIIIIIII */
 						
 					break;
 					//Fin caso 3: Centro	
