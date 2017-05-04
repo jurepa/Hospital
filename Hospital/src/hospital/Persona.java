@@ -320,7 +320,7 @@ public class Persona implements Cloneable, Comparable <Persona>{
 	 * Postcondiciones: True si son números y false si no lo son
 	 * E/S: No hay
 	 */
-	public boolean validarNumerosDNI(String dni)
+	private boolean validarNumerosDNI(String dni)
 	{
 		boolean sonNumeros=true;
 		 for (int i=0; sonNumeros==true&&i<8; i++) 
@@ -343,7 +343,7 @@ public class Persona implements Cloneable, Comparable <Persona>{
 	 * Postcondiciones: True si son números y false si no lo son
 	 * E/S: No hay
 	 */
-	public boolean validarNumerosTelefono(String telefono)
+	private boolean validarNumerosTelefono(String telefono)
 	{
 		boolean sonNumeros=true;
 		 for (int i=0; sonNumeros==true&&i<9; i++) 
