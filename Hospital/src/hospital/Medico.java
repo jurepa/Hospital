@@ -35,18 +35,32 @@ public class Medico extends Persona {
 	{
 
 		super(nombre,apellidos,edad,dni,sexo,telefono,domicilio);
-		
-		this.especialidad=especialidad;
+		if(especialidad.equals("")||especialidad==null)
+		{
+			throw new HospitalException("Por favor, escriba una especialidad");
+		}
+		else
+		{
+			this.especialidad=especialidad;
+		}
 	}
 	public Medico(Medico medico)
 	{
 		super(medico);
+		
 		this.especialidad=medico.especialidad;
 	}
 	//Métodos consultores y modificadores
-	public void setEspecialidad(String especialidad)
+	public void setEspecialidad(String especialidad)throws HospitalException
 	{
-		this.especialidad=especialidad;
+		if(especialidad.equals("")||especialidad==null)
+		{
+			throw new HospitalException("Por favor, escriba una especialidad");
+		}
+		else
+		{
+			this.especialidad=especialidad;
+		}
 	}
 	public String getEspecialidad()
 	{

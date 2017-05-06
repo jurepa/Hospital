@@ -61,7 +61,7 @@ import java.util.Objects;
  * 
  */
 
-public class Persona implements Cloneable, Comparable <Persona>{
+public class Persona implements Cloneable, Comparable <Persona>, PersonaIMPL{
 	
 	private String nombre;
 	private String apellidos;
@@ -97,7 +97,7 @@ public class Persona implements Cloneable, Comparable <Persona>{
 	//Ordinario
 	public Persona (String nombre, String apellidos, int edad, String dni, char sexo, String telefono, Domicilio domicilio) throws HospitalException 
 	{
-			if(nombre.equals("")||nombre.equals(null))
+			if(apellidos.equals("")||apellidos.equals(null))
 			{
 					throw new HospitalException("Nombre incorrecto");	
 			}
@@ -105,7 +105,7 @@ public class Persona implements Cloneable, Comparable <Persona>{
 			{
 				this.apellidos=apellidos;
 			}
-			if(apellidos.equals("")||apellidos.equals(null))
+			if(nombre.equals("")||nombre.equals(null))
 			{
 					throw new HospitalException("Nombre incorrecto");	
 			}
@@ -176,9 +176,16 @@ public class Persona implements Cloneable, Comparable <Persona>{
 	{
 		return apellidos;
 	}
-	public void setApellidos(String apellidos)
+	public void setApellidos(String apellidos)throws HospitalException
 	{
-		this.apellidos=apellidos;
+		if(apellidos.equals("")||apellidos.equals(null))
+		{
+				throw new HospitalException("Nombre incorrecto");	
+		}
+		else
+		{
+			this.apellidos=apellidos;
+		}
 	}
 	public int getEdad()
 	{
@@ -254,12 +261,12 @@ public class Persona implements Cloneable, Comparable <Persona>{
 	public String toString()
 	{
 		
-		return nombre+", "+edad+", "+dni+", "+sexo+", "+telefono+", "+domicilio;
+		return nombre+", "+apellidos+", "+edad+", "+dni+", "+sexo+", "+telefono+", "+domicilio;
 	}
 	@Override
 	public int hashCode()
 	{
-		return Objects.hash(nombre,sexo,edad,dni, domicilio,telefono);
+		return Objects.hash(nombre,apellidos,sexo,edad,dni, domicilio,telefono);
 	}
 	//Orden natural: Será mayor el objeto cuyo nombre vaya antes
 	public int compareTo(Persona persona)

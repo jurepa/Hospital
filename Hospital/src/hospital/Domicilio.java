@@ -35,7 +35,7 @@ import java.util.Objects;
  * 
  * 
  */
-public class Domicilio {
+public class Domicilio implements Cloneable, DomicilioIMPL {
 	
 	private String calle;
 	private int numero;
