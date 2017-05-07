@@ -1,5 +1,6 @@
 package hospital;
 
+import java.io.Serializable;
 import java.util.Objects;
 
 /*
@@ -35,7 +36,7 @@ import java.util.Objects;
  * 
  * 
  */
-public class Domicilio implements Cloneable, DomicilioIMPL {
+public class Domicilio implements Cloneable, DomicilioIMPL, Serializable {
 	
 	private String calle;
 	private int numero;

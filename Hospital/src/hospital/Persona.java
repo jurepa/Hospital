@@ -1,5 +1,6 @@
 package hospital;
 
+import java.io.Serializable;
 import java.util.Objects;
 
 /*
@@ -61,7 +62,7 @@ import java.util.Objects;
  * 
  */
 
-public class Persona implements Cloneable, Comparable <Persona>, PersonaIMPL{
+public class Persona implements Cloneable, Comparable <Persona>, PersonaIMPL, Serializable{
 	
 	private String nombre;
 	private String apellidos;
@@ -78,7 +79,7 @@ public class Persona implements Cloneable, Comparable <Persona>, PersonaIMPL{
 		nombre="Default";
 		apellidos="Default";
 		edad=0;
-		dni="12345678"+calcularLetra(dni);
+		dni="12345678H";
 		sexo='h';
 		domicilio=new Domicilio();
 
@@ -121,9 +122,9 @@ public class Persona implements Cloneable, Comparable <Persona>, PersonaIMPL{
 			{
 				throw new HospitalException("Edad incorrecta, debe ser mayor a 0");
 			}
-			if(dni.length()==8&&validarNumerosDNI(dni))
+			if(dni.length()==9&&validarNumerosDNI(dni)&&dni.charAt(8)==calcularLetra(dni))
 			{
-				this.dni=dni+calcularLetra(dni);
+				this.dni=dni;
 			}
 			else
 			{
@@ -376,9 +377,10 @@ public class Persona implements Cloneable, Comparable <Persona>, PersonaIMPL{
 	private char calcularLetra(String dni)
 	{
 		String letrasDNI="TRWAGMYFPDXBNJZSQVHLCKET";
+		String letras=dni.substring(0, 8);
 		int aux,posicion;
 		char letra;
-		aux=Integer.parseInt(dni);
+		aux=Integer.parseInt(letras);
 		posicion=aux%23;
 		letra=letrasDNI.charAt(posicion);
 		return letra;

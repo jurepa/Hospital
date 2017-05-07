@@ -1,5 +1,6 @@
 package hospital;
 
+import java.io.Serializable;
 import java.util.Objects;
 
 /*
@@ -29,7 +30,7 @@ import java.util.Objects;
  * 
  * 	-boolean comprobarDNI()******
  */
-public class Paciente  extends Persona implements Comparable<Persona>, Cloneable
+public class Paciente  extends Persona implements Comparable<Persona>, Cloneable, Serializable
 {
 	private String seguroPrivado;
 	private boolean ingresado;

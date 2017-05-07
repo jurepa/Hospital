@@ -9,8 +9,8 @@ public class TestMedico {
 		Medico medico2=null;
 		try
 		{
-			medico1=new Medico("Pepe","Jimene",60,"77813733",'m',new Domicilio("ConDio","Sevilla",5),"653826350","Pediatria");
-			medico2=new Medico("Joselito","El Gallo",38,"77813733",'h',new Domicilio("Av del Rebujito","Montellano",4),"646384750","Alergologia");
+			medico1=new Medico("Pepe","Jimene",60,"77813733H",'m',new Domicilio("ConDio","Sevilla",5),"653826350","pediatra");
+			medico2=new Medico("Joselito","El Gallo",38,"77813733H",'h',new Domicilio("Av del Rebujito","Montellano",4),"646384750","alergo");
 		}catch(HospitalException mensaje)
 		{
 			System.out.println(mensaje);
@@ -51,7 +51,7 @@ public class TestMedico {
 		{
 			System.out.println(mensaje);
 		}
-		System.out.println("Nuevo Sexo"+medico1.getSexo());
+		System.out.println("Nuevo Sexo: "+medico1.getSexo());
 		System.out.println("Domicilio: "+medico1.getDomicilio());
 		try
 		{
@@ -72,7 +72,7 @@ public class TestMedico {
 		System.out.println("Especialidad: "+medico1.getEspecialidad());
 		try
 		{
-			medico1.setEspecialidad("Alergologia");
+			medico1.setEspecialidad("alergo");
 		}catch(HospitalException mensaje)
 		{
 			System.out.println(mensaje);

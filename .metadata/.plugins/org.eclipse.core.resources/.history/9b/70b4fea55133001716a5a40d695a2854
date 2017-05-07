@@ -1,0 +1,8 @@
+package hospital;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+public class GestoraJaraneitor 
+{
+	
+
+}

@@ -1,5 +1,6 @@
 package hospital;
 
+import java.io.Serializable;
 import java.util.Objects;
 
 /*
@@ -21,7 +22,7 @@ import java.util.Objects;
  * 
  * Métodos añadidos: No hay
  */
-public class Medico extends Persona {
+public class Medico extends Persona implements Serializable {
 	
 	private String especialidad;
 	
@@ -35,9 +36,9 @@ public class Medico extends Persona {
 	{
 
 		super(nombre,apellidos,edad,dni,sexo,telefono,domicilio);
-		if(especialidad.equals("")||especialidad==null)
+		if(especialidad.equals("")||especialidad==null||(!especialidad.equals("alergo")&&!especialidad.equals("trauma")&&!especialidad.equals("pediatra")&&!especialidad.equals("neuro")&&!especialidad.equals("cardio")))
 		{
-			throw new HospitalException("Por favor, escriba una especialidad");
+			throw new HospitalException("Por favor, escriba una especialidad correcta");
 		}
 		else
 		{
