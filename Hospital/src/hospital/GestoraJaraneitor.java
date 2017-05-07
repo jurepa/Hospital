@@ -8,7 +8,7 @@ import java.io.IOException;
 public class GestoraJaraneitor 
 {	
 	public static void main(String[]args)
-	{
+	{	
 		File binario=new File("./src/hospital/dasdiobas.dat");
 		Medico medico=null;
 		Medico linea=null;
@@ -23,17 +23,28 @@ public class GestoraJaraneitor
 				oos.writeObject(medico);
 				linea=(Medico)ois.readObject();
 				System.out.println(linea);
-				ois.close();
-				oos.close();
+				
 		} catch (IOException e) 
 		{
 			e.printStackTrace();
-		} catch (HospitalException e) {
-			
+		} catch (HospitalException e) {			
 			e.printStackTrace();
 		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
+		}finally
+		{
+			try {
+				if(oos!=null)
+				{
+					oos.close();					
+				}
+				if(ois!=null)
+				{
+					ois.close();
+				}
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
 		}
 	}
 }
