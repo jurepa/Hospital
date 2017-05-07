@@ -18,8 +18,7 @@ import java.io.*;
  * 			según (opción)
  * 				caso 1: Pacientes
  * 				caso 2: Medicos
- * 				caso 3: Centro			//POR HACER
- * 				caso 4: Estadísticas	//POR HACER
+ * 				caso 3: Estadísticas	//POR HACER
  * 			fin_según
  * 		fin_si
  * 		LeerValidarElegirOpcion
@@ -140,8 +139,7 @@ public class MainHospital
 			System.out.println("------ Bienvenidos al hospital 'Habersinomemuero' ------");
 			System.out.println("--------------------- 1. Pacientes ---------------------");
 			System.out.println("---------------------- 2. Médicos ----------------------");
-			System.out.println("----------------------- 3. Centro ----------------------");
-			System.out.println("-------------------- 4. Estadísticas -------------------");
+			System.out.println("-------------------- 3. Estadísticas -------------------");
 			System.out.println("--------------------------------------------------------");
 	}
 	//fin menuPrincipal
@@ -318,7 +316,7 @@ public class MainHospital
 				MainHospital.menuHospital();
 				opcion = teclado.nextInt ();
 			}
-			while (opcion < 0 || opcion > 4);
+			while (opcion < 0 || opcion > 3);
 			//Fin PrintMenuPrincipalLeerValidarOpcion
 			
 			if (opcion != 0)
@@ -493,17 +491,9 @@ public class MainHospital
 					break;
 					//Fin caso 2: Medicos
 					
-					//caso 3: Centro
+					
+					//caso 3: Estadísticas
 					case 3:
-						
-						/* TODAVIA NO SABEMOS QUE METER AQUIIIIIII */
-						
-					break;
-					//Fin caso 3: Centro	
-					
-					
-					//caso 4: Estadísticas
-					case 4:
 						
 						//PrintMenuEstadisticasLeerValidarOpcion*
 						do
@@ -586,7 +576,7 @@ public class MainHospital
 						}//fin_si
 						
 					break;
-					//Fin caso 4: Estadísticas
+					//Fin caso 3: Estadísticas
 						
 				}//fin_según
 			}//fin_si
