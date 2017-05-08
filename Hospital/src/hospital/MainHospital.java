@@ -314,7 +314,14 @@ public class MainHospital
 			do
 			{
 				MainHospital.menuHospital();
-				opcion = teclado.nextInt ();
+				try
+				{
+					opcion = teclado.nextInt ();
+				}catch(InputMismatchException error)
+				{
+					opcion=-1;
+					teclado=new Scanner(System.in);
+				}
 			}
 			while (opcion < 0 || opcion > 3);
 			//Fin PrintMenuPrincipalLeerValidarOpcion
@@ -330,7 +337,14 @@ public class MainHospital
 						do
 						{
 							MainHospital.menuPacientes();
-							opcion2 = teclado.nextInt();
+							try
+							{
+								opcion2 = teclado.nextInt ();
+							}catch(InputMismatchException error)
+							{
+								opcion2=-1;
+								teclado=new Scanner(System.in);
+							}
 						}
 						while (opcion2 < 0 || opcion2 > 3);
 						//Fin PrintMenuPacientesLeerValidarOpcion*
@@ -359,7 +373,14 @@ public class MainHospital
 											do
 											{
 												MainHospital.menuListarPacientes();
-												opcion3 = teclado.nextInt();
+												try
+												{
+													opcion3 = teclado.nextInt ();
+												}catch(InputMismatchException error)
+												{
+													opcion3=-1;
+													teclado=new Scanner(System.in);
+												}
 											}
 											while (opcion3 < 0 || opcion3 > 3);
 											//Fin PrintMenuListaPLeerValidarOpcion
@@ -413,7 +434,14 @@ public class MainHospital
 						do
 						{
 							MainHospital.menuMedicos();
-							opcion4 = teclado.nextInt();
+							try
+							{
+								opcion4 = teclado.nextInt ();
+							}catch(InputMismatchException error)
+							{
+								opcion4=-1;
+								teclado=new Scanner(System.in);
+							}
 						}
 						while (opcion4 < 0 || opcion4 > 4);
 						//Fin PrintMenuMedicosLeerValidarOpcion
@@ -441,7 +469,14 @@ public class MainHospital
 										do
 										{
 											MainHospital.menuListarMedicos();
-											opcion5 = teclado.nextInt();
+											try
+											{
+												opcion5 = teclado.nextInt ();
+											}catch(InputMismatchException error)
+											{
+												opcion5=-1;
+												teclado=new Scanner(System.in);
+											}
 										}
 										while(opcion5 < 0 || opcion5 > 3);
 										//Fin PrintMenuListaMLeerValidarOpcion
@@ -499,7 +534,14 @@ public class MainHospital
 						do
 						{
 							MainHospital.menuListarEstadisticas();
-							opcion6 = teclado.nextInt ();
+							try
+							{
+								opcion6 = teclado.nextInt ();
+							}catch(InputMismatchException error)
+							{
+								opcion6=-1;
+								teclado=new Scanner(System.in);
+							}
 						}
 						while (opcion6 < 0 || opcion6 > 3);
 						//Fin PrintMenuEstadisticasLeerValidarOpcion
@@ -519,7 +561,14 @@ public class MainHospital
 									do
 									{
 										MainHospital.menuEstadisticasPacientesHospitalizados();
-										opcion7 = teclado.nextInt ();
+										try
+										{
+											opcion7 = teclado.nextInt ();
+										}catch(InputMismatchException error)
+										{
+											opcion7=-1;
+											teclado=new Scanner(System.in);
+										}
 									}
 									while (opcion7 < 0 || opcion7 > 3);
 									//Fin PrintMenuPacientesHospitalizadosLeerValidarOpcion

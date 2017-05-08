@@ -13,7 +13,7 @@ public class GestoraHospital
 	 * Postcondiciones: Ninguna
 	 */
 	
-	//
+	
 	
 	//pruebas
 	public static void main (String [] args)

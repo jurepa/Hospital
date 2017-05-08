@@ -64,6 +64,7 @@ import java.util.Objects;
 
 public class Persona implements Cloneable, Comparable <Persona>, PersonaIMPL, Serializable{
 	
+
 	private String nombre;
 	private String apellidos;
 	private int edad;

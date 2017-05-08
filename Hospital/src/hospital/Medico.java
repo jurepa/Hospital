@@ -24,6 +24,7 @@ import java.util.Objects;
  */
 public class Medico extends Persona implements Serializable {
 	
+
 	private String especialidad;
 	
 	//Constructores

@@ -1,6 +1,7 @@
 package hospital;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.io.EOFException;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -12,24 +13,30 @@ public class GestoraJaraneitor
 		File binario=new File("./src/hospital/dasdiobas.dat");
 		Medico medico=null;
 		Medico linea=null;
+		boolean lee=true;
 		//nombre,apellidos,edad,dni,sexo,telefono,domicilio,especialidad
 		ObjectOutputStream oos=null;
 		ObjectInputStream ois=null;
 		try
 		{
-				oos=new ObjectOutputStream(new FileOutputStream(binario));
-				ois=new ObjectInputStream(new FileInputStream(binario));
+				oos=new ObjectOutputStream(new FileOutputStream(binario,true)){@Override protected void writeStreamHeader(){}};
+				ois=new ObjectInputStream(new FileInputStream(binario)){@Override protected void readStreamHeader(){}};
 				medico=new Medico("Pablo","Jarana",50,"77813733H",'h',new Domicilio("Almirante Topete","Sevilla",4),"653706957","alergo");
 				oos.writeObject(medico);
 				linea=(Medico)ois.readObject();
-				System.out.println(linea);
-				
-		} catch (IOException e) 
-		{
-			e.printStackTrace();
-		} catch (HospitalException e) {			
+				while(lee)
+				{	
+					System.out.println(linea);
+					linea=(Medico)ois.readObject();
+				}
+					
+		}catch (HospitalException e) {			
 			e.printStackTrace();
 		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		}catch(EOFException e){
+			lee=false;
+		} catch (IOException e) {
 			e.printStackTrace();
 		}finally
 		{
