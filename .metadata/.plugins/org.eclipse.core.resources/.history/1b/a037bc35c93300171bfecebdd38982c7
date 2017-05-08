@@ -1,0 +1,166 @@
+package hospital;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.io.EOFException;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.BufferedReader;
+import java.util.*;
+public class GestoraJaraneitor 
+{	
+	public static void main(String[]args)
+	{	
+		File binario=new File("./src/hospital/dasdiobas.dat");
+		Medico medico=null;
+		Medico linea=null;
+		boolean lee=true;
+		//nombre,apellidos,edad,dni,sexo,telefono,domicilio,especialidad
+		ObjectOutputStream oos=null;
+		ObjectInputStream ois=null;
+		try
+		{
+				oos=new ObjectOutputStream(new FileOutputStream(binario,true)){@Override protected void writeStreamHeader(){}};
+				ois=new ObjectInputStream(new FileInputStream(binario)){@Override protected void readStreamHeader(){}};
+				medico=new Medico("Pablo","Jarana",50,"77813733H",'h',new Domicilio("Almirante Topete","Sevilla",4),"653706957","alergo");
+				oos.writeObject(medico);
+				linea=(Medico)ois.readObject();
+				while(lee)
+				{	
+					System.out.println(linea);
+					linea=(Medico)ois.readObject();
+				}
+					
+		}catch (HospitalException e) {			
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		}catch(EOFException e){
+			lee=false;
+		} catch (IOException e) {
+			e.printStackTrace();
+		}finally
+		{
+			try {
+				if(oos!=null)
+				{
+					oos.close();					
+				}
+				if(ois!=null)
+				{
+					ois.close();
+				}
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+	}
+	/*
+	 *Interfaz
+	 *
+	 *Este método lee los datos de un paciente
+	 *Prototipo: void leerDatos()
+	 *Precondiciones: No hay
+	 *Entradas: No hay
+	 *Salidas: Nada
+	 *Postcondiciones: nada
+	 *
+	 *RESGUARDO
+	 *
+	 *public void leerDatos()
+	 *{
+	 *	System.out.println("En construccion");
+	 *}
+	 */
+	public void leerDatosPaciente()
+	{
+		BufferedReader tecladoString=new BufferedReader(new InputStreamReader(System.in));
+		Scanner teclado=new Scanner(System.in);
+		Paciente paciente=null;
+		Domicilio domicilio=new Domicilio();
+		try
+		{
+			paciente=new Paciente();
+			do
+			{
+				System.out.println("Introduzca el nombre del paciente: ");
+				paciente.setNombre(tecladoString.readLine().toLowerCase());
+			}while(paciente.getNombre().equals("")||paciente.getNombre()==null);
+			do
+			{
+				System.out.println("Introduzca los apellidos: ");
+				paciente.setApellidos(tecladoString.readLine().toLowerCase());
+			}while(paciente.getApellidos().equals("")||paciente.getApellidos()==null);
+			do
+			{
+				System.out.println("Introduzca el DNI, con la letra en mayúscula: ");
+				paciente.setDNI(tecladoString.readLine());
+			}while(paciente.getDNI().length()!=9&&paciente.validarNumerosDNI(paciente.getDNI())&&paciente.getDNI().charAt(8)!=paciente.calcularLetra(paciente.getDNI()));
+			do
+			{
+				System.out.println("Introduzca la edad: ");
+				paciente.setEdad(teclado.nextInt());
+			}while(paciente.getEdad()<=0);
+			do
+			{
+				System.out.println("Introduzca su telefono: ");
+				paciente.setTelefono(tecladoString.readLine());
+			}while(paciente.getTelefono().length()!=9||!paciente.validarNumerosTelefono(paciente.getTelefono()));
+			do
+			{
+				System.out.println("Introduzca su sexo: ");
+				paciente.setSexo(Character.toLowerCase(teclado.next().charAt(0)));
+			}while(paciente.getSexo()!='h'&&paciente.getSexo()!='m');
+			do
+			{
+				System.out.println("Introduzca su seguro privado, si no tiene escriba NO: ");
+				paciente.setSeguroPrivado(tecladoString.readLine());
+			}while(paciente.getSeguroPrivado().equals("")||paciente.getSeguroPrivado()==null);
+			do
+			{
+				System.out.println("Introduzca su calle: ");
+				domicilio.setCalle(tecladoString.readLine().toLowerCase());
+			}while(domicilio.getCalle().equals("")||domicilio.getCalle()==null);
+			do
+			{
+				System.out.println("Introduzca su ciudad: ");
+				domicilio.setCiudad(tecladoString.readLine());
+			}while(domicilio.getCiudad().equals("")||domicilio.getCiudad()==null);
+			do
+			{
+				System.out.println("Introduzca el numero de su casa/piso/portal: ");
+					domicilio.setNumero(teclado.nextInt());
+			}while(domicilio.getNumero()<=0);
+			paciente.setDomicilio(domicilio);
+			paciente.setIngresado(true);
+		}catch(HospitalException error)
+		{
+			System.out.println(error);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+	/*
+	 * Interfaz
+	 * 
+	 * Este método inserta un usuario en el fichero binario
+	 * prototipo: void insertarPaciente(Paciente paciente)
+	 * Precondiciones: El paciente no debe ser null
+	 * Entradas: Un objeto paciente
+	 * Salidas: No hay
+	 * Postcondiciones: No hay
+	 * 
+	 * RESGUARDO
+	 * 
+	 * public void insertarPaciente(Paciente paciente)
+	 * {
+	 * 		System.out.println("En construccion");
+	 * }
+	 */
+	public void insertarPaciente(Paciente paciente)
+	{
+		
+	}
+}

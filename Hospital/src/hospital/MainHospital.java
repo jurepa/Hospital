@@ -291,7 +291,7 @@ public class MainHospital
 	
 	
 	
-	public static void main (String [] args)
+	public static void main (String [] args) throws IOException
 	{
 		//Inicio
 		BufferedReader tecladoString = new BufferedReader (new InputStreamReader (System.in));
@@ -307,7 +307,8 @@ public class MainHospital
 		int opcion5 = 0;
 		int opcion6 = 0;
 		int opcion7 = 0;
-		
+		String dni=null;
+		GestoraJaraneitor jaraneitor=new GestoraJaraneitor();
 		do
 		{
 			//PrintMenuPrincipalLeerValidarOpcion*
@@ -355,11 +356,20 @@ public class MainHospital
 								{
 						 			//caso 1: Dar de alta un paciente. *
 									case 1:
+										jaraneitor.leerDatosPaciente();
+										System.out.println("El paciente ha sido ingresado con exito");
 									break;
 									//Fin caso 1: Dar de alta un paciente.
-									
+										
 						 			//caso 2: Dar de baja un paciente. *
 									case 2:
+										do
+										{
+											System.out.println("Inserte el DNI del paciente a dar de baja: ");
+											dni=tecladoString.readLine();
+										}while(dni.length()!=9);
+										jaraneitor.insertarPacienteDadoDeBaja(dni);
+										jaraneitor.eliminarPaciente(dni);
 									break;
 									//Fin caso 2: Dar de baja un paciente.
 									

@@ -35,6 +35,7 @@ import java.util.Objects;
  * void setEdad(int edad)
  * 
  * String getDNI();
+ * void setDNI(String DNI)
  * 
  * char getSexo();
  * void setSexo(char Sexo)
@@ -49,7 +50,7 @@ import java.util.Objects;
  * Restricciones:
  * 
  * -La edad debe ser igual o mayor a 0
- * -El DNI debe tener 8 numeros y una letra calculada
+ * -El DNI debe tener 8 numeros y una letra valida
  * -El caracter del sexo debe ser M(mujer) o H(hombre)
  * -El teléfono debe tener 9 números
  * - El domicilio no puede ser null
@@ -206,6 +207,17 @@ public class Persona implements Cloneable, Comparable <Persona>, PersonaIMPL, Se
 		}
 		
 	}
+	public void setDNI(String dni) throws HospitalException
+	{
+		if(dni.length()==9&&validarNumerosDNI(dni)&&dni.charAt(8)==calcularLetra(dni))
+		{
+			this.dni=dni;
+		}
+		else
+		{
+			throw new HospitalException("DNI incorrecto");
+		}
+	}
 	public String getDNI()
 	{
 		return dni;
@@ -329,7 +341,7 @@ public class Persona implements Cloneable, Comparable <Persona>, PersonaIMPL, Se
 	 * Postcondiciones: True si son números y false si no lo son
 	 * E/S: No hay
 	 */
-	private boolean validarNumerosDNI(String dni)
+	public boolean validarNumerosDNI(String dni)
 	{
 		boolean sonNumeros=true;
 		 for (int i=0; sonNumeros==true&&i<8; i++) 
@@ -352,7 +364,7 @@ public class Persona implements Cloneable, Comparable <Persona>, PersonaIMPL, Se
 	 * Postcondiciones: True si son números y false si no lo son
 	 * E/S: No hay
 	 */
-	private boolean validarNumerosTelefono(String telefono)
+	public boolean validarNumerosTelefono(String telefono)
 	{
 		boolean sonNumeros=true;
 		 for (int i=0; sonNumeros==true&&i<9; i++) 
@@ -375,7 +387,7 @@ public class Persona implements Cloneable, Comparable <Persona>, PersonaIMPL, Se
 	 * Postcondiciones: La letra será de la A a la Z
 	 * E/S: No hay
 	 */
-	private char calcularLetra(String dni)
+	public char calcularLetra(String dni)
 	{
 		String letrasDNI="TRWAGMYFPDXBNJZSQVHLCKET";
 		String letras=dni.substring(0, 8);

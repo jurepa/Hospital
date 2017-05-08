@@ -10,8 +10,8 @@ public class TestPaciente {
 				
 		try
 		{
-			paciente1=new Paciente("Pepe","Jimene",23,"73826490",'h',new Domicilio("Almirante Topete", "Sevilla",6),"653706957","Mapfre", true);
-			paciente2=new Paciente("AFK","Attempting to reconnect", 21,"42839475",'m',new Domicilio("Felipe II","Villanueva del Trabuco",2),"736251834","No", false);
+			paciente1=new Paciente("Pepe","Jimene",23,"77813733H",'h',new Domicilio("Almirante Topete", "Sevilla",6),"653706957","Mapfre", true,new Medico());
+			paciente2=new Paciente("AFK","Attempting to reconnect", 21,"77813733H",'m',new Domicilio("Felipe II","Villanueva del Trabuco",2),"736251834","No", false, new Medico());
 		}catch(HospitalException mensaje)
 		{
 			System.out.println(mensaje);
@@ -23,6 +23,7 @@ public class TestPaciente {
 		System.out.println("Domicilio: "+paciente1.getDomicilio());
 		System.out.println("Telefono: "+paciente1.getTelefono());
 		System.out.println("Seguro Privado: "+paciente1.getSeguroPrivado());
+		System.out.println("Medico: "+paciente1.getMedico());
 		try
 		{
 			paciente1.setNombre("Pepo");
@@ -30,6 +31,7 @@ public class TestPaciente {
 			paciente1.setDomicilio(domicilio1);
 			paciente1.setTelefono("123456789");
 			paciente1.setSeguroPrivado("Dado de baja");
+			paciente1.setMedico(new Medico("Carlos","Alvarez",32,"77813733H",'h',new Domicilio("sada","gdh",5),"628472909","trauma"));
 		}catch(HospitalException mensaje)
 		{
 			System.out.println(mensaje);
@@ -40,6 +42,7 @@ public class TestPaciente {
 		System.out.println("Nuevo Domicilio: "+paciente1.getDomicilio());
 		System.out.println("Nuevo Telefono: "+paciente1.getTelefono());
 		System.out.println("Nuevo Seguro Privado: "+paciente1.getSeguroPrivado());
+		System.out.println("Nuevo medico: "+paciente1.getMedico());
 		System.out.println("hashCode: "+paciente1.hashCode());
 		System.out.println("toString: "+paciente1.toString());
 		System.out.println("compareTo: "+paciente1.compareTo(paciente2));
