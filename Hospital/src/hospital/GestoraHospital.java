@@ -36,10 +36,10 @@ public class GestoraHospital
 			FileOutputStream fos = new FileOutputStream (pepejava);
 			ObjectOutputStream oos = new ObjectOutputStream (fos);
 
-				p0 = new Persona ("Pablo", "Chavalator1", 16, "77925631", 'h', "954456545", new Domicilio ("Pepejava1 Street", "El kelo", 3));
-				p1 = new Persona ("Juan", "Chavalator2", 17, "77924651", 'h', "954236545", new Domicilio ("Pepejava2 Street", "El kelo", 4));
-				p2 = new Persona ("Nzhdeh", "Chavalator3", 18, "77225651", 'h', "952256545", new Domicilio ("Pepejava3 Street", "El kelo", 5));
-				p3 = new Persona ("Firewall", "Chavalator4", 19, "71925651", 'h', "954266545", new Domicilio ("Pepejava4 Street", "El kelo", 6));
+			p0 = new Persona ("Pablo", "Chavalator1", 16, "77925631", 'h', "954456545", new Domicilio ("Pepejava1 Street", "El kelo", 3));
+			p1 = new Persona ("Juan", "Chavalator2", 17, "77924651", 'h', "954236545", new Domicilio ("Pepejava2 Street", "El kelo", 4));
+			p2 = new Persona ("Nzhdeh", "Chavalator3", 18, "77225651", 'h', "952256545", new Domicilio ("Pepejava3 Street", "El kelo", 5));
+			p3 = new Persona ("Firewall", "Chavalator4", 19, "71925651", 'h', "954266545", new Domicilio ("Pepejava4 Street", "El kelo", 6));
 				
 			
 			oos.writeObject(p0);

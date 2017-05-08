@@ -100,62 +100,57 @@ public class Persona implements Cloneable, Comparable <Persona>, PersonaIMPL, Se
 	//Ordinario
 	public Persona (String nombre, String apellidos, int edad, String dni, char sexo, String telefono, Domicilio domicilio) throws HospitalException 
 	{
-			if(apellidos.equals("")||apellidos.equals(null))
+			if (apellidos.equals("") || apellidos.equals (null)
+				|| nombre.equals ("") || nombre.equals (null)
+				|| edad > 0
+				|| (dni.length () == 9 && validarNumerosDNI (dni) && dni.charAt (8) == calcularLetra (dni))
+				|| sexo == 'h' || sexo == 'm'
+				|| (telefono.length () == 9 && validarNumerosTelefono (telefono))
+				|| (domicilio == null || domicilio.getCalle ().equals ("") || domicilio.getCiudad ().equals ("") || domicilio.getNumero () <= 0))
 			{
+				if (apellidos.equals("") || apellidos.equals(null))
+				{
+					throw new HospitalException("Apellido incorrecto");	
+				}
+				
+				else if (nombre.equals ("") || nombre.equals (null))
+				{
 					throw new HospitalException("Nombre incorrecto");	
+				}
+				
+				else if (edad > 0)
+				{
+					throw new HospitalException("Edad incorrecta, debe ser mayor a 0");
+				}
+				
+				else if (dni.length () == 9 && validarNumerosDNI (dni) && dni.charAt (8) == calcularLetra (dni))
+				{
+					throw new HospitalException("DNI incorrecto, debes introducir los 8 números de tu DNI");
+				}
+				
+				else if (sexo == 'h' || sexo == 'm')
+				{
+					throw new HospitalException("El sexo debe ser 'H'(Hombre) o 'M'(Mujer)");
+				}
+				
+				else if (telefono.length () == 9 && validarNumerosTelefono (telefono))
+				{
+					throw new HospitalException("El telefono debe contener 9 numeros");
+				}
+				
+				else if (domicilio == null || domicilio.getCalle ().equals ("") || domicilio.getCiudad ().equals ("") || domicilio.getNumero () <= 0)
+				{
+					throw new HospitalException("El domicilio debe tener una calle, una ciudad y un numero mayor que 0");
+				}
 			}
 			else
 			{
 				this.apellidos=apellidos;
-			}
-			if(nombre.equals("")||nombre.equals(null))
-			{
-					throw new HospitalException("Nombre incorrecto");	
-			}
-			else
-			{
 				this.nombre=nombre;
-			}
-			if(edad>0)
-			{
 				this.edad=edad;
-			}
-			else
-			{
-				throw new HospitalException("Edad incorrecta, debe ser mayor a 0");
-			}
-			if(dni.length()==9&&validarNumerosDNI(dni)&&dni.charAt(8)==calcularLetra(dni))
-			{
 				this.dni=dni;
-			}
-			else
-			{
-				throw new HospitalException("DNI incorrecto, debes introducir los 8 números de tu DNI");
-			}
-			if(sexo=='h'||sexo=='m')
-			{
 				this.sexo=sexo;
-			}
-			else
-			{
-				throw new HospitalException("El sexo debe ser 'H'(Hombre) o 'M'(Mujer)");
-			}
-			if(telefono.length()==9&&validarNumerosTelefono(telefono))
-			{
 				this.telefono=telefono;
-			}
-			else
-			{
-				throw new HospitalException("El telefono debe contener 9 numeros");
-			}
-			
-			if(domicilio==null||domicilio.getCalle().equals("")||domicilio.getCiudad().equals("")||domicilio.getNumero()<=0)
-			{
-				throw new HospitalException("El domicilio debe tener una calle, una ciudad y un numero mayor que 0");
-			}
-			else
-			{
-				
 				this.domicilio=domicilio;
 			}
 	}
