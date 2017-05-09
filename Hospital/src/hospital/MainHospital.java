@@ -385,7 +385,6 @@ public class MainHospital
 										
 										do
 										{
-										
 											//PrintMenuListaPLeerValidarOpcion
 											do
 											{
