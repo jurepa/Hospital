@@ -356,7 +356,7 @@ public class MainHospital
 								{
 						 			//caso 1: Dar de alta un paciente. *
 									case 1:
-										jaraneitor.leerDatosPaciente();
+										jaraneitor.registrarPaciente();
 										System.out.println("El paciente ha sido ingresado con exito");
 									break;
 									//Fin caso 1: Dar de alta un paciente.

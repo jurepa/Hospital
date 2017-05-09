@@ -47,7 +47,7 @@ public class Domicilio implements Cloneable, DomicilioIMPL, Serializable {
 	public Domicilio()
 	{
 		calle="";
-		numero=1;
+		numero=0;
 		ciudad="";
 	}
 	public Domicilio(String calle, String ciudad, int numero)

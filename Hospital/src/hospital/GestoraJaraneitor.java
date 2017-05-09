@@ -61,8 +61,8 @@ public class GestoraJaraneitor
 	/*
 	 *Interfaz
 	 *
-	 *Este método lee los datos de un paciente
-	 *Prototipo: void leerDatos()
+	 *Este método lee los datos de un paciente y lo registra en el archivo pertinente.
+	 *Prototipo: void registrarPaciente()
 	 *Precondiciones: No hay
 	 *Entradas: No hay
 	 *Salidas: Nada
@@ -70,12 +70,12 @@ public class GestoraJaraneitor
 	 *
 	 *RESGUARDO
 	 *
-	 *public void leerDatos()
+	 *public void registrarPaciente()
 	 *{
 	 *	System.out.println("En construccion");
 	 *}
 	 */
-	public void leerDatosPaciente()
+	public void registrarPaciente()
 	{
 		BufferedReader tecladoString=new BufferedReader(new InputStreamReader(System.in));
 		Scanner teclado=new Scanner(System.in);

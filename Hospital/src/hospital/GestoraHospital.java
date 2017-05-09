@@ -1,17 +1,201 @@
 package hospital;
 
 import java.io.*;
+import java.util.*;
 
 public class GestoraHospital 
 {
-	/* Prototipo: 
-	 * Breve comentario: Subprograma que da de baja un Paciente.
+	/* Prototipo: void registrarMedico
+	 * Breve comentario: Subprograma que lee los datos de un médico y lo añade al archivo correspondiente.
 	 * Precondiciones: Ninguna
 	 * Entradas: Ninguna
 	 * Salidas: Ninguna
 	 * Entradas/Salidas: Ninguna
 	 * Postcondiciones: Ninguna
+	 * 
+	 * Resguardo: public void registrarMedico ()
+		{
+			System.out.println("Llamada al metodo registrarMedico");
+		}
 	 */
+	
+	public void registrarMedico ()
+	{
+		BufferedReader tecladoString = new BufferedReader (new InputStreamReader (System.in));
+		Scanner teclado = new Scanner (System.in);
+		Medico medico = null;
+		Domicilio domicilio = null;
+		
+		try
+		{
+			medico = new Medico ();
+			domicilio = new Domicilio ();
+			
+			do
+			{
+				System.out.println("Introduzca su nombre:");
+				medico.setNombre(tecladoString.readLine ());
+			}
+			while (medico.getNombre().equals ("") || medico.getNombre ().equals (null));
+			
+			do
+			{
+				System.out.println("Introduzca sus apellidos:");
+				medico.setApellidos(tecladoString.readLine ());
+			}
+			while (medico.getApellidos() .equals("") || medico.getApellidos ().equals (null));
+			
+			do
+			{
+				try
+				{
+					System.out.println("Introduzca su edad:");
+					medico.setEdad(teclado.nextInt ());
+				}
+				catch (InputMismatchException e)
+				{
+					System.out.println("La edad debe ser un numero entero.");
+					teclado.next();
+				}
+			}
+			while (medico.getEdad() < 1);
+			
+			do
+			{
+				System.out.println("Introduzca su DNI:");
+				medico.setDNI(tecladoString.readLine ());
+			}
+			while (medico.getDNI().length() != 9 && medico.validarNumerosDNI (medico.getDNI ()) && medico.getDNI ().charAt (8) != medico.calcularLetra (medico.getDNI ()));
+			
+			do
+			{
+				System.out.println("Introduzca su sexo: M/H");
+				medico.setSexo(Character.toLowerCase(teclado.next().charAt (0)));
+			}
+			while (medico.getSexo() != 'm' && medico.getSexo() != 'h');
+			
+			do
+			{
+				System.out.println("Introduzca su telefono:");
+				medico.setTelefono(tecladoString.readLine ());
+			}
+			while (medico.getTelefono ().length () != 9 || medico.validarNumerosTelefono (medico.getTelefono ()) == false);
+			
+			do
+			{
+				System.out.println("Introduzca su especialidad:");
+				medico.setEspecialidad(tecladoString.readLine ());
+			}
+			while (medico.getEspecialidad ().equals("") || medico.getEspecialidad ().equals(null) 
+					|| (medico.getEspecialidad ().equals("alergo") == false 
+						&& medico.getEspecialidad().equals("trauma") == false 
+						&& medico.getEspecialidad ().equals("pediatra") == false
+						&& medico.getEspecialidad ().equals("neuro")
+						&& medico.getEspecialidad ().equals("cardio")));
+			
+			do
+			{
+				System.out.println("Introduzca su calle:");
+				domicilio.setCalle(tecladoString.readLine ());
+			}
+			while (domicilio.getCalle().equals("") || domicilio.getCalle().equals(null));
+			
+			do
+			{
+				System.out.println("Introduzca su ciudad:");
+				domicilio.setCiudad(tecladoString.readLine ());
+			}
+			while (domicilio.getCiudad().equals("") || domicilio.getCiudad().equals(null));
+			
+			do
+			{
+				try
+				{
+					System.out.println("Introduzca el numero de su portal:");
+					domicilio.setNumero(teclado.nextInt ());
+				}
+				catch (InputMismatchException e)
+				{
+					System.out.println("El numero del portal debe ser un entero.");
+					teclado.next ();
+				}
+			}
+			while (domicilio.getNumero() < 1);
+			
+			medico.setDomicilio(domicilio);
+			
+			insertarMedico (medico);
+		}
+		
+		catch (HospitalException e)
+		{
+			System.out.println(e);
+		}
+		
+		catch (IOException e)
+		{
+			System.out.println("IOException");
+		}
+	}
+	//Fin registrarMedico
+	
+	/* Prototipo: void insertarMedico (Medico medico)
+	 * Breve comentario: Subprograma que inserta a un medico en el archivo correspondiente
+	 * Precondiciones: Ninguna
+	 * Entradas: Un medico
+	 * Salidas: Ninguna
+	 * Entradas/Salidas: Ninguna
+	 * Postcondiciones: Ninguna
+	 * 
+	 * Resguardo: 	public void insertarMedico (Medico medico)
+		{
+			System.out.println("Llamada al metodo insertarMedico ()");		
+		}
+	 */
+	public void insertarMedico (Medico medico)
+	{
+		File medicosContratados = new File ("./src/hospital/medicosContratados.dat");
+		ObjectOutputStream oos = null;
+		
+		try
+		{
+			oos = new ObjectOutputStream (new FileOutputStream (medicosContratados, true))
+			{
+				@Override protected void writeStreamHeader()
+				{}
+			};
+			
+			oos.writeObject(medico);
+		}
+		
+		catch (FileNotFoundException e)
+		{
+			System.out.println("FileNotFoundException");
+		}
+		
+		catch (IOException e)
+		{
+			System.out.println("IOException");
+		}
+		
+		finally 
+		{
+			if (oos != null)
+			{
+				try
+				{
+					oos.close();
+				}
+				
+				catch (IOException e)
+				{
+					System.out.println("IOException");
+				}
+			}
+			
+		}
+	}
+	//Fin insertarMedico
 	
 	
 	
@@ -22,6 +206,7 @@ public class GestoraHospital
 		Object pAux = null;
 		
 		File pepejava = new File ("pepejava.dat");
+		ObjectInputStream ois = null;
 		
 		Persona p0 = null;
 		Persona p1 = null;
@@ -65,13 +250,13 @@ public class GestoraHospital
 		try
 		{
 			FileInputStream fis = new FileInputStream (pepejava);
-			ObjectInputStream ois = new ObjectInputStream (fis);
+			ois = new ObjectInputStream (fis);
 			
 			pAux = ois.readObject();
 			
 			if (pAux instanceof Persona)
 			{
-				for (int i = 0; i < pepejava.length() && pAux != null; i++)
+				while (true)
 				{
 					System.out.println(((Persona) pAux).toString ());
 					
@@ -82,14 +267,33 @@ public class GestoraHospital
 			ois.close();
 		}
 		
-		catch (IOException e)
-		{
-			System.out.println("fail");
-		}
-		
 		catch (ClassNotFoundException e)
 		{
 			System.out.println("ClassNotFound");
+		}
+		
+		catch (EOFException e)
+		{
+			System.out.println("xd");
+		}
+		catch (IOException e)
+		{
+			System.out.println("IOException");
+		}
+		
+		finally 
+		{
+			try
+			{
+				if (ois != null)
+				{
+					ois.close ();
+				}
+			}
+			catch (IOException e)
+			{
+				System.out.println("IOE");
+			}
 		}
 	}
 	//pruebas
