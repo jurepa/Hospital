@@ -102,10 +102,10 @@ public class Persona implements Cloneable, Comparable <Persona>, PersonaIMPL, Se
 	{
 			if (apellidos.equals("") || apellidos.equals (null)
 				|| nombre.equals ("") || nombre.equals (null)
-				|| edad > 0
+				|| edad < 0
 				|| (dni.length () == 9 && validarNumerosDNI (dni) && dni.charAt (8) == calcularLetra (dni))
-				|| sexo == 'h' || sexo == 'm'
-				|| (telefono.length () == 9 && validarNumerosTelefono (telefono))
+				|| (sexo != 'h' && sexo != 'm')
+				|| (telefono.length () != 9 || validarNumerosTelefono (telefono) == false)
 				|| (domicilio == null || domicilio.getCalle ().equals ("") || domicilio.getCiudad ().equals ("") || domicilio.getNumero () <= 0))
 			{
 				if (apellidos.equals("") || apellidos.equals(null))
@@ -118,7 +118,7 @@ public class Persona implements Cloneable, Comparable <Persona>, PersonaIMPL, Se
 					throw new HospitalException("Nombre incorrecto");	
 				}
 				
-				else if (edad > 0)
+				else if (edad < 0)
 				{
 					throw new HospitalException("Edad incorrecta, debe ser mayor a 0");
 				}
@@ -128,12 +128,12 @@ public class Persona implements Cloneable, Comparable <Persona>, PersonaIMPL, Se
 					throw new HospitalException("DNI incorrecto, debes introducir los 8 números de tu DNI");
 				}
 				
-				else if (sexo == 'h' || sexo == 'm')
+				else if (sexo != 'h' && sexo != 'm')
 				{
 					throw new HospitalException("El sexo debe ser 'H'(Hombre) o 'M'(Mujer)");
 				}
 				
-				else if (telefono.length () == 9 && validarNumerosTelefono (telefono))
+				else if (telefono.length () != 9 || validarNumerosTelefono (telefono) == false)
 				{
 					throw new HospitalException("El telefono debe contener 9 numeros");
 				}
