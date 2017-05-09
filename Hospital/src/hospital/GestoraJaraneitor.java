@@ -285,32 +285,32 @@ public class GestoraJaraneitor
 	public boolean eliminarPaciente(String dni)
 	{
 		File ficheroDeAltas=new File("./src/hospital/pacientesIngresados.dat");
-		File aux=new File("./src/hospital/aux.dat");
+		File aux=new File("./src/hospital/auxiliar.dat");
 		ObjectOutputStream oos=null;
 		ObjectInputStream ois=null;
 		Paciente paciente=null;
 		boolean lee=true;
-		boolean borrado=true;
+		boolean borrado=false;
 		if(ficheroDeAltas.exists())
 		{
 			if(cuentaPacientes()>0)
 			{
 				try 
 				{
-					oos=new ObjectOutputStream(new FileOutputStream(aux,true)){@Override protected void writeStreamHeader(){}};
+					oos=new ObjectOutputStream(new FileOutputStream(aux)){@Override protected void writeStreamHeader(){}};
 					ois=new ObjectInputStream(new FileInputStream(ficheroDeAltas)){@Override protected void readStreamHeader(){}};
 					paciente=(Paciente)ois.readObject();
 					while(lee)
 					{
 						if(paciente.getDNI().equals(dni))
 						{
-							
+							borrado=true;							
 						}
 						else
 						{
 							oos.writeObject(paciente);
-							paciente=(Paciente)ois.readObject();
 						}
+						paciente=(Paciente)ois.readObject();
 					}
 				} catch (FileNotFoundException e)
 				{
@@ -348,9 +348,9 @@ public class GestoraJaraneitor
 						}
 					}
 				}
-				ficheroDeAltas.delete();
-				aux.renameTo(ficheroDeAltas);
-			}
+			}//si
+			ficheroDeAltas.delete();
+			aux.renameTo(ficheroDeAltas);
 		}
 		return borrado;
 	}

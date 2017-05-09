@@ -369,7 +369,14 @@ public class MainHospital
 											dni=tecladoString.readLine();
 										}while(dni.length()!=9);
 										jaraneitor.insertarPacienteDadoDeBaja(dni);
-										jaraneitor.eliminarPaciente(dni);
+										if(jaraneitor.eliminarPaciente(dni))
+										{
+											System.out.println("Se elimino correctamente el paciente");
+										}
+										else
+										{
+											System.out.println("No se borro el paciente");
+										}
 									break;
 									//Fin caso 2: Dar de baja un paciente.
 									
