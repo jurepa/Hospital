@@ -309,6 +309,7 @@ public class MainHospital
 		int opcion7 = 0;
 		String dni=null;
 		GestoraJaraneitor jaraneitor=new GestoraJaraneitor();
+		Merge merge=new Merge();
 		do
 		{
 			//PrintMenuPrincipalLeerValidarOpcion*
@@ -412,7 +413,8 @@ public class MainHospital
 												
 													//caso 2: Por edad *
 													case 2:
-														
+														merge.run();
+														jaraneitor.listarPacientesEdad();
 													break;
 													//Fin caso 2: Por edad
 												

@@ -415,4 +415,62 @@ public class GestoraJaraneitor
 		}
 		return contador;
 	}
+	/*
+	 * Interfaz
+	 * 
+	 * Este metodo imprime los pacientes ingresados por edad
+	 * prototipo: void listarPacientesEdad()
+	 * Precondiciones: No hay
+	 * Entradas: No hay
+	 * Salidas: No hay
+	 * Postcondiciones: No hay
+	 * 
+	 * RESGUARDO
+	 * 
+	 * public void listarPacientesEdad()
+	 * {
+	 * 		System.out.println("En construccion");
+	 * }
+	 */
+	public void listarPacientesEdad()
+	{
+		File ficheroDeAltas=new File("./src/hospital/pacientesIngresados.dat");
+		ObjectInputStream ois=null;
+		Paciente paciente=null;
+		boolean lee=true;
+		try 
+		{
+			ois=new ObjectInputStream(new FileInputStream(ficheroDeAltas)){@Override protected void readStreamHeader(){}};
+			paciente=(Paciente)ois.readObject();
+			while(lee)
+			{
+				System.out.println(paciente.toString());
+				paciente=(Paciente)ois.readObject();
+			}
+		} catch (FileNotFoundException e) 
+		{
+			e.printStackTrace();
+		}  catch (ClassNotFoundException e) 
+		{
+			e.printStackTrace();
+		}catch(EOFException e)
+		{
+			lee=false;
+		} catch (IOException e) 
+		{
+			e.printStackTrace();
+		}finally
+		{
+			if(ois!=null)
+			{
+				try
+				{
+					ois.close();
+				} catch (IOException e) 
+				{
+					e.printStackTrace();
+				}
+			}
+		}
+	}
 }

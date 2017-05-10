@@ -19,20 +19,16 @@ public class Merge {
 				 * 		System.out.println("EN CONSTRUCCION");
 				 * }
 				 */
-			   public  void run() {
-				   String INPUT= ".\\src\\ordenacionFicheros\\pacientesIngresados.dat" ;
-				   String AUX1  =  ".\\src\\ordenacionFicheros\\aux1.dat" ;
-				   String AUX2  =  ".\\src\\ordenacionFicheros\\aux2.dat" ;
-			     try {
-			       boolean sorted = split(INPUT, AUX1, AUX2);
+			   public  void run() 
+			   {
+				   String INPUT= ".\\src\\hospital\\pacientesIngresados.dat" ;
+				   String AUX1  =  ".\\src\\hospital\\aux1.dat" ;
+				   String AUX2  =  ".\\src\\hospital\\aux2.dat" ;
+			     boolean sorted = split(INPUT, AUX1, AUX2);
 			       while (!sorted) { //Mientras no estén ordenados, divide y vencerás
 			         merge(AUX1, AUX2, INPUT);
 			         sorted = split(INPUT, AUX1, AUX2);
 			       }
-			       System.out.println("Ya esta chavale ya esta ordenao del to, o no ");//Ea con dio
-			     } catch (IOException ex) {
-			       System.out.println("No se pudo ordenar el fichero: "+ex);
-			     }
 			   }
 			   /*
 			    * Interfaz
@@ -54,6 +50,7 @@ public class Merge {
 			
 			    public boolean split(String input,String output1,String output2)  {
 			    
+			     ComparatorEdad comparator= new ComparatorEdad();
 			     File aux1=new File(output1);
 			     File aux2=new File(output2);
 			     ObjectInputStream in =null; 
@@ -63,9 +60,9 @@ public class Merge {
 			     boolean sorted = true;
 			     try
 			     {
-			    	 in=new ObjectInputStream(new FileInputStream(input)); 
-			    	 out=new ObjectOutputStream(new FileOutputStream(output1));
-			    	 other=new ObjectOutputStream(new FileOutputStream(output2));
+			    	 in=new ObjectInputStream(new FileInputStream(input)){@Override protected void readStreamHeader(){}}; 
+			    	 out=new ObjectOutputStream(new FileOutputStream(output1)){@Override protected void writeStreamHeader(){}};
+			    	 other=new ObjectOutputStream(new FileOutputStream(output2)){@Override protected void writeStreamHeader(){}};
 				     Paciente pacienteAnterior=null;
 				     Paciente pacienteActual =(Paciente) in.readObject();
 				     out.writeObject(pacienteActual);
@@ -74,7 +71,7 @@ public class Merge {
 				     while (lee) 
 				     { 
 	
-				       if (pacienteAnterior.compareTo(pacienteActual)>0) 
+				       if (comparator.compare(pacienteAnterior, pacienteActual)>0) 
 				       {
 				         sorted = false;
 				        ObjectOutputStream tmp = out;
@@ -153,47 +150,153 @@ public class Merge {
 			     * 
 			     */
 			   public void merge(String input1,String input2, String output)  {
-			
+				 
+				 ComparatorEdad comparator=new ComparatorEdad();
 			     ObjectInputStream in1 = null;
 			     ObjectInputStream in2 = null;
 			     ObjectOutputStream out = null;
-			     boolean lee=true;
+			     boolean lee1=true,lee2=true;
 			     Paciente pacienteActual1 = null;
 			     Paciente pacienteActual2 = null;
-			     try
-			     {
-				     while (lee) 
+			    // try
+			   //  {
+		    	 try 
+		    	 {
+					in1=new ObjectInputStream(new FileInputStream(input1)){@Override protected void readStreamHeader(){}};
+					in2=new ObjectInputStream( new FileInputStream(input2)){@Override protected void readStreamHeader(){}};
+			    	out=new ObjectOutputStream(new FileOutputStream(output)){@Override protected void writeStreamHeader(){}};
+		    	 } catch (FileNotFoundException e1) 
+		    	 {
+					e1.printStackTrace();
+				 } catch (IOException e1) 
+		    	 {
+					e1.printStackTrace();
+				 }
+		    	 try 
+			    	{
+						pacienteActual1=(Paciente)in1.readObject();
+					} catch (ClassNotFoundException e) 
+			    	{							
+						e.printStackTrace();
+					}catch(EOFException e)
+			    	{
+						lee1=false;
+					} catch (IOException e) 
+			    	{
+						e.printStackTrace();
+					}
+			    	 
+			    	 try 
+			    	{
+						pacienteActual2=(Paciente)in2.readObject();
+					} catch (ClassNotFoundException e) 
+			    	{							
+						e.printStackTrace();
+					}catch(EOFException e)
+			    	{
+			    		lee2=false;
+			    	} catch (IOException e)
+			    	{
+						e.printStackTrace();
+					}
+				     while (lee1&&lee2) 
 				     {
-				    	 in1=new ObjectInputStream(new FileInputStream(input1));
-				    	 in2=new ObjectInputStream( new FileInputStream(input2));
-				    	 out=new ObjectOutputStream(new FileOutputStream(output));
-				    	 pacienteActual1=(Paciente)in1.readObject();
-				    	 pacienteActual2=(Paciente)in2.readObject();
-				    	if (pacienteActual1.compareTo(pacienteActual2)<=0)
+				    	 
+				    	if (comparator.compare(pacienteActual1, pacienteActual2)<=0)
 				    	{
-				         out.writeObject(pacienteActual1);
-				         pacienteActual1 = (Paciente)in1.readObject();
+				    		try
+				    		{
+						         out.writeObject(pacienteActual1);
+						         pacienteActual1 = (Paciente)in1.readObject();
+				    		}catch(EOFException e)
+				    		{
+				    			lee1=false;
+				    		} catch (IOException e) {
+								e.printStackTrace();
+							} catch (ClassNotFoundException e) {
+								e.printStackTrace();
+							}
 				    	} 
 				    	else 
 				    	{
-				         out.writeObject(pacienteActual2);
-				         
-				         pacienteActual2 =(Paciente) in2.readObject();
+					         try 
+					         {
+								out.writeObject(pacienteActual2);
+					        	pacienteActual2 =(Paciente) in2.readObject();
+					         }catch(EOFException e)
+					         {
+					        	 lee2=false;
+					         } catch (IOException e) {
+								e.printStackTrace();
+							} catch (ClassNotFoundException e) 
+					         {
+								e.printStackTrace();
+							}
 				        }
 				     }
-				
-				     while () {
-				       out.write(current1);
-				       current1 = in1.readLine();
-				     }
-				
-				     while (current2 != null) {
-				       out.write(current2);
-				       current2 = in2.readLine();
-				     }
-			     }
-			     in1.close();
-			     in2.close();
-			     out.close();
+			    /* }catch(EOFException e)
+			     {
+			    	 lee=false;
+			     } catch (FileNotFoundException e) {
+
+					e.printStackTrace();
+				} catch (IOException e) {
+	
+					e.printStackTrace();
+				} catch (ClassNotFoundException e) {
+
+					e.printStackTrace();
+				}*/
+				if(lee1)
+				{
+				     try
+				     {
+					     while (lee1) 
+					     {
+					       out.writeObject(pacienteActual1);
+					       pacienteActual1 = (Paciente)in1.readObject();
+					     }
+				     }catch(EOFException e)
+				     {
+				    	 lee1=false;
+				     } catch (IOException e) {
+	
+						e.printStackTrace();
+					} catch (ClassNotFoundException e) {
+	
+						e.printStackTrace();
+					}
+				}
+				else if(lee2)
+				{
+					try
+					{
+					     while (lee2) 
+					     {
+					       out.writeObject(pacienteActual2);
+					       pacienteActual2 = (Paciente)in2.readObject();
+					     }
+					}catch(EOFException e)
+					{
+						lee2=false;
+					} catch (IOException e) 
+					{
+						e.printStackTrace();
+					} catch (ClassNotFoundException e) 
+					{
+	
+						e.printStackTrace();
+					}
+				}
+			     try 
+			    {
+					in1.close();
+					in2.close();
+				    out.close();
+				} catch (IOException e) 
+			    {
+					e.printStackTrace();
+				}
+
 			   }
 }
