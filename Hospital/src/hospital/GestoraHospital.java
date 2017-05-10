@@ -197,6 +197,229 @@ public class GestoraHospital
 	}
 	//Fin insertarMedico
 	
+	/* Prototipo: void insertarMedicoDespedido (String dni)
+	 * Breve comentario: Escribe el medico a despedir en el fichero de medicos despedidos.
+	 * Precondiciones: Ninguna
+	 * Entradas: Una cadena indicando el dni del médico.
+	 * Salidas: Ninguna.
+	 * Entradas/Salidas: Ninguna.
+	 * Postcondiciones: Ninguna.
+	 * 
+	 * Resguardo: public void insertarMedicoDespedido (String dni)
+		{
+			System.out.println("Llamada al metodo insertarMedicoDespedido");
+		}
+	 */
+	public void insertarMedicoDespedido (String dni)
+	{
+		File medicosContratados = new File ("./src/hospital/medicosContratados.dat");
+		File medicosDespedidos = new File ("./src/hospital/medicosDespedidos.dat");
+		ObjectOutputStream oos = null;
+		ObjectInputStream ois = null;
+		Object aux = null;
+		boolean lee = true;
+		boolean encontrado = false;
+		
+		try
+		{
+			oos = new ObjectOutputStream (new FileOutputStream (medicosDespedidos, true))
+			{
+				@Override protected void writeStreamHeader(){}
+			};
+			
+			ois = new ObjectInputStream (new FileInputStream (medicosContratados))
+			{
+				@Override protected void readStreamHeader(){}
+			};
+			
+			aux = ois.readObject();
+			
+			if (aux instanceof Medico)
+			{
+				while (lee == true && encontrado == false)
+				{
+					if (((Medico) aux).getDNI ().equals (dni))
+					{
+						oos.writeObject(aux);
+						encontrado = true;
+					}
+					
+					aux = ois.readObject();
+				}
+			}
+			
+		}
+		
+		catch (FileNotFoundException e)
+		{
+			System.out.println("FileNotFoundException");
+		}
+		
+		catch (EOFException e)
+		{
+			System.out.println("EOFException");
+			lee = false;
+		}
+		
+		catch (IOException e)
+		{
+			System.out.println("IOException");
+		}
+		
+		catch (ClassNotFoundException e)
+		{
+			System.out.println("ClassNotFoundException");
+		}
+		
+		finally
+		{
+			if (oos != null) 
+			{
+				try
+				{
+					oos.close();
+				}
+				
+				catch (IOException e)
+				{
+					System.out.println("IOException cerrar oos");
+				}
+			}
+			
+			if (ois != null) 
+			{
+				try
+				{
+					ois.close();
+				}
+				
+				catch (IOException e)
+				{
+					System.out.println("IOException cerrar ois");
+				}
+			}
+		}
+	}
+	//fin insertarMedicoDespedido
+	
+	/* Prototipo: boolean despedirMedico (String dni);
+	 * Breve comentario: Elimina a un medico del fichero de medicosContratados
+	 * Precondiciones: Nnguna
+	 * Entradas: Un string indicando el dni del medico
+	 * Salidas: Un boolean
+	 * Entradas/Salidas: Ninguna
+	 * Postcondiciones: True si se ha borrado con exito, false sino.
+	 * 
+	 * Resguardo: 	public boolean despedirMedico (String dni)
+		{
+			System.out.println("Llamada al metodo despedirMedico");
+		}
+	 */
+	public boolean despedirMedico (String dni)
+	{
+		File medicosContratados = new File ("./src/hospital/medicosContratados.dat");
+		File auxiliar = new File ("./src/hospital/auxiliar.dat");
+		ObjectOutputStream oos = null;
+		ObjectInputStream ois = null;
+		Object aux = null;
+		boolean lee = true;
+		boolean borrado = false;
+		
+		if (medicosContratados.exists())
+		{
+			
+			try
+			{
+				oos = new ObjectOutputStream (new FileOutputStream (auxiliar, true))
+					{
+						@Override protected void writeStreamHeader () {}
+					};
+					
+				ois = new ObjectInputStream (new FileInputStream (medicosContratados))
+					{
+						@Override protected void readStreamHeader () {}
+					};
+					
+				aux = ois.readObject();
+				
+				while (lee)
+				{
+					if (aux instanceof Medico)
+					{
+						if (((Medico) aux).getDNI ().equals (dni))
+						{
+							borrado = true;
+							insertarMedicoDespedido(dni);
+						}
+						
+						else
+						{
+							oos.writeObject(aux);
+						}
+					}
+					
+					aux = ois.readObject();
+				}
+			}
+			
+			catch (FileNotFoundException e)
+			{
+				System.out.println("FileNotFoundException");
+			}
+			
+			catch (EOFException e)
+			{
+				System.out.println("EOFException");
+				lee = false;
+			}
+			
+			catch (IOException e)
+			{
+				System.out.println("IOException");
+			}
+			
+			catch (ClassNotFoundException e)
+			{
+				System.out.println("ClassNotFoundException");
+			}
+			
+			finally
+			{
+				if (oos != null)
+				{
+					try
+					{
+						oos.close();
+					}
+					
+					catch (IOException e)
+					{
+						System.out.println("IOException cerrar oos");
+					}
+				}
+				
+				if (ois != null)
+				{
+					try
+					{
+						ois.close();
+					}
+					
+					catch (IOException e)
+					{
+						System.out.println("IOException cerrar ois");
+					}
+				}
+			}
+			
+			medicosContratados.delete();
+			auxiliar.renameTo(medicosContratados);
+		}
+		
+		return borrado;
+	}
+	//Fin despedirMedico
+	
 	
 	
 	//pruebas

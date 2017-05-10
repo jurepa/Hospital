@@ -269,15 +269,15 @@ public class GestoraJaraneitor
 	 * Interfaz
 	 * 
 	 * Este método elimina un paciente del fichero dados de alta
-	 * prototipo: void eliminarPaciente(String dni)
+	 * prototipo: boolean eliminarPaciente(String dni)
 	 * Precondiciones: No hay
 	 * Entradas: Una cadena
-	 * Salidas: Nada
-	 * Postcondiciones: Nada
+	 * Salidas: Un boolean
+	 * Postcondiciones: True si se ha borrado correctamente, false sino.
 	 * 
 	 * RESGUARDO
 	 * 
-	 * public void eliminarPaciente(String dni)
+	 * public boolean eliminarPaciente(String dni)
 	 * {
 	 * 		System.out.println("En construccion");
 	 * }

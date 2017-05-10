@@ -12,7 +12,9 @@ public class TestGestoraHospital
 		ObjectInputStream ois = null;
 		File archivo = new File ("./src/hospital/medicosContratados.dat");
 		
-		prueba.registrarMedico ();
+		//prueba.registrarMedico ();
+		//prueba.insertarMedicoDespedido("77925651H");
+		prueba.despedirMedico("13121432R");
 		
 		try
 		{
