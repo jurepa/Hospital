@@ -212,8 +212,8 @@ public class GestoraHospital
 	 */
 	public void insertarMedicoDespedido (String dni)
 	{
-		File medicosContratados = new File ("./src/hospital/medicosContratados.dat");
-		File medicosDespedidos = new File ("./src/hospital/medicosDespedidos.dat");
+		File medicosContratados = new File ("./Hospital/src/hospital/medicosContratados.dat");
+		File medicosDespedidos = new File ("./Hospital/src/hospital/medicosDespedidos.dat");
 		ObjectOutputStream oos = null;
 		ObjectInputStream ois = null;
 		Object aux = null;
@@ -317,16 +317,16 @@ public class GestoraHospital
 	 */
 	public boolean despedirMedico (String dni)
 	{
-		File medicosContratados = new File ("./src/hospital/medicosContratados.dat");
-		File auxiliar = new File ("./src/hospital/auxiliar.dat");
+		File medicosContratados = new File ("./Hospital/src/hospital/medicosContratados.dat");
+		File auxiliar = new File ("./Hospital/src/hospital/auxiliar.dat");
 		ObjectOutputStream oos = null;
 		ObjectInputStream ois = null;
 		Object aux = null;
 		boolean lee = true;
 		boolean borrado = false;
 		
-		if (medicosContratados.exists())
-		{
+		//if (medicosContratados.exists())
+	//	{
 			
 			try
 			{
@@ -414,7 +414,7 @@ public class GestoraHospital
 			
 			medicosContratados.delete();
 			auxiliar.renameTo(medicosContratados);
-		}
+		//}
 		
 		return borrado;
 	}
