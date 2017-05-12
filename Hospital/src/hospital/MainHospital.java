@@ -635,6 +635,8 @@ public class MainHospital
 							
 								//caso 2: Porcentaje mujeres y hombres hospitalizados *
 								case 2:
+									System.out.println("Hay un "+jaraneitor.porcentajeHombres()+"% de hombres en el hospital");
+									System.out.println("Hay un "+jaraneitor.porcentajeMujeres()+"% de mujeres en el hospital");
 								break;
 								//Fin caso 2: Porcentaje mujeres y hombres hospitalizados
 							

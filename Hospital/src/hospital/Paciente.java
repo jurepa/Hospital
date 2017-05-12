@@ -28,10 +28,11 @@ import java.util.Objects;
  * 
  * Métodos añadidos:
  * 
- * 	-boolean comprobarDNI()******
+ * 	-No hay
  */
 public class Paciente  extends Persona implements Comparable<Persona>, Cloneable, Serializable
 {
+	
 	private String seguroPrivado;
 	private boolean ingresado;
 	private Medico medicoAsignado;

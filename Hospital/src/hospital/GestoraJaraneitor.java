@@ -474,4 +474,152 @@ public class GestoraJaraneitor
 			}
 		}
 	}
+	/*
+	 * Interfaz
+	 * 
+	 * Este método cuenta el número de pacientes mujeres hospitalizadas
+	 * prototipo: int cuentaMujeres()
+	 * Precondiciones: No hay
+	 * Entradas: No hay
+	 * Salida: Un entero
+	 * Postcondiciones: El entero será mayor o igual a0
+	 * 
+	 * RESGUARDO
+	 * 
+	 * public int cuentaMujeres()
+	 * {
+	 * 		return 1;
+	 * }
+	 */
+	public int cuentaMujeres()
+	{
+		int contadorMujeres=0;
+		ObjectInputStream ois=null;
+		File pacientes=new File("./src/hospital/pacientesIngresados.dat");
+		Paciente paciente=null;
+		boolean lee=true;
+		try 
+		{
+			ois=new ObjectInputStream(new FileInputStream(pacientes)){@Override protected void readStreamHeader(){}};
+			paciente=(Paciente)ois.readObject();
+			while(lee)
+			{
+				if(paciente.getSexo()=='m')
+				{
+					contadorMujeres++;
+				}
+				paciente=(Paciente)ois.readObject();
+			}
+		} catch (FileNotFoundException e) 
+		{
+			e.printStackTrace();
+		}catch(EOFException e)
+		{
+			lee=false;
+		}catch (IOException e) 
+		{
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) 
+		{
+			e.printStackTrace();
+		}
+		return contadorMujeres;
+	}
+	/*
+	 * Interfaz
+	 * 
+	 * Este método cuenta el número de pacientes hombres hospitalizados
+	 * prototipo: int cuentaHombres()
+	 * Precondiciones: No hay
+	 * Entradas: No hay
+	 * Salida: Un entero
+	 * Postcondiciones: El entero será mayor o igual a0
+	 * 
+	 * RESGUARDO
+	 * 
+	 * public int cuentaHombres()
+	 * {
+	 * 		return 1;
+	 * }
+	 */
+	public int cuentaHombres()
+	{
+		int contadorHombres=0;
+		ObjectInputStream ois=null;
+		File pacientes=new File("./src/hospital/pacientesIngresados.dat");
+		Paciente paciente=null;
+		boolean lee=true;
+		try 
+		{
+			ois=new ObjectInputStream(new FileInputStream(pacientes)){@Override protected void readStreamHeader(){}};
+			paciente=(Paciente)ois.readObject();
+			while(lee)
+			{
+				if(paciente.getSexo()=='h')
+				{
+					contadorHombres++;
+				}
+				paciente=(Paciente)ois.readObject();
+			}
+		} catch (FileNotFoundException e) 
+		{
+			e.printStackTrace();
+		}catch(EOFException e)
+		{
+			lee=false;
+		}catch (IOException e) 
+		{
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) 
+		{
+			e.printStackTrace();
+		}
+		return contadorHombres;
+	}
+	/*
+	 * Interfaz
+	 * 
+	 * Este método calcula el porcentaje de hombres hospitalizados en el hospital
+	 * prototipo: int porcentajeHombres()
+	 * Precondiciones: No hay
+	 * Entradas: No hay
+	 * Salidas: un real
+	 * Postcondiciones: el número estará entre 0 y 100
+	 * 
+	 * RESGUARDO
+	 * 
+	 * public int porcentajeHombres()
+	 * {
+	 * 		return 1;
+	 * }
+	 */
+	public double porcentajeHombres()
+	{
+		double porcentaje=0;
+		porcentaje=(cuentaHombres()*100)/cuentaPacientes();
+		return porcentaje;
+	}
+	/*
+	 * Interfaz
+	 * 
+	 * Este método calcula el porcentaje de mujeres hospitalizadas en el hospital
+	 * prototipo: int porcentajeMujeres()
+	 * Precondiciones: No hay
+	 * Entradas: No hay
+	 * Salidas: un real
+	 * Postcondiciones: el número estará entre 0 y 100
+	 * 
+	 * RESGUARDO
+	 * 
+	 * public int porcentajeMujeres()
+	 * {
+	 * 		return 1;
+	 * }
+	 */
+	public double porcentajeMujeres()
+	{
+		double porcentaje=0;
+		porcentaje=(cuentaMujeres()*100)/cuentaPacientes();
+		return porcentaje;
+	}
 }
