@@ -520,7 +520,71 @@ public class GestoraHospital
 	 */
 	public void listarMedicosDepartamento ()
 	{
-		ObjectOutputStream oos = null;
+		File medicosContratados = new File ("./Hospital/src/hospital/medicosContratados.dat");
+		ObjectInputStream ois = null;
+		boolean lee = true;
+		Object aux = null;
+		
+		try
+		{
+			ois = new ObjectInputStream (new FileInputStream (medicosContratados))
+				{
+					@Override protected void readStreamHeader () {}
+				};
+				
+			if (medicosContratados.exists())
+			{
+			
+				aux = ois.readObject();
+				
+				while (lee)
+				{
+					if (aux instanceof Medico)
+					{
+						
+					}
+					
+					aux = ois.readObject ();
+				}
+			}
+		}
+		
+		catch (FileNotFoundException e)
+		{
+			e.printStackTrace();
+		}
+		
+		catch (EOFException e)
+		{
+			e.printStackTrace();
+			lee = false;
+		}
+		
+		catch (IOException e)
+		{
+			e.printStackTrace();
+		}
+		
+		catch (ClassNotFoundException e)
+		{
+			e.printStackTrace ();
+		}
+		
+		finally 
+		{
+			if (ois != null)
+			{
+				try
+				{
+					ois.close();
+				}
+				
+				catch (IOException e)
+				{
+					e.printStackTrace();
+				}
+			}
+		}
 	}
 	//Fin listarMedicosDepartamento
 	

@@ -1,5 +1,15 @@
 package hospital;
 
-public class ComparatorDepartamento {
+import java.util.*;
 
+public class ComparatorDepartamento implements Comparator <Medico>
+{
+	public int compare (Medico medico1, Medico medico2)
+	{
+		int resultado = 0;
+		
+		resultado = medico1.getEspecialidad().compareTo(medico2.getEspecialidad());
+		
+		return resultado;
+	}
 }
