@@ -420,6 +420,91 @@ public class GestoraHospital
 	}
 	//Fin despedirMedico
 	
+	/* Prototipo: void contarmedicos ();
+	 * Breve comentario: Metodo que cuenta el numero de médicos que hay en un archivo
+	 * Precondiciones: Ninguna
+	 * Entradas: Ninguna
+	 * Salidas: Un entero
+	 * Entradas/Salidas: Ninguna
+	 * Postcondiciones: Un entero indicando el numero de médicos que hay en el archivo
+	 * 
+	 * Resguardo: public int contarMedicos ()
+		{
+			System.out.println("Llamada al metodo contarMedicos");
+			return (-1);
+		}
+	 */
+	public int contarMedicos ()
+	{
+		File pacientesContratados = new File ("./Hospital/src/hospital/medicosContratados.dat");
+		ObjectOutputStream oos = null;
+		ObjectInputStream ois = null;
+		Object aux = null;
+		boolean lee = true;
+		int contador = 0;
+		
+		try
+		{
+			ois = new ObjectInputStream ( new FileInputStream (pacientesContratados))
+				{
+					@Override protected void readStreamHeader () {}
+				};
+				
+			aux = ois.readObject();
+			
+			while (lee == true)
+			{
+				if (aux instanceof Medico)
+				{
+					contador++;
+				}
+				
+				aux = ois.readObject();
+			}
+		}
+		
+		catch (FileNotFoundException e)
+		{
+			e.printStackTrace();
+		}
+		
+		catch (EOFException e)
+		{
+			e.printStackTrace();
+			lee = false;
+		}
+		
+		catch (IOException e)
+		{
+			e.printStackTrace();
+		}
+		
+		catch (ClassNotFoundException e)
+		{
+			e.printStackTrace();
+		}
+		
+		finally
+		{
+			if (ois != null)
+			{
+				try
+				{
+					ois.close ();
+				}
+				
+				catch (IOException e)
+				{
+					e.printStackTrace();
+				}
+			}
+		}
+		
+		
+		return contador;
+	}
+	//Fin contarMedicos
+	
 	
 	
 	//pruebas
