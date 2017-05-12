@@ -505,6 +505,25 @@ public class GestoraHospital
 	}
 	//Fin contarMedicos
 	
+	/* Prototipo: void listarMedicosDepartamento ();
+	 * Breve comentario: Funcionalidad que lista todos los médicos del hospital ordenados por departamento.
+	 * Precondiciones: Ninguna
+	 * Entradas: Ninguna
+	 * Salidas: Ninguna
+	 * Entradas/Salidas: Ninguna
+	 * Postcondiciones: Ninguna
+	 * 
+	 * Resguardo: public void listarMedicosDepartamento ()
+		{
+			System.out.println("Llamada al metodo listarMedicosDepartamento");
+		}
+	 */
+	public void listarMedicosDepartamento ()
+	{
+		ObjectOutputStream oos = null;
+	}
+	//Fin listarMedicosDepartamento
+	
 	
 	
 	//pruebas

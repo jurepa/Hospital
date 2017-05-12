@@ -2,16 +2,16 @@ package hospital;
 
 import java.util.Comparator;
 
-public class ComparatorEdad implements Comparator<Paciente>{
+public class ComparatorEdad implements Comparator<Persona>{
 	
-	public int compare(Paciente paciente1, Paciente paciente2)
+	public int compare(Persona persona1, Persona persona2)
 	{
 		int compara=0;
-		if(paciente1.getEdad()>paciente2.getEdad())
+		if(persona1.getEdad()>persona2.getEdad())
 		{
 			compara=1;
 		}
-		else if(paciente1.getEdad()<paciente2.getEdad())
+		else if(persona1.getEdad()<persona2.getEdad())
 		{
 			compara=-1;
 		}
