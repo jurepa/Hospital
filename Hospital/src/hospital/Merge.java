@@ -74,7 +74,7 @@ public class Merge {
 				       if (comparator.compare(pacienteAnterior, pacienteActual)>0) 
 				       {
 				         sorted = false;
-				        ObjectOutputStream tmp = out;
+				         ObjectOutputStream tmp = out;
 				         out = other;
 				         other = tmp;
 				       }

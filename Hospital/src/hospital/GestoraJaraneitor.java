@@ -304,7 +304,8 @@ public class GestoraJaraneitor
 					{
 						if(paciente.getDNI().equals(dni))
 						{
-							borrado=true;							
+							borrado=true;
+							insertarPaciente(paciente);
 						}
 						else
 						{
@@ -432,7 +433,7 @@ public class GestoraJaraneitor
 	 * 		System.out.println("En construccion");
 	 * }
 	 */
-	public void listarPacientesEdad()
+	public void listarPacientes()
 	{
 		File ficheroDeAltas=new File("./src/hospital/pacientesIngresados.dat");
 		ObjectInputStream ois=null;

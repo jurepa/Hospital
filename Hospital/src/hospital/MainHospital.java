@@ -369,7 +369,6 @@ public class MainHospital
 											System.out.println("Inserte el DNI del paciente a dar de baja: ");
 											dni=tecladoString.readLine();
 										}while(dni.length()!=9);
-										jaraneitor.insertarPacienteDadoDeBaja(dni);
 										if(jaraneitor.eliminarPaciente(dni))
 										{
 											System.out.println("Se elimino correctamente el paciente");
@@ -414,7 +413,7 @@ public class MainHospital
 													//caso 2: Por edad *
 													case 2:
 														merge.run();
-														jaraneitor.listarPacientesEdad();
+														jaraneitor.listarPacientes();
 													break;
 													//Fin caso 2: Por edad
 												

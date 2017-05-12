@@ -1,6 +1,7 @@
 package hospital;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Objects;
 
 /*
@@ -18,6 +19,9 @@ import java.util.Objects;
  * void setEspecialidad(String especialidad)
  * String getEspecialidad()
  * 
+ * void setPacientesAsignados(ArrayList<Paciente>pacientesAsignados)
+ * ArrayList<Paciente>pacientesAsignados getPacientesAsignados()
+ * 
  * Restricciones: No hay
  * 
  * Métodos añadidos: No hay
@@ -26,12 +30,13 @@ public class Medico extends Persona implements Serializable {
 	
 
 	private String especialidad;
-	
+	private ArrayList<Paciente>pacientesAsignados;
 	//Constructores
 	public Medico()
 	{
 		super();
 		especialidad="";
+		pacientesAsignados=new ArrayList<Paciente>();
 	}
 	public Medico(String nombre,String apellidos, int edad, String dni, char sexo, Domicilio domicilio, String telefono,String especialidad) throws HospitalException
 	{
@@ -45,12 +50,13 @@ public class Medico extends Persona implements Serializable {
 		{
 			this.especialidad=especialidad;
 		}
+		pacientesAsignados=new ArrayList<Paciente>();
 	}
 	public Medico(Medico medico)
 	{
 		super(medico);
-		
 		this.especialidad=medico.especialidad;
+		this.pacientesAsignados=medico.pacientesAsignados;
 	}
 	//Métodos consultores y modificadores
 	public void setEspecialidad(String especialidad)throws HospitalException
@@ -67,6 +73,14 @@ public class Medico extends Persona implements Serializable {
 	public String getEspecialidad()
 	{
 		return especialidad;
+	}
+	public void setPacienteAsignado(ArrayList<Paciente>pacientesAsignados)
+	{
+		this.pacientesAsignados=pacientesAsignados;
+	}
+	public ArrayList<Paciente> getPacienteAsignado()
+	{
+		return pacientesAsignados;
 	}
 	//Métodos sobrecargados y sobreescritos
 	@Override
