@@ -316,6 +316,7 @@ public class MainHospital
 		int opcion7 = 0;
 		String dni=null;
 		GestoraJaraneitor jaraneitor=new GestoraJaraneitor();
+		GestoraHospital goumes = new GestoraHospital ();
 		Merge merge=new Merge();
 		do
 		{
@@ -476,11 +477,23 @@ public class MainHospital
 							{
 								//caso 1: Contratar a un médico. *
 								case 1:
+								goumes.registrarMedico ();
+								System.out.println("El médico ha sido contratado con éxito");
 								break;
 								//Fin caso 1: Contratar a un médico.
 							
 								//caso 2: Despedir a un médico. *
 								case 2:
+								do
+								{
+									System.out.println("Introduzca el DNI del medico a despedir.");
+									dni = tecladoString.readLine();
+								}
+								while (dni.length() != 9);
+									
+								goumes.despedirMedico(dni);
+								
+								System.out.println("El médico ha sido despedido con éxito");
 								break;
 								//Fin caso 2: Despedir a un médico.
 							

@@ -59,11 +59,11 @@ public class Paciente  extends Persona implements Comparable<Persona>, Cloneable
 		this.medicoAsignado=paciente.medicoAsignado;
 	}
 	//Métodos modificadores y consultores
-	public void setSeguroPrivado(String seguroPrivado)
+	public void setSeguroPrivado(String seguroPrivado) throws HospitalException
 	{
 		this.seguroPrivado=seguroPrivado;
 	}
-	public String getSeguroPrivado()
+	public String getSeguroPrivado() 
 	{
 		return seguroPrivado;
 	}
@@ -71,7 +71,7 @@ public class Paciente  extends Persona implements Comparable<Persona>, Cloneable
 	{
 		return medicoAsignado;
 	}
-	public void setMedico(Medico medico)
+	public void setMedico(Medico medico)  throws HospitalException
 	{
 		this.medicoAsignado=medico;
 	}
@@ -80,7 +80,7 @@ public class Paciente  extends Persona implements Comparable<Persona>, Cloneable
 		return ingresado;
 	}
 	
-	public void setIngresado (boolean ingresado)
+	public void setIngresado (boolean ingresado) throws HospitalException
 	{
 		this.ingresado = ingresado;
 	}

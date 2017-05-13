@@ -78,11 +78,11 @@ public class Persona implements Cloneable, Comparable <Persona>, PersonaIMPL, Se
 	//vacío
 	public Persona()
 	{
-		nombre="Default";
-		apellidos="Default";
+		nombre="";
+		apellidos="";
 		edad=0;
-		dni="12345678H";
-		sexo='h';
+		dni="";
+		sexo=' ';
 		domicilio=new Domicilio();
 
 	}

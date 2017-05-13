@@ -2,7 +2,7 @@ package hospital;
 
 public class TestDomicilio 
 {
-	public static void main (String[]args)
+	public static void main (String[]args) throws HospitalException
 	{
 		Domicilio domicilio1=new Domicilio("PorAlli","Madrid",5);
 		Domicilio domicilio2=new Domicilio("PorAqui","Segovia",2);

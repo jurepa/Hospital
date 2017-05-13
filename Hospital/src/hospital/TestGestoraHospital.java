@@ -15,7 +15,7 @@ public class TestGestoraHospital
 		//prueba.registrarMedico ();
 		//prueba.insertarMedicoDespedido("77925651H");
 		//prueba.despedirMedico("13121432R");
-		prueba.listarMedicos();
+		//prueba.listarMedicos();
 		
 		try
 		{

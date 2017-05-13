@@ -86,53 +86,136 @@ public class GestoraJaraneitor
 			paciente=new Paciente();
 			do
 			{
-				System.out.println("Introduzca el nombre del paciente: ");
-				paciente.setNombre(tecladoString.readLine().toLowerCase());
+				try
+				{
+					System.out.println("Introduzca el nombre del paciente: ");
+					paciente.setNombre(tecladoString.readLine().toLowerCase());
+				}
+				
+				catch (HospitalException e)
+				{
+					System.out.println(e);
+				}
 			}while(paciente.getNombre().equals("")||paciente.getNombre()==null);
 			do
 			{
-				System.out.println("Introduzca los apellidos: ");
-				paciente.setApellidos(tecladoString.readLine().toLowerCase());
+				try
+				{
+					System.out.println("Introduzca los apellidos: ");
+					paciente.setApellidos(tecladoString.readLine().toLowerCase());
+					
+				}
+				
+				catch (HospitalException e)
+				{
+					System.out.println(e);
+				}
 			}while(paciente.getApellidos().equals("")||paciente.getApellidos()==null);
 			do
 			{
-				System.out.println("Introduzca el DNI, con la letra en mayúscula: ");
-				paciente.setDNI(tecladoString.readLine());
+				try
+				{
+					System.out.println("Introduzca el DNI, con la letra en mayúscula: ");
+					paciente.setDNI(tecladoString.readLine());
+					
+				}
+				
+				catch (HospitalException e)
+				{
+					System.out.println(e);
+				}
 			}while(paciente.getDNI().length()!=9&&paciente.validarNumerosDNI(paciente.getDNI())&&paciente.getDNI().charAt(8)!=paciente.calcularLetra(paciente.getDNI()));
 			do
 			{
-				System.out.println("Introduzca la edad: ");
-				paciente.setEdad(teclado.nextInt());
+				try
+				{
+					System.out.println("Introduzca la edad: ");
+					paciente.setEdad(teclado.nextInt());
+					
+				}
+				
+				catch (HospitalException e)
+				{
+					System.out.println(e);
+				}
 			}while(paciente.getEdad()<=0);
 			do
 			{
+				try
+				{
 				System.out.println("Introduzca su telefono: ");
 				paciente.setTelefono(tecladoString.readLine());
+				}
+				
+				catch (HospitalException e)
+				{
+					System.out.println(e);
+				}
 			}while(paciente.getTelefono().length()!=9||!paciente.validarNumerosTelefono(paciente.getTelefono()));
 			do
 			{
+				try
+				{
 				System.out.println("Introduzca su sexo: ");
 				paciente.setSexo(Character.toLowerCase(teclado.next().charAt(0)));
+				}
+				
+				catch (HospitalException e)
+				{
+					System.out.println(e);
+				}
 			}while(paciente.getSexo()!='h'&&paciente.getSexo()!='m');
 			do
 			{
-				System.out.println("Introduzca su seguro privado, si no tiene escriba NO: ");
-				paciente.setSeguroPrivado(tecladoString.readLine());
+				try
+				{
+					System.out.println("Introduzca su seguro privado, si no tiene escriba NO: ");
+					paciente.setSeguroPrivado(tecladoString.readLine());
+				}
+				
+				catch (HospitalException e)
+				{
+					System.out.println(e);
+				}
 			}while(paciente.getSeguroPrivado().equals("")||paciente.getSeguroPrivado()==null);
 			do
 			{
-				System.out.println("Introduzca su calle: ");
-				domicilio.setCalle(tecladoString.readLine().toLowerCase());
+				try
+				{
+					System.out.println("Introduzca su calle: ");
+					domicilio.setCalle(tecladoString.readLine().toLowerCase());
+				}
+				
+				catch (HospitalException e)
+				{
+					System.out.println(e);
+				}
 			}while(domicilio.getCalle().equals("")||domicilio.getCalle()==null);
 			do
 			{
-				System.out.println("Introduzca su ciudad: ");
-				domicilio.setCiudad(tecladoString.readLine());
+				try
+				{
+					System.out.println("Introduzca su ciudad: ");
+					domicilio.setCiudad(tecladoString.readLine());
+				}
+				
+				catch (HospitalException e)
+				{
+					System.out.println(e);
+				}
 			}while(domicilio.getCiudad().equals("")||domicilio.getCiudad()==null);
 			do
 			{
-				System.out.println("Introduzca el numero de su casa/piso/portal: ");
+				try
+				{
+					System.out.println("Introduzca el numero de su casa/piso/portal: ");
 					domicilio.setNumero(teclado.nextInt());
+				}
+				
+				catch (HospitalException e)
+				{
+					System.out.println(e);
+				}
 			}while(domicilio.getNumero()<=0);
 			paciente.setDomicilio(domicilio);
 			paciente.setIngresado(true);
@@ -222,7 +305,14 @@ public class GestoraJaraneitor
 			{
 				if(paciente.getDNI().equals(dni))
 				{
-					paciente.setIngresado(false);
+					try
+					{
+						paciente.setIngresado(false);
+					}
+					catch (HospitalException e)
+					{
+						System.out.println(e);
+					}
 					oosBaja.writeObject(paciente);
 					encontrado=true;
 				}

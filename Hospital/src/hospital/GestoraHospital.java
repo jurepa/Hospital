@@ -33,15 +33,32 @@ public class GestoraHospital
 			
 			do
 			{
-				System.out.println("Introduzca su nombre:");
-				medico.setNombre(tecladoString.readLine ());
+				try
+				{
+					System.out.println("Introduzca su nombre:");
+					medico.setNombre(tecladoString.readLine ());
+				}
+				
+				catch (HospitalException e)
+				{
+					System.out.println(e);
+				}
 			}
 			while (medico.getNombre().equals ("") || medico.getNombre ().equals (null));
 			
 			do
 			{
-				System.out.println("Introduzca sus apellidos:");
-				medico.setApellidos(tecladoString.readLine ());
+				try
+				{
+					System.out.println("Introduzca sus apellidos:");
+					medico.setApellidos(tecladoString.readLine ());
+				
+				}
+				
+				catch (HospitalException e)
+				{
+					System.out.println(e);
+				}
 			}
 			while (medico.getApellidos() .equals("") || medico.getApellidos ().equals (null));
 			
@@ -57,34 +74,74 @@ public class GestoraHospital
 					System.out.println("La edad debe ser un numero entero.");
 					teclado.next();
 				}
+				
+				catch (HospitalException e)
+				{
+					System.out.println(e);
+				}
 			}
 			while (medico.getEdad() < 1);
 			
 			do
 			{
-				System.out.println("Introduzca su DNI:");
-				medico.setDNI(tecladoString.readLine ());
+				try
+				{
+					System.out.println("Introduzca su DNI:");
+					medico.setDNI(tecladoString.readLine ());
+				}
+				
+				catch (HospitalException e)
+				{
+					System.out.println(e);
+				}
 			}
 			while (medico.getDNI().length() != 9 && medico.validarNumerosDNI (medico.getDNI ()) && medico.getDNI ().charAt (8) != medico.calcularLetra (medico.getDNI ()));
 			
 			do
 			{
-				System.out.println("Introduzca su sexo: M/H");
-				medico.setSexo(Character.toLowerCase(teclado.next().charAt (0)));
+				try
+				{
+					System.out.println("Introduzca su sexo: H/M");
+					medico.setSexo(Character.toLowerCase(teclado.next().charAt (0)));
+				
+				}
+				
+				catch (HospitalException e)
+				{
+					System.out.println(e);
+				}
 			}
 			while (medico.getSexo() != 'm' && medico.getSexo() != 'h');
 			
 			do
 			{
-				System.out.println("Introduzca su telefono:");
-				medico.setTelefono(tecladoString.readLine ());
+				try
+				{
+					System.out.println("Introduzca su telefono:");
+					medico.setTelefono(tecladoString.readLine ());
+				
+				}
+				
+				catch (HospitalException e)
+				{
+					System.out.println(e);
+				}
 			}
 			while (medico.getTelefono ().length () != 9 || medico.validarNumerosTelefono (medico.getTelefono ()) == false);
 			
 			do
 			{
-				System.out.println("Introduzca su especialidad:");
-				medico.setEspecialidad(tecladoString.readLine ());
+				try
+				{
+					System.out.println("Introduzca su especialidad:");
+					medico.setEspecialidad(tecladoString.readLine ());
+				
+				}
+				
+				catch (HospitalException e)
+				{
+					System.out.println(e);
+				}
 			}
 			while (medico.getEspecialidad ().equals("") || medico.getEspecialidad ().equals(null) 
 					|| (medico.getEspecialidad ().equals("alergo") == false 
@@ -95,15 +152,33 @@ public class GestoraHospital
 			
 			do
 			{
-				System.out.println("Introduzca su calle:");
-				domicilio.setCalle(tecladoString.readLine ());
+				try
+				{
+					System.out.println("Introduzca su calle:");
+					domicilio.setCalle(tecladoString.readLine ());
+				
+				}
+				
+				catch (HospitalException e)
+				{
+					System.out.println(e);
+				}
 			}
 			while (domicilio.getCalle().equals("") || domicilio.getCalle().equals(null));
 			
 			do
 			{
-				System.out.println("Introduzca su ciudad:");
-				domicilio.setCiudad(tecladoString.readLine ());
+				try
+				{
+					System.out.println("Introduzca su ciudad:");
+					domicilio.setCiudad(tecladoString.readLine ());
+					
+				}
+				
+				catch (HospitalException e)
+				{
+					System.out.println(e);
+				}
 			}
 			while (domicilio.getCiudad().equals("") || domicilio.getCiudad().equals(null));
 			
@@ -118,6 +193,11 @@ public class GestoraHospital
 				{
 					System.out.println("El numero del portal debe ser un entero.");
 					teclado.next ();
+				}
+				
+				catch (HospitalException e)
+				{
+					System.out.println(e);
 				}
 			}
 			while (domicilio.getNumero() < 1);
@@ -257,7 +337,6 @@ public class GestoraHospital
 		
 		catch (EOFException e)
 		{
-			System.out.println("EOFException");
 			lee = false;
 		}
 		
@@ -369,7 +448,6 @@ public class GestoraHospital
 			
 			catch (EOFException e)
 			{
-				System.out.println("EOFException");
 				lee = false;
 			}
 			
@@ -470,7 +548,6 @@ public class GestoraHospital
 		
 		catch (EOFException e)
 		{
-			e.printStackTrace();
 			lee = false;
 		}
 		
@@ -556,7 +633,6 @@ public class GestoraHospital
 		
 		catch (EOFException e)
 		{
-			e.printStackTrace();
 			lee = false;
 		}
 		

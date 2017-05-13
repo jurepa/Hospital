@@ -2,7 +2,8 @@ package hospital;
 
 public class TestPaciente {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws HospitalException
+	{
 		
 		Paciente paciente1=null;
 		Paciente paciente2=null;

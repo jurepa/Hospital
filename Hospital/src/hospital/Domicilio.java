@@ -50,11 +50,34 @@ public class Domicilio implements Cloneable, DomicilioIMPL, Serializable {
 		numero=0;
 		ciudad="";
 	}
-	public Domicilio(String calle, String ciudad, int numero)
+	public Domicilio(String calle, String ciudad, int numero) throws HospitalException
 	{
-		this.calle=calle;
-		this.ciudad=ciudad;
-		this.numero=numero;
+		if (calle.equals ("") || calle.equals(null)
+			|| ciudad.equals("") || ciudad.equals(null)
+			|| numero < 1)
+		{
+			if (calle.equals("") || calle.equals(null))
+			{
+				throw new HospitalException ("La calle no puede estar vacia");
+			}
+			
+			if (ciudad.equals("") || ciudad.equals(null))
+			{
+				throw new HospitalException ("La calle no puede estar vacia");
+			}
+			
+			if (numero < 1)
+			{
+				throw new HospitalException ("La calle no puede estar vacia");
+			}
+		}
+		
+		else
+		{
+			this.calle=calle;
+			this.ciudad=ciudad;
+			this.numero=numero;
+		}
 	}
 	public Domicilio(Domicilio d)
 	{
@@ -63,17 +86,40 @@ public class Domicilio implements Cloneable, DomicilioIMPL, Serializable {
 		this.numero=d.numero;
 	}
 	//Métodos consultores y modificadores
-	public void setCalle(String calle)
+	public void setCalle(String calle) throws HospitalException
 	{
-		this.calle=calle;
+		if (calle.equals("") || calle.equals(null))
+		{
+			throw new HospitalException ("La calle no puede estar vacia");
+		}
+		
+		else
+		{
+			this.calle=calle;
+		}
 	}
-	public void setNumero(int numero)
+	public void setNumero(int numero)  throws HospitalException
 	{
-		this.numero=numero;
+		if (numero < 1)
+		{
+			throw new HospitalException ("El numero debe ser mayor que 0");
+		}
+		else
+		{
+			this.numero=numero;
+		}
 	}
-	public void setCiudad(String ciudad)
+	public void setCiudad(String ciudad)  throws HospitalException
 	{
-		this.ciudad=ciudad;
+		if (ciudad.equals("") || ciudad.equals(null))
+		{
+			throw new HospitalException ("La ciudad no puede estar vacia");
+		}
+		
+		else
+		{
+			this.ciudad=ciudad;
+		}
 	}
 	public String getCalle()
 	{
