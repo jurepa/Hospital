@@ -212,8 +212,8 @@ public class GestoraHospital
 	 */
 	public void insertarMedicoDespedido (String dni)
 	{
-		File medicosContratados = new File ("./Hospital/src/hospital/medicosContratados.dat");
-		File medicosDespedidos = new File ("./Hospital/src/hospital/medicosDespedidos.dat");
+		File medicosContratados = new File ("./src/hospital/medicosContratados.dat");
+		File medicosDespedidos = new File ("./src/hospital/medicosDespedidos.dat");
 		ObjectOutputStream oos = null;
 		ObjectInputStream ois = null;
 		Object aux = null;
@@ -317,8 +317,8 @@ public class GestoraHospital
 	 */
 	public boolean despedirMedico (String dni)
 	{
-		File medicosContratados = new File ("./Hospital/src/hospital/medicosContratados.dat");
-		File auxiliar = new File ("./Hospital/src/hospital/auxiliar.dat");
+		File medicosContratados = new File ("./src/hospital/medicosContratados.dat");
+		File auxiliar = new File ("./src/hospital/auxiliar.dat");
 		ObjectOutputStream oos = null;
 		ObjectInputStream ois = null;
 		Object aux = null;
@@ -436,7 +436,7 @@ public class GestoraHospital
 	 */
 	public int contarMedicos ()
 	{
-		File pacientesContratados = new File ("./Hospital/src/hospital/medicosContratados.dat");
+		File pacientesContratados = new File ("./src/hospital/medicosContratados.dat");
 		ObjectOutputStream oos = null;
 		ObjectInputStream ois = null;
 		Object aux = null;
@@ -518,9 +518,9 @@ public class GestoraHospital
 			System.out.println("Llamada al metodo listarMedicosDepartamento");
 		}
 	 */
-	public void listarMedicosDepartamento ()
+	public void listarMedicos ()
 	{
-		File medicosContratados = new File ("./Hospital/src/hospital/medicosContratados.dat");
+		File medicosContratados = new File ("./src/hospital/medicosContratados.dat");
 		ObjectInputStream ois = null;
 		boolean lee = true;
 		Object aux = null;
@@ -541,7 +541,7 @@ public class GestoraHospital
 				{
 					if (aux instanceof Medico)
 					{
-						
+						System.out.println(((Medico) aux).toString());
 					}
 					
 					aux = ois.readObject ();

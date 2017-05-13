@@ -140,6 +140,7 @@ public class MainHospital
 			System.out.println("--------------------- 1. Pacientes ---------------------");
 			System.out.println("---------------------- 2. Médicos ----------------------");
 			System.out.println("-------------------- 3. Estadísticas -------------------");
+			System.out.println("------------------------- 0. Salir ---------------------");
 			System.out.println("--------------------------------------------------------");
 	}
 	//fin menuPrincipal
@@ -164,6 +165,7 @@ public class MainHospital
 			System.out.println("------------------------- 1. Dar de alta un paciente -------------------------");
 			System.out.println("------------------------- 2. Dar de baja un paciente -------------------------");
 			System.out.println("----------------------------- 3. Listar pacientes ----------------------------");
+			System.out.println("------------------------------------ 0. Salir --------------------------------");
 			System.out.println("------------------------------------------------------------------------------");
 	}
 	//fin menuPacientes
