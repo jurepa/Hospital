@@ -1,3 +1,4 @@
 - Borrado y actualizado
 - Merge
-- Asignar paciente a médico (Con arrayList)
+- Asignar paciente a médico (Con arrayList) (No se si funciona porque me tira el error de serializable el fichero de mierda otra vez)
+Arreglar la mierda de los DNI que peta al introducirlo en el constructor de paciente

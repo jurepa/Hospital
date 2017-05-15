@@ -764,7 +764,7 @@ public class MainHospital
 							
 							do
 							{
-								System.out.println("Desea volver al menu de pacientes? S/N");
+								System.out.println("Desea volver al menu de estadísticas? S/N");
 								repetirMenuEstadisticas = Character.toLowerCase(teclado.next().charAt(0));
 							}
 							while (repetirMenuEstadisticas != 's' && repetirMenuEstadisticas != 'n');
