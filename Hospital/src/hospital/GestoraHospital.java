@@ -760,6 +760,83 @@ public class GestoraHospital
 	}
 	//Fin porcentajeSeguroPrivado
 	
+	/* Prototipo: void asignarPaciente (Paciente paciente, String dni)
+	 * Breve comentario: Metodo encargado de asignar un paciente a un medico
+	 * Precondiciones: Ninguna
+	 * Entradas: Un paciente y un String indicando el dni de un medico
+	 * Salidas: Ninguna
+	 * Entradas/Salidas: Ninguna
+	 * Postcondiciones: Ninguna
+	 * 
+	 * Resguardo: public void asignarPaciente (Paciente paciente, String dni)
+		{
+			System.out.println("Llamada al metodo asignarPaciente");
+		}
+	 */
+	public void asignarPaciente (Paciente paciente, String dni)
+	{
+		File medicosContratados = new File ("./src/hospital/medicosContratados.dat");
+		ObjectInputStream ois = null;
+		Object aux = null;
+		
+		try
+		{
+			ois = new ObjectInputStream (new FileInputStream (medicosContratados))
+			{
+				@Override protected void readStreamHeader () {}
+			};
+			
+			aux = ois.readObject();
+			
+			while (!aux.equals(null))
+			{
+				if (aux instanceof Medico && ((Medico) aux).getDNI().equals(dni))
+				{
+					((Medico) aux).addPaciente (paciente);
+				}
+			
+				aux = ois.readObject ();
+			}
+		}
+		
+		catch (FileNotFoundException e)
+		{
+			System.out.println("FileNotFoundException");
+		}
+		
+		catch (EOFException e)
+		{
+			
+		}
+		
+		catch (IOException e)
+		{
+			System.out.println("IOException");
+		}
+		
+		catch (ClassNotFoundException e)
+		{
+			System.out.println("ClassNotFoundException");
+		}
+		
+		finally
+		{
+			if (ois != null)
+			{
+				try
+				{
+					ois.close ();
+				}
+				
+				catch (IOException e)
+				{
+					System.out.println("IOException");
+				}
+			}
+		}
+	}
+	//Fin asignarPaciente
+	
 	
 	
 	//pruebas
