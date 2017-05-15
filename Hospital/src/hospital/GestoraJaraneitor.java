@@ -12,52 +12,6 @@ import java.io.BufferedReader;
 import java.util.*;
 public class GestoraJaraneitor 
 {	
-	public static void main(String[]args)
-	{	
-		File binario=new File("./src/hospital/dasdiobas.dat");
-		Medico medico=null;
-		Medico linea=null;
-		boolean lee=true;
-		//nombre,apellidos,edad,dni,sexo,telefono,domicilio,especialidad
-		ObjectOutputStream oos=null;
-		ObjectInputStream ois=null;
-		try
-		{
-				oos=new ObjectOutputStream(new FileOutputStream(binario,true)){@Override protected void writeStreamHeader(){}};
-				ois=new ObjectInputStream(new FileInputStream(binario)){@Override protected void readStreamHeader(){}};
-				medico=new Medico("Pablo","Jarana",50,"77813733H",'h',new Domicilio("Almirante Topete","Sevilla",4),"653706957","alergo");
-				oos.writeObject(medico);
-				linea=(Medico)ois.readObject();
-				while(lee)
-				{	
-					System.out.println(linea);
-					linea=(Medico)ois.readObject();
-				}
-					
-		}catch (HospitalException e) {			
-			e.printStackTrace();
-		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
-		}catch(EOFException e){
-			lee=false;
-		} catch (IOException e) {
-			e.printStackTrace();
-		}finally
-		{
-			try {
-				if(oos!=null)
-				{
-					oos.close();					
-				}
-				if(ois!=null)
-				{
-					ois.close();
-				}
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
-		}
-	}
 	/*
 	 *Interfaz
 	 *
@@ -170,14 +124,14 @@ public class GestoraJaraneitor
 				try
 				{
 					System.out.println("Introduzca su seguro privado, si no tiene escriba NO: ");
-					paciente.setSeguroPrivado(tecladoString.readLine());
+					paciente.setSeguroPrivado(tecladoString.readLine().toLowerCase());
 				}
 				
 				catch (HospitalException e)
 				{
 					System.out.println(e);
 				}
-			}while(paciente.getSeguroPrivado().equals("")||paciente.getSeguroPrivado()==null);
+			}while(!paciente.getSeguroPrivado().equals("no") && !paciente.getSeguroPrivado().equals ("Mutua") &&!paciente.getSeguroPrivado().equals("Mapfre")&&!paciente.getSeguroPrivado().equals("Adeslas")&&!paciente.getSeguroPrivado().equals("Fremap")&&paciente.getSeguroPrivado().equals(""));
 			do
 			{
 				try
@@ -906,7 +860,7 @@ public class GestoraJaraneitor
 			paciente=(Paciente)ois.readObject();
 			while(lee)
 			{
-				if(paciente.getEdad()>13&&paciente.getEdad()<=30)
+				if(paciente.getEdad()>30)
 				{
 					contadorAdultos++;
 				}

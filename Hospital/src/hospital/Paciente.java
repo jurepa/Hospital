@@ -47,7 +47,14 @@ public class Paciente  extends Persona implements Comparable<Persona>, Cloneable
 	public Paciente(String nombre,String apellidos, int edad, String dni, char sexo, Domicilio domicilio, String telefono, String seguroPrivado, boolean ingresado, Medico medico) throws HospitalException
 	{
 		super(nombre,apellidos,edad,dni,sexo,telefono,domicilio);
-		this.seguroPrivado=seguroPrivado;
+		if(seguroPrivado.equals("no") || seguroPrivado.equals ("mutua") ||seguroPrivado.equals("mapfre")||seguroPrivado.equals("adeslas")||seguroPrivado.equals("fremap")||seguroPrivado.equals(""))
+		{
+			this.seguroPrivado=seguroPrivado;
+		}
+		else
+		{
+			throw new HospitalException("El Seguro Privado solo puede ser Mutua, Mapfre, Adeslas o Fremap. Si no tiene escriba NO");
+		}
 		this.ingresado = ingresado;
 		this.medicoAsignado=medico;
 	}
@@ -61,7 +68,14 @@ public class Paciente  extends Persona implements Comparable<Persona>, Cloneable
 	//Métodos modificadores y consultores
 	public void setSeguroPrivado(String seguroPrivado) throws HospitalException
 	{
-		this.seguroPrivado=seguroPrivado;
+		if(seguroPrivado.equals("no") || seguroPrivado.equals ("mutua") ||seguroPrivado.equals("mapfre")||seguroPrivado.equals("adeslas")||seguroPrivado.equals("fremap"))
+		{
+			this.seguroPrivado=seguroPrivado;
+		}
+		else
+		{
+			throw new HospitalException("El Seguro Privado solo puede ser Mutua, Mapfre, Adeslas o Fremap. Si no tiene escriba NO");
+		}
 	}
 	public String getSeguroPrivado() 
 	{
