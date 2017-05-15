@@ -315,6 +315,7 @@ public class MainHospital
 		int opcion6 = 0;
 		int opcion7 = 0;
 		String dni=null;
+		double seguroPrivado = 0.0;
 		GestoraJaraneitor jaraneitor=new GestoraJaraneitor();
 		GestoraHospital goumes = new GestoraHospital ();
 		Merge merge=new Merge();
@@ -702,6 +703,17 @@ public class MainHospital
 							
 								//caso 3: Porcentaje de pacientes con seguro privado *
 								case 3:
+									seguroPrivado = goumes.porcentajeSeguroPrivado();
+									
+									if (seguroPrivado != -1.0)
+									{
+										System.out.println("El porcentaje de pacientes con seguro privado es: "+seguroPrivado+"%");
+									}
+									
+									else
+									{
+										System.out.println("No existe el fichero");
+									}
 								break;
 								//Fin caso 3: Porcentaje de pacientes con seguro privado
 							
