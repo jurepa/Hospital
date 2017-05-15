@@ -108,5 +108,26 @@ public class Medico extends PersonaIMPL implements Serializable {
 		}
 		return igual;
 	}
-
+	/*
+	 * Interfaz
+	 * 
+	 * Este método añade un paciente al array de pacientes de un médico
+	 * Prototipo: void addPaciente(Paciente paciente)
+	 * Precondiciones: No hay (Fifty-fifty, nos la jugamo)
+	 * Entradas: Un objeto paciente
+	 * Salidas: No hay
+	 * Postcondiciones: No tiene
+	 * 
+	 * RESGUARDO
+	 * 
+	 * public void addPaciente(Paciente paciente)
+	 * {
+	 * 		System.out.println("EN CONSTRUCCION");
+	 * }
+	 * 
+	 */
+	public void addPaciente(Paciente paciente)
+	{
+		this.pacientesAsignados.add(paciente);
+	}
 }
