@@ -395,7 +395,7 @@ public class GestoraJaraneitor
 						if(paciente.getDNI().equals(dni))
 						{
 							borrado=true;
-							insertarPaciente(paciente);
+							insertarPacienteDadoDeBaja(dni);
 						}
 						else
 						{

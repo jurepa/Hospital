@@ -83,6 +83,7 @@ public class Persona implements Cloneable, Comparable <Persona>, PersonaIMPL, Se
 		edad=0;
 		dni="";
 		sexo=' ';
+		telefono = "";
 		domicilio=new Domicilio();
 
 	}
