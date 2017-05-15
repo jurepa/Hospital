@@ -40,7 +40,6 @@ public class Medico extends Persona implements Serializable {
 	}
 	public Medico(String nombre,String apellidos, int edad, String dni, char sexo, Domicilio domicilio, String telefono,String especialidad) throws HospitalException
 	{
-
 		super(nombre,apellidos,edad,dni,sexo,telefono,domicilio);
 		if(especialidad.equals("")||especialidad==null||(!especialidad.equals("alergo")&&!especialidad.equals("trauma")&&!especialidad.equals("pediatra")&&!especialidad.equals("neuro")&&!especialidad.equals("cardio")))
 		{
