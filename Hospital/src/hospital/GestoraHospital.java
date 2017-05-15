@@ -316,7 +316,7 @@ public class GestoraHospital
 			
 			if (aux instanceof Medico)
 			{
-				while (lee == true && encontrado == false)
+				while (aux.equals(null)==false && encontrado == false)
 				{
 					if (((Medico) aux).getDNI ().equals (dni))
 					{
@@ -337,7 +337,6 @@ public class GestoraHospital
 		
 		catch (EOFException e)
 		{
-			lee = false;
 		}
 		
 		catch (IOException e)
@@ -421,7 +420,7 @@ public class GestoraHospital
 					
 				aux = ois.readObject();
 				
-				while (lee)
+				while (!aux.equals(null))
 				{
 					if (aux instanceof Medico)
 					{
@@ -448,7 +447,6 @@ public class GestoraHospital
 			
 			catch (EOFException e)
 			{
-				lee = false;
 			}
 			
 			catch (IOException e)
@@ -530,7 +528,7 @@ public class GestoraHospital
 				
 			aux = ois.readObject();
 			
-			while (lee == true)
+			while (!aux.equals(null))
 			{
 				if (aux instanceof Medico)
 				{
@@ -548,7 +546,6 @@ public class GestoraHospital
 		
 		catch (EOFException e)
 		{
-			lee = false;
 		}
 		
 		catch (IOException e)
@@ -599,7 +596,6 @@ public class GestoraHospital
 	{
 		File medicosContratados = new File ("./src/hospital/medicosContratados.dat");
 		ObjectInputStream ois = null;
-		boolean lee = true;
 		Object aux = null;
 		
 		try

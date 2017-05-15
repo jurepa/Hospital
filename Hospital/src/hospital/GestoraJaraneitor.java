@@ -249,13 +249,12 @@ public class GestoraJaraneitor
 		ObjectOutputStream oosBaja=null;
 		ObjectInputStream oisAlta=null;
 		Paciente paciente=null;
-		boolean lee=true;
 		boolean encontrado=false;
 		try {
 			oosBaja=new ObjectOutputStream(new FileOutputStream(pacientesBaja,true)){@Override protected void writeStreamHeader(){}};
 			oisAlta=new ObjectInputStream(new FileInputStream(pacientesAlta)){@Override protected void readStreamHeader(){}};
 			paciente=(Paciente)oisAlta.readObject();
-			while(lee&&!encontrado)//Mientras pueda seguir leyendo y no lo haya encontrado
+			while(!paciente.equals(null)&&!encontrado)//Mientras pueda seguir leyendo y no lo haya encontrado
 			{
 				if(paciente.getDNI().equals(dni))
 				{
@@ -277,7 +276,6 @@ public class GestoraJaraneitor
 			e.printStackTrace();
 		}catch(EOFException e)
 		{
-			lee=false;
 		}catch (IOException e) 
 		{
 			e.printStackTrace();
@@ -333,18 +331,16 @@ public class GestoraJaraneitor
 		ObjectOutputStream oos=null;
 		ObjectInputStream ois=null;
 		Paciente paciente=null;
-		boolean lee=true;
+
 		boolean borrado=false;
 		if(ficheroDeAltas.exists())
 		{
-			if(cuentaPacientes()>0)
-			{
 				try 
 				{
 					oos=new ObjectOutputStream(new FileOutputStream(aux)){@Override protected void writeStreamHeader(){}};
 					ois=new ObjectInputStream(new FileInputStream(ficheroDeAltas)){@Override protected void readStreamHeader(){}};
 					paciente=(Paciente)ois.readObject();
-					while(lee)
+					while(!paciente.equals(null))
 					{
 						if(paciente.getDNI().equals(dni))
 						{
@@ -362,7 +358,6 @@ public class GestoraJaraneitor
 					e.printStackTrace();
 				}catch(EOFException e)
 				{
-					lee=false;
 				}catch (IOException e) 
 				{
 					e.printStackTrace();
@@ -393,7 +388,6 @@ public class GestoraJaraneitor
 						}
 					}
 				}
-			}//si
 			ficheroDeAltas.delete();
 			aux.renameTo(ficheroDeAltas);
 		}
@@ -424,14 +418,14 @@ public class GestoraJaraneitor
 		File ficheroDeAltas=new File("./src/hospital/pacientesIngresados.dat");
 		ObjectInputStream ois=null;
 		Paciente paciente=null;
-		boolean lee=true;
 		try 
 		{
 			ois=new ObjectInputStream(new FileInputStream(ficheroDeAltas)){@Override protected void readStreamHeader(){}};
-			while(lee)
+			paciente=(Paciente)ois.readObject();
+			while(!paciente.equals(null))
 			{
-				paciente=(Paciente)ois.readObject();
 				contador++;
+				paciente=(Paciente)ois.readObject();
 			}
 		} catch (FileNotFoundException e) 
 		{
@@ -441,7 +435,6 @@ public class GestoraJaraneitor
 			e.printStackTrace();
 		}catch(EOFException e)
 		{
-			lee=false;
 		} catch (IOException e) 
 		{
 			e.printStackTrace();
@@ -482,12 +475,11 @@ public class GestoraJaraneitor
 		File ficheroDeAltas=new File("./src/hospital/pacientesIngresados.dat");
 		ObjectInputStream ois=null;
 		Paciente paciente=null;
-		boolean lee=true;
 		try 
 		{
 			ois=new ObjectInputStream(new FileInputStream(ficheroDeAltas)){@Override protected void readStreamHeader(){}};
 			paciente=(Paciente)ois.readObject();
-			while(lee)
+			while(!paciente.equals(null))
 			{
 				System.out.println(paciente.toString());
 				paciente=(Paciente)ois.readObject();
@@ -500,7 +492,6 @@ public class GestoraJaraneitor
 			e.printStackTrace();
 		}catch(EOFException e)
 		{
-			lee=false;
 		} catch (IOException e) 
 		{
 			e.printStackTrace();
@@ -542,12 +533,11 @@ public class GestoraJaraneitor
 		ObjectInputStream ois=null;
 		File pacientes=new File("./src/hospital/pacientesIngresados.dat");
 		Paciente paciente=null;
-		boolean lee=true;
 		try 
 		{
 			ois=new ObjectInputStream(new FileInputStream(pacientes)){@Override protected void readStreamHeader(){}};
 			paciente=(Paciente)ois.readObject();
-			while(lee)
+			while(!paciente.equals(null))
 			{
 				if(paciente.getSexo()=='m')
 				{
@@ -560,7 +550,6 @@ public class GestoraJaraneitor
 			e.printStackTrace();
 		}catch(EOFException e)
 		{
-			lee=false;
 		}catch (IOException e) 
 		{
 			e.printStackTrace();
@@ -613,13 +602,12 @@ public class GestoraJaraneitor
 		ObjectInputStream ois=null;
 		File pacientes=new File("./src/hospital/pacientesIngresados.dat");
 		Paciente paciente=null;
-		boolean lee=true;
 		double porcentaje;
 		try 
 		{
 			ois=new ObjectInputStream(new FileInputStream(pacientes)){@Override protected void readStreamHeader(){}};
 			paciente=(Paciente)ois.readObject();
-			while(lee)
+			while(!paciente.equals(null))
 			{
 				if(paciente.getSexo()=='h')
 				{
@@ -632,7 +620,6 @@ public class GestoraJaraneitor
 			e.printStackTrace();
 		}catch(EOFException e)
 		{
-			lee=false;
 		}catch (IOException e) 
 		{
 			e.printStackTrace();
@@ -685,13 +672,12 @@ public class GestoraJaraneitor
 		ObjectInputStream ois=null;
 		File pacientes=new File("./src/hospital/pacientesIngresados.dat");
 		Paciente paciente=null;
-		boolean lee=true;
 		double porcentaje;
 		try 
 		{
 			ois=new ObjectInputStream(new FileInputStream(pacientes)){@Override protected void readStreamHeader(){}};
 			paciente=(Paciente)ois.readObject();
-			while(lee)
+			while(paciente.equals(null))
 			{
 				if(paciente.getEdad()>=1&&paciente.getEdad()<=13)
 				{
@@ -704,7 +690,6 @@ public class GestoraJaraneitor
 			e.printStackTrace();
 		}catch(EOFException e)
 		{
-			lee=false;
 		}catch (IOException e) 
 		{
 			e.printStackTrace();
@@ -757,13 +742,12 @@ public class GestoraJaraneitor
 		ObjectInputStream ois=null;
 		File pacientes=new File("./src/hospital/pacientesIngresados.dat");
 		Paciente paciente=null;
-		boolean lee=true;
 		double porcentaje;
 		try 
 		{
 			ois=new ObjectInputStream(new FileInputStream(pacientes)){@Override protected void readStreamHeader(){}};
 			paciente=(Paciente)ois.readObject();
-			while(lee)
+			while(!paciente.equals(null))
 			{
 				if(paciente.getEdad()>13&&paciente.getEdad()<=30)
 				{
@@ -776,7 +760,6 @@ public class GestoraJaraneitor
 			e.printStackTrace();
 		}catch(EOFException e)
 		{
-			lee=false;
 		}catch (IOException e) 
 		{
 			e.printStackTrace();
@@ -829,13 +812,12 @@ public class GestoraJaraneitor
 		ObjectInputStream ois=null;
 		File pacientes=new File("./src/hospital/pacientesIngresados.dat");
 		Paciente paciente=null;
-		boolean lee=true;
 		double porcentaje;
 		try 
 		{
 			ois=new ObjectInputStream(new FileInputStream(pacientes)){@Override protected void readStreamHeader(){}};
 			paciente=(Paciente)ois.readObject();
-			while(lee)
+			while(!paciente.equals(null))
 			{
 				if(paciente.getEdad()>30)
 				{
@@ -848,7 +830,6 @@ public class GestoraJaraneitor
 			e.printStackTrace();
 		}catch(EOFException e)
 		{
-			lee=false;
 		}catch (IOException e) 
 		{
 			e.printStackTrace();
