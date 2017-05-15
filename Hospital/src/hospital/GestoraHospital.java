@@ -614,7 +614,7 @@ public class GestoraHospital
 			
 				aux = ois.readObject();
 				
-				while (lee)
+				while (!aux.equals(null))
 				{
 					if (aux instanceof Medico)
 					{
@@ -633,7 +633,7 @@ public class GestoraHospital
 		
 		catch (EOFException e)
 		{
-			lee = false;
+			
 		}
 		
 		catch (IOException e)
@@ -698,7 +698,7 @@ public class GestoraHospital
 			
 			aux = ois.readObject();
 			
-			while (lee)
+			while (!aux.equals(null))
 			{
 				if (aux instanceof Paciente)
 				{
@@ -719,7 +719,7 @@ public class GestoraHospital
 		
 		catch (EOFException e)
 		{
-			lee = false;
+			
 		}
 		
 		catch (IOException e)
