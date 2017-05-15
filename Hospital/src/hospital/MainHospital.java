@@ -491,9 +491,16 @@ public class MainHospital
 								}
 								while (dni.length() != 9);
 									
-								goumes.despedirMedico(dni);
 								
-								System.out.println("El médico ha sido despedido con éxito");
+								if (goumes.despedirMedico(dni))
+								{
+									System.out.println("El médico ha sido despedido con éxito");
+								}
+								
+								else
+								{
+									System.out.println("No se ha despedido al medico");
+								}
 								break;
 								//Fin caso 2: Despedir a un médico.
 							

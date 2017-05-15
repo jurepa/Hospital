@@ -664,6 +664,106 @@ public class GestoraHospital
 	}
 	//Fin listarMedicosDepartamento
 	
+	/* Prototipo: double porcentajeSeguroPrivado ()
+	 * Breve comentario: Metodo que calcula el porcentaje de pacientes con seguro privado
+	 * Precondiciones: Ninguna
+	 * Entradas: Ninguna
+	 * Salidas: Un double
+	 * Entradas/Salidas: Ninguna
+	 * Postcondiciones: Un double indicando el porcentaje de pacientes con seguro privado,
+	 * devuelve -1.0 si no existe el fichero de pacientesIngresados
+	 * 
+	 * Resguardo: public void porcentajeSeguroPrivado ()
+		{
+			System.out.println("Llamada al metodo porcentaje seguro privado");
+			return 0.0;
+		}
+	 * 
+	 */
+	public double porcentajeSeguroPrivado ()
+	{
+		double resultado = 0.0;
+		ObjectInputStream ois = null;
+		File pacientesIngresados = new File ("./src/hospital/pacientesIngresados.dat");
+		Object aux = null;
+		int contadorSeguro = 0;
+		boolean lee = true;
+		
+		try
+		{
+			ois = new ObjectInputStream (new FileInputStream (pacientesIngresados))
+			{
+				@Override protected void readStreamHeader () {}
+			};
+			
+			aux = ois.readObject();
+			
+			while (lee)
+			{
+				if (aux instanceof Paciente)
+				{
+					if (((Paciente) aux).getSeguroPrivado() != "no")
+					{
+						contadorSeguro++;
+					}
+				}
+				
+				aux = ois.readObject ();
+			}
+		}
+		
+		catch (FileNotFoundException e)
+		{
+			System.out.println("FileNotFoundException");
+		}
+		
+		catch (EOFException e)
+		{
+			lee = false;
+		}
+		
+		catch (IOException e)
+		{
+			System.out.println("IOException");
+		}
+		
+		catch (ClassNotFoundException e)
+		{
+			System.out.println("ClassNotFoundException");
+		}
+		
+		finally
+		{
+			if (ois != null)
+			{
+				try
+				{
+					ois.close ();
+				}
+				
+				catch (IOException e)
+				{
+					System.out.println("IOException");
+				}
+			}
+			
+			
+		}
+		
+		if (contarMedicos () > 0)
+		{
+			resultado = (contadorSeguro * 100) / contarMedicos ();
+		}
+		
+		else
+		{
+			resultado = -1.0;
+		}
+		
+		return resultado;
+	}
+	//Fin porcentajeSeguroPrivado
+	
 	
 	
 	//pruebas
