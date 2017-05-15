@@ -617,19 +617,40 @@ public class MainHospital
 										
 											//caso 1: niños
 											case 1:
-												System.out.println("Hay un "+jaraneitor.porcentajeNiños()+"% de niños en el hospital");
+												if(jaraneitor.porcentajeNiños()>=0)
+												{
+													System.out.println("Hay un "+jaraneitor.porcentajeNiños()+"% de niños en el hospital");
+												}
+												else
+												{
+													System.out.println("No hay pacientes en el hospital");
+												}
 											break;
 											//Fin caso 1: niños
 	
 											//caso 2: jovenes
 											case 2:
-												System.out.println("Hay un "+jaraneitor.porcentajeJovenes()+"% de jovenes en el hospital");
+												if(jaraneitor.porcentajeJovenes()>=0)
+												{
+													System.out.println("Hay un "+jaraneitor.porcentajeJovenes()+"% de jovenes en el hospital");
+												}
+												else
+												{
+													System.out.println("No hay pacientes en el hospital");
+												}
 											break;
 											//Fin caso 2: jovenes
 										
 											//caso 3: adultos
 											case 3:
-												System.out.println("Hay un "+jaraneitor.porcentajeAdultos()+"% de adultos en el hospital");
+												if(jaraneitor.porcentajeAdultos()>=0)
+												{
+													System.out.println("Hay un "+jaraneitor.porcentajeAdultos()+"% de adultos en el hospital");
+												}
+												else
+												{
+													System.out.println("No hay pacientes en el hospital");
+												}
 											break;
 											//Fin caso 3: adultos
 										
@@ -653,8 +674,22 @@ public class MainHospital
 							
 								//caso 2: Porcentaje mujeres y hombres hospitalizados *
 								case 2:
-									System.out.println("Hay un "+jaraneitor.porcentajeHombres()+"% de hombres en el hospital");
-									System.out.println("Hay un "+jaraneitor.porcentajeMujeres()+"% de mujeres en el hospital");
+									if(jaraneitor.porcentajeHombres()>=0)
+									{
+										System.out.println("Hay un "+jaraneitor.porcentajeHombres()+"% de hombres en el hospital");
+									}
+									else
+									{
+										System.out.println("No hay pacientes en el hospital");
+									}
+									if(jaraneitor.porcentajeMujeres()>=0)
+									{
+										System.out.println("Hay un "+jaraneitor.porcentajeMujeres()+"% de mujeres en el hospital");
+									}
+									else
+									{
+										System.out.println("No hay pacientes en el hospital");
+									}
 								break;
 								//Fin caso 2: Porcentaje mujeres y hombres hospitalizados
 							

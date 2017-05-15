@@ -710,7 +710,14 @@ public class GestoraJaraneitor
 	public double porcentajeHombres()
 	{
 		double porcentaje=0;
-		porcentaje=(cuentaHombres()*100)/cuentaPacientes();
+		if(cuentaPacientes()>0)
+		{
+			porcentaje=(cuentaHombres()*100)/cuentaPacientes();
+		}
+		else
+		{
+			porcentaje=-1;
+		}
 		return porcentaje;
 	}
 	/*
@@ -733,7 +740,14 @@ public class GestoraJaraneitor
 	public double porcentajeMujeres()
 	{
 		double porcentaje=0;
-		porcentaje=(cuentaMujeres()*100)/cuentaPacientes();
+		if(cuentaPacientes()>0)
+		{
+			porcentaje=(cuentaMujeres()*100)/cuentaPacientes();
+		}
+		else
+		{
+			porcentaje=-1;
+		}
 		return porcentaje;
 	}
 	/*
@@ -933,7 +947,7 @@ public class GestoraJaraneitor
 	 * Precondiciones: No hay
 	 * Entradas: No hay
 	 * Salidas: un real
-	 * Postcondiciones: el número estará entre 0 y 100
+	 * Postcondiciones: el número estará entre 0 y 100, excepto si no se ha calculado el porcentaje que será -1
 	 * 
 	 * RESGUARDO
 	 * 
@@ -945,7 +959,14 @@ public class GestoraJaraneitor
 	public double porcentajeNiños()
 	{
 		double porcentaje=0;
-		porcentaje=(cuentaNiños()*100)/cuentaPacientes();
+		if(cuentaPacientes()>0)
+		{
+			porcentaje=(cuentaNiños()*100)/cuentaPacientes();
+		}
+		else
+		{
+			porcentaje=-1;
+		}
 		return porcentaje;
 	}
 	/*
@@ -956,7 +977,7 @@ public class GestoraJaraneitor
 	 * Precondiciones: No hay
 	 * Entradas: No hay
 	 * Salidas: un real
-	 * Postcondiciones: el número estará entre 0 y 100
+	 * Postcondiciones: el número estará entre 0 y 100, excepto si no se ha calculado el porcentaje que será -1
 	 * 
 	 * RESGUARDO
 	 * 
@@ -968,7 +989,14 @@ public class GestoraJaraneitor
 	public double porcentajeJovenes()
 	{
 		double porcentaje=0;
-		porcentaje=(cuentaJovenes()*100)/cuentaPacientes();
+		if(cuentaPacientes()>0)
+		{
+			porcentaje=(cuentaJovenes()*100)/cuentaPacientes();
+		}
+		else
+		{
+			porcentaje=-1;
+		}
 		return porcentaje;
 	}
 	/*
@@ -979,7 +1007,7 @@ public class GestoraJaraneitor
 	 * Precondiciones: No hay
 	 * Entradas: No hay
 	 * Salidas: un real
-	 * Postcondiciones: el número estará entre 0 y 100
+	 * Postcondiciones: el número estará entre 0 y 100, excepto si no se ha calculado el porcentaje que será -1
 	 * 
 	 * RESGUARDO
 	 * 
@@ -991,7 +1019,14 @@ public class GestoraJaraneitor
 	public double porcentajeAdultos()
 	{
 		double porcentaje=0;
-		porcentaje=(cuentaAdultos()*100)/cuentaPacientes();
+		if(cuentaPacientes()>0)
+		{
+			porcentaje=(cuentaAdultos()*100)/cuentaPacientes();
+		}
+		else
+		{
+			porcentaje=-1;
+		}
 		return porcentaje;
 	}
 }
