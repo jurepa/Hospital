@@ -1,5 +1,3 @@
 - Borrado y actualizado
 - Merge
-- Quitar cuentaPaciente
 - Asignar paciente a médico (Con arrayList)
-- DNI Distintos

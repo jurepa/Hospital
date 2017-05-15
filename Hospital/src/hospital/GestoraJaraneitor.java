@@ -78,7 +78,11 @@ public class GestoraJaraneitor
 				{
 					System.out.println(e);
 				}
-			}while(paciente.getDNI().length()!=9&&paciente.validarNumerosDNI(paciente.getDNI())&&paciente.getDNI().charAt(8)!=paciente.calcularLetra(paciente.getDNI()));
+				if(buscaDNI(paciente.getDNI()))
+				{
+					System.out.println("El DNI introducido ya existe");
+				}
+			}while((paciente.getDNI().length()!=9&&paciente.validarNumerosDNI(paciente.getDNI())&&paciente.getDNI().charAt(8)!=paciente.calcularLetra(paciente.getDNI()))||buscaDNI(paciente.getDNI()));
 			do
 			{
 				try
@@ -858,5 +862,71 @@ public class GestoraJaraneitor
 			porcentaje=-1;
 		}
 		return porcentaje;
+	}
+	/*
+	 * Interfaz
+	 * 
+	 * Este método busca un DNI de un paciente
+	 * prototipo: boolean buscaDNI(String dni)
+	 * Precondiciones: No hay
+	 * Entradas: Una cadena
+	 * Salidas: Un booleano
+	 * Postcondiciones: true si existe y false si no
+	 * 
+	 *  RESGUARDO
+	 *  
+	 *  public boolean buscaDNI(String dni)
+	 *  {
+	 *  	return false;
+	 *  }
+	 * 
+	 */
+	public boolean buscaDNI(String dni)
+	{
+		File pacientesAlta=new File("./src/hospital/pacientesIngresados.dat");
+		ObjectInputStream oisAlta=null;
+		Paciente paciente=null;
+		boolean encontrado=false;
+		try 
+		{
+			oisAlta=new ObjectInputStream(new FileInputStream(pacientesAlta)){@Override protected void readStreamHeader(){}};
+			paciente=(Paciente)oisAlta.readObject();
+			while(!paciente.equals(null)&&!encontrado)//Mientras pueda seguir leyendo y no lo haya encontrado
+			{
+				if(paciente.getDNI().equals(dni))
+				{
+					paciente.setIngresado(false);
+					encontrado=true;
+				}
+				paciente=(Paciente)oisAlta.readObject();
+			}
+		} catch (FileNotFoundException e) 
+		{
+			e.printStackTrace();
+		}catch(EOFException e)
+		{
+		}catch (IOException e) 
+		{
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) 
+		{
+			e.printStackTrace();
+		} catch (HospitalException e) 
+		{
+			e.printStackTrace();
+		}finally
+		{
+			if(oisAlta!=null)
+			{
+				try 
+				{
+					oisAlta.close();
+				} catch (IOException e) 
+				{
+					e.printStackTrace();
+				}
+			}
+		}
+		return encontrado;
 	}
 }
