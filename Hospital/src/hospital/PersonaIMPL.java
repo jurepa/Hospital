@@ -104,7 +104,7 @@ public class PersonaIMPL implements Cloneable, Comparable <Persona>, Persona, Se
 			if (apellidos.equals("") || apellidos.equals (null)
 				|| nombre.equals ("") || nombre.equals (null)
 				|| edad < 0
-				|| (dni.length () == 9 && validarNumerosDNI (dni) && dni.charAt (8) == calcularLetra (dni))
+				|| (dni.length () != 9 || !validarNumerosDNI (dni) || dni.charAt (8) != calcularLetra (dni))
 				|| (sexo != 'h' && sexo != 'm')
 				|| (telefono.length () != 9 || validarNumerosTelefono (telefono) == false)
 				|| (domicilio == null || domicilio.getCalle ().equals ("") || domicilio.getCiudad ().equals ("") || domicilio.getNumero () <= 0))

@@ -11,8 +11,8 @@ public class TestPaciente {
 				
 		try
 		{
-			paciente1=new Paciente("Pepe","Jimene",23,"77813733H",'h',new DomicilioIMPL("Almirante Topete", "Sevilla",6),"653706957","Mapfre", true,new Medico());
-			paciente2=new Paciente("AFK","Attempting to reconnect", 21,"77813733H",'m',new DomicilioIMPL("Felipe II","Villanueva del Trabuco",2),"736251834","No", false, new Medico());
+			paciente1=new Paciente("Pepe","Jimene",23,"77813733H",'h',new DomicilioIMPL("Almirante Topete", "Sevilla",6),"653706957","mapfre", true,new Medico());
+			paciente2=new Paciente("AFK","Attempting to reconnect", 21,"77813733H",'m',new DomicilioIMPL("Felipe II","Villanueva del Trabuco",2),"736251834","no", false, new Medico());
 		}catch(HospitalException mensaje)
 		{
 			System.out.println(mensaje);
