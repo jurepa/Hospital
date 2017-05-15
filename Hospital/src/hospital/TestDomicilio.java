@@ -4,8 +4,8 @@ public class TestDomicilio
 {
 	public static void main (String[]args) throws HospitalException
 	{
-		Domicilio domicilio1=new Domicilio("PorAlli","Madrid",5);
-		Domicilio domicilio2=new Domicilio("PorAqui","Segovia",2);
+		DomicilioIMPL domicilio1=new DomicilioIMPL("PorAlli","Madrid",5);
+		DomicilioIMPL domicilio2=new DomicilioIMPL("PorAqui","Segovia",2);
 		
 		System.out.println("Calle: "+domicilio1.getCalle());
 		domicilio1.setCalle("Calle Felipe II");

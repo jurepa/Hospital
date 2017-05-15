@@ -30,7 +30,7 @@ import java.util.Objects;
  * 
  * 	-No hay
  */
-public class Paciente  extends Persona implements Comparable<Persona>, Cloneable, Serializable
+public class Paciente  extends PersonaIMPL implements Serializable
 {
 	
 	private String seguroPrivado;

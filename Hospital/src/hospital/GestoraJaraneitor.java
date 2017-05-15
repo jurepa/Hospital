@@ -34,7 +34,7 @@ public class GestoraJaraneitor
 		BufferedReader tecladoString=new BufferedReader(new InputStreamReader(System.in));
 		Scanner teclado=new Scanner(System.in);
 		Paciente paciente=null;
-		Domicilio domicilio=new Domicilio();
+		DomicilioIMPL domicilio=new DomicilioIMPL();
 		try
 		{
 			paciente=new Paciente();

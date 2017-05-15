@@ -24,12 +24,12 @@ public class GestoraHospital
 		BufferedReader tecladoString = new BufferedReader (new InputStreamReader (System.in));
 		Scanner teclado = new Scanner (System.in);
 		Medico medico = null;
-		Domicilio domicilio = null;
+		DomicilioIMPL domicilio = null;
 		
 		try
 		{
 			medico = new Medico ();
-			domicilio = new Domicilio ();
+			domicilio = new DomicilioIMPL ();
 			
 			do
 			{
@@ -771,10 +771,10 @@ public class GestoraHospital
 		File pepejava = new File ("pepejava.dat");
 		ObjectInputStream ois = null;
 		
-		Persona p0 = null;
-		Persona p1 = null;
-		Persona p2 = null;
-		Persona p3 = null;
+		PersonaIMPL p0 = null;
+		PersonaIMPL p1 = null;
+		PersonaIMPL p2 = null;
+		PersonaIMPL p3 = null;
 		
 		// String nombre, String apellidos, int edad, String dni, char sexo, String telefono, Domicilio domicilio (calle, ciudad y numero)
 		
@@ -784,10 +784,10 @@ public class GestoraHospital
 			FileOutputStream fos = new FileOutputStream (pepejava);
 			ObjectOutputStream oos = new ObjectOutputStream (fos);
 
-			p0 = new Persona ("Pablo", "Chavalator1", 16, "77925631", 'h', "954456545", new Domicilio ("Pepejava1 Street", "El kelo", 3));
-			p1 = new Persona ("Juan", "Chavalator2", 17, "77924651", 'h', "954236545", new Domicilio ("Pepejava2 Street", "El kelo", 4));
-			p2 = new Persona ("Nzhdeh", "Chavalator3", 18, "77225651", 'h', "952256545", new Domicilio ("Pepejava3 Street", "El kelo", 5));
-			p3 = new Persona ("Firewall", "Chavalator4", 19, "71925651", 'h', "954266545", new Domicilio ("Pepejava4 Street", "El kelo", 6));
+			p0 = new PersonaIMPL ("Pablo", "Chavalator1", 16, "77925631", 'h', "954456545", new DomicilioIMPL ("Pepejava1 Street", "El kelo", 3));
+			p1 = new PersonaIMPL ("Juan", "Chavalator2", 17, "77924651", 'h', "954236545", new DomicilioIMPL ("Pepejava2 Street", "El kelo", 4));
+			p2 = new PersonaIMPL ("Nzhdeh", "Chavalator3", 18, "77225651", 'h', "952256545", new DomicilioIMPL ("Pepejava3 Street", "El kelo", 5));
+			p3 = new PersonaIMPL ("Firewall", "Chavalator4", 19, "71925651", 'h', "954266545", new DomicilioIMPL ("Pepejava4 Street", "El kelo", 6));
 				
 			
 			oos.writeObject(p0);
@@ -817,11 +817,11 @@ public class GestoraHospital
 			
 			pAux = ois.readObject();
 			
-			if (pAux instanceof Persona)
+			if (pAux instanceof PersonaIMPL)
 			{
 				while (true)
 				{
-					System.out.println(((Persona) pAux).toString ());
+					System.out.println(((PersonaIMPL) pAux).toString ());
 					
 					pAux = ois.readObject();
 				}

@@ -26,7 +26,7 @@ import java.util.Objects;
  * 
  * Métodos añadidos: No hay
  */
-public class Medico extends Persona implements Serializable {
+public class Medico extends PersonaIMPL implements Serializable {
 	
 
 	private String especialidad;

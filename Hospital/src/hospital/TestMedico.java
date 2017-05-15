@@ -9,8 +9,8 @@ public class TestMedico {
 		Medico medico2=null;
 		try
 		{
-			medico1=new Medico("Pepe","Jimene",60,"77813733H",'m',new Domicilio("ConDio","Sevilla",5),"653826350","pediatra");
-			medico2=new Medico("Joselito","El Gallo",38,"77813733H",'h',new Domicilio("Av del Rebujito","Montellano",4),"646384750","alergo");
+			medico1=new Medico("Pepe","Jimene",60,"77813733H",'m',new DomicilioIMPL("ConDio","Sevilla",5),"653826350","pediatra");
+			medico2=new Medico("Joselito","El Gallo",38,"77813733H",'h',new DomicilioIMPL("Av del Rebujito","Montellano",4),"646384750","alergo");
 		}catch(HospitalException mensaje)
 		{
 			System.out.println(mensaje);
@@ -55,7 +55,7 @@ public class TestMedico {
 		System.out.println("Domicilio: "+medico1.getDomicilio());
 		try
 		{
-			medico1.setDomicilio(new Domicilio("Av del Rebujito","Montellano",4));
+			medico1.setDomicilio(new DomicilioIMPL("Av del Rebujito","Montellano",4));
 		}catch(HospitalException mensaje)
 		{
 			System.out.println(mensaje);

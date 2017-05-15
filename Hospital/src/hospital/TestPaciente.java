@@ -7,12 +7,12 @@ public class TestPaciente {
 		
 		Paciente paciente1=null;
 		Paciente paciente2=null;
-		Domicilio domicilio1=new Domicilio("PorAqui","Segovia",2);
+		DomicilioIMPL domicilio1=new DomicilioIMPL("PorAqui","Segovia",2);
 				
 		try
 		{
-			paciente1=new Paciente("Pepe","Jimene",23,"77813733H",'h',new Domicilio("Almirante Topete", "Sevilla",6),"653706957","Mapfre", true,new Medico());
-			paciente2=new Paciente("AFK","Attempting to reconnect", 21,"77813733H",'m',new Domicilio("Felipe II","Villanueva del Trabuco",2),"736251834","No", false, new Medico());
+			paciente1=new Paciente("Pepe","Jimene",23,"77813733H",'h',new DomicilioIMPL("Almirante Topete", "Sevilla",6),"653706957","Mapfre", true,new Medico());
+			paciente2=new Paciente("AFK","Attempting to reconnect", 21,"77813733H",'m',new DomicilioIMPL("Felipe II","Villanueva del Trabuco",2),"736251834","No", false, new Medico());
 		}catch(HospitalException mensaje)
 		{
 			System.out.println(mensaje);
@@ -32,7 +32,7 @@ public class TestPaciente {
 			paciente1.setDomicilio(domicilio1);
 			paciente1.setTelefono("123456789");
 			paciente1.setSeguroPrivado("Dado de baja");
-			paciente1.setMedico(new Medico("Carlos","Alvarez",32,"77813733H",'h',new Domicilio("sada","gdh",5),"628472909","trauma"));
+			paciente1.setMedico(new Medico("Carlos","Alvarez",32,"77813733H",'h',new DomicilioIMPL("sada","gdh",5),"628472909","trauma"));
 		}catch(HospitalException mensaje)
 		{
 			System.out.println(mensaje);
