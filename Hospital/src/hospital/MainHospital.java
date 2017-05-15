@@ -617,16 +617,19 @@ public class MainHospital
 										
 											//caso 1: niños
 											case 1:
+												System.out.println("Hay un "+jaraneitor.porcentajeNiños()+"% de niños en el hospital");
 											break;
 											//Fin caso 1: niños
-										
+	
 											//caso 2: jovenes
 											case 2:
+												System.out.println("Hay un "+jaraneitor.porcentajeJovenes()+"% de jovenes en el hospital");
 											break;
 											//Fin caso 2: jovenes
 										
 											//caso 3: adultos
 											case 3:
+												System.out.println("Hay un "+jaraneitor.porcentajeAdultos()+"% de adultos en el hospital");
 											break;
 											//Fin caso 3: adultos
 										

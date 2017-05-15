@@ -612,6 +612,18 @@ public class GestoraJaraneitor
 		} catch (ClassNotFoundException e) 
 		{
 			e.printStackTrace();
+		}finally
+		{
+			if(ois!=null)
+			{
+				try 
+				{
+					ois.close();
+				} catch (IOException e) 
+				{
+					e.printStackTrace();
+				}
+			}
 		}
 		return contadorMujeres;
 	}
@@ -663,6 +675,18 @@ public class GestoraJaraneitor
 		} catch (ClassNotFoundException e) 
 		{
 			e.printStackTrace();
+		}finally
+		{
+			if(ois!=null)
+			{
+				try 
+				{
+					ois.close();
+				} catch (IOException e) 
+				{
+					e.printStackTrace();
+				}
+			}
 		}
 		return contadorHombres;
 	}
@@ -670,7 +694,7 @@ public class GestoraJaraneitor
 	 * Interfaz
 	 * 
 	 * Este método calcula el porcentaje de hombres hospitalizados en el hospital
-	 * prototipo: int porcentajeHombres()
+	 * prototipo: double porcentajeHombres()
 	 * Precondiciones: No hay
 	 * Entradas: No hay
 	 * Salidas: un real
@@ -678,7 +702,7 @@ public class GestoraJaraneitor
 	 * 
 	 * RESGUARDO
 	 * 
-	 * public int porcentajeHombres()
+	 * public double porcentajeHombres()
 	 * {
 	 * 		return 1;
 	 * }
@@ -693,7 +717,7 @@ public class GestoraJaraneitor
 	 * Interfaz
 	 * 
 	 * Este método calcula el porcentaje de mujeres hospitalizadas en el hospital
-	 * prototipo: int porcentajeMujeres()
+	 * prototipo: double porcentajeMujeres()
 	 * Precondiciones: No hay
 	 * Entradas: No hay
 	 * Salidas: un real
@@ -701,7 +725,7 @@ public class GestoraJaraneitor
 	 * 
 	 * RESGUARDO
 	 * 
-	 * public int porcentajeMujeres()
+	 * public double porcentajeMujeres()
 	 * {
 	 * 		return 1;
 	 * }
@@ -710,6 +734,264 @@ public class GestoraJaraneitor
 	{
 		double porcentaje=0;
 		porcentaje=(cuentaMujeres()*100)/cuentaPacientes();
+		return porcentaje;
+	}
+	/*
+	 * Interfaz
+	 * 
+	 * Este método cuenta los pacientes niños
+	 * prototipo: int cuentaNiños()
+	 * Precondiciones: No hay
+	 * Entradas: No hay
+	 * Salidas: un entero
+	 * Postcondiciones: el número es igual o mayor a 0
+	 * 
+	 * RESGUARDO
+	 * 
+	 * public int cuentaNiños()
+	 * {
+	 * 		return 1;
+	 * }
+	 */
+	public int cuentaNiños()
+	{
+		int contadorNiños=0;
+		ObjectInputStream ois=null;
+		File pacientes=new File("./src/hospital/pacientesIngresados.dat");
+		Paciente paciente=null;
+		boolean lee=true;
+		try 
+		{
+			ois=new ObjectInputStream(new FileInputStream(pacientes)){@Override protected void readStreamHeader(){}};
+			paciente=(Paciente)ois.readObject();
+			while(lee)
+			{
+				if(paciente.getEdad()>=1&&paciente.getEdad()<=13)
+				{
+					contadorNiños++;
+				}
+				paciente=(Paciente)ois.readObject();
+			}
+		} catch (FileNotFoundException e) 
+		{
+			e.printStackTrace();
+		}catch(EOFException e)
+		{
+			lee=false;
+		}catch (IOException e) 
+		{
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) 
+		{
+			e.printStackTrace();
+		}finally
+		{
+			if(ois!=null)
+			{
+				try 
+				{
+					ois.close();
+				} catch (IOException e) 
+				{
+					e.printStackTrace();
+				}
+			}
+		}
+		return contadorNiños;
+	}
+	/*
+	 * Interfaz
+	 * 
+	 * Este método cuenta los pacientes Jovenes
+	 * prototipo: int cuentaJovenes()
+	 * Precondiciones: No hay
+	 * Entradas: No hay
+	 * Salidas: un entero
+	 * Postcondiciones: el número es igual o mayor a 0
+	 * 
+	 * RESGUARDO
+	 * 
+	 * public int cuentaJovenes()
+	 * {
+	 * 		return 1;
+	 * }
+	 */
+	public int cuentaJovenes()
+	{
+		int contadorJovenes=0;
+		ObjectInputStream ois=null;
+		File pacientes=new File("./src/hospital/pacientesIngresados.dat");
+		Paciente paciente=null;
+		boolean lee=true;
+		try 
+		{
+			ois=new ObjectInputStream(new FileInputStream(pacientes)){@Override protected void readStreamHeader(){}};
+			paciente=(Paciente)ois.readObject();
+			while(lee)
+			{
+				if(paciente.getEdad()>13&&paciente.getEdad()<=30)
+				{
+					contadorJovenes++;
+				}
+				paciente=(Paciente)ois.readObject();
+			}
+		} catch (FileNotFoundException e) 
+		{
+			e.printStackTrace();
+		}catch(EOFException e)
+		{
+			lee=false;
+		}catch (IOException e) 
+		{
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) 
+		{
+			e.printStackTrace();
+		}finally
+		{
+			if(ois!=null)
+			{
+				try 
+				{
+					ois.close();
+				} catch (IOException e) 
+				{
+					e.printStackTrace();
+				}
+			}
+		}
+		return contadorJovenes;
+	}
+	/*
+	 * Interfaz
+	 * 
+	 * Este método cuenta los pacientes Jovenes
+	 * prototipo: int cuentaJovenes()
+	 * Precondiciones: No hay
+	 * Entradas: No hay
+	 * Salidas: un entero
+	 * Postcondiciones: el número es igual o mayor a 0
+	 * 
+	 * RESGUARDO
+	 * 
+	 * public int cuentaJovenes()
+	 * {
+	 * 		return 1;
+	 * }
+	 */
+	public int cuentaAdultos()
+	{
+		int contadorAdultos=0;
+		ObjectInputStream ois=null;
+		File pacientes=new File("./src/hospital/pacientesIngresados.dat");
+		Paciente paciente=null;
+		boolean lee=true;
+		try 
+		{
+			ois=new ObjectInputStream(new FileInputStream(pacientes)){@Override protected void readStreamHeader(){}};
+			paciente=(Paciente)ois.readObject();
+			while(lee)
+			{
+				if(paciente.getEdad()>13&&paciente.getEdad()<=30)
+				{
+					contadorAdultos++;
+				}
+				paciente=(Paciente)ois.readObject();
+			}
+		} catch (FileNotFoundException e) 
+		{
+			e.printStackTrace();
+		}catch(EOFException e)
+		{
+			lee=false;
+		}catch (IOException e) 
+		{
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) 
+		{
+			e.printStackTrace();
+		}finally
+		{
+			if(ois!=null)
+			{
+				try 
+				{
+					ois.close();
+				} catch (IOException e) 
+				{
+					e.printStackTrace();
+				}
+			}
+		}
+		return contadorAdultos;
+	}
+	/*
+	 * Interfaz
+	 * 
+	 * Este método calcula el porcentaje de niños hospitalizados en el hospital
+	 * prototipo: double porcentajeNiños()
+	 * Precondiciones: No hay
+	 * Entradas: No hay
+	 * Salidas: un real
+	 * Postcondiciones: el número estará entre 0 y 100
+	 * 
+	 * RESGUARDO
+	 * 
+	 * public double porcentajeHombres()
+	 * {
+	 * 		return 1;
+	 * }
+	 */
+	public double porcentajeNiños()
+	{
+		double porcentaje=0;
+		porcentaje=(cuentaNiños()*100)/cuentaPacientes();
+		return porcentaje;
+	}
+	/*
+	 * Interfaz
+	 * 
+	 * Este método calcula el porcentaje de Jovenes hospitalizados en el hospital
+	 * prototipo: double porcentajeJovenes()
+	 * Precondiciones: No hay
+	 * Entradas: No hay
+	 * Salidas: un real
+	 * Postcondiciones: el número estará entre 0 y 100
+	 * 
+	 * RESGUARDO
+	 * 
+	 * public double porcentajeHombres()
+	 * {
+	 * 		return 1;
+	 * }
+	 */
+	public double porcentajeJovenes()
+	{
+		double porcentaje=0;
+		porcentaje=(cuentaJovenes()*100)/cuentaPacientes();
+		return porcentaje;
+	}
+	/*
+	 * Interfaz
+	 * 
+	 * Este método calcula el porcentaje de adultos hospitalizados en el hospital
+	 * prototipo: double porcentajeAdultos()
+	 * Precondiciones: No hay
+	 * Entradas: No hay
+	 * Salidas: un real
+	 * Postcondiciones: el número estará entre 0 y 100
+	 * 
+	 * RESGUARDO
+	 * 
+	 * public double porcentajeHombres()
+	 * {
+	 * 		return 1;
+	 * }
+	 */
+	public double porcentajeAdultos()
+	{
+		double porcentaje=0;
+		porcentaje=(cuentaAdultos()*100)/cuentaPacientes();
 		return porcentaje;
 	}
 }
