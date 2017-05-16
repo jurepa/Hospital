@@ -340,13 +340,21 @@ public class PersonaIMPL implements Cloneable, Comparable <Persona>, Persona, Se
 	public boolean validarNumerosDNI(String dni)
 	{
 		boolean sonNumeros=true;
-		 for (int i=0; sonNumeros==true&&i<8; i++) 
-		 {
-             if(!Character.isDigit(dni.charAt(i)))
-             {
-                   sonNumeros= false;    
-             } 
-        }
+		
+		if(dni.length()==9)
+		{
+			for (int i=0; sonNumeros==true&&i<8; i++) 
+			{
+	             if(!Character.isDigit(dni.charAt(i)))
+	             {
+	                   sonNumeros= false;    
+	             } 
+	        }
+		}
+		else
+		{
+			sonNumeros=false;
+		}
 		return sonNumeros;
 	}
 	/*
@@ -377,21 +385,25 @@ public class PersonaIMPL implements Cloneable, Comparable <Persona>, Persona, Se
 	 * 
 	 * Este método calcula la letra de un dni
 	 * Prototipo: char calcularLetra(String dni)
-	 * Precondiciones: Un dni sin letra
+	 * Precondiciones: No hay
 	 * Entrada: Una cadena
 	 * Salida: Un char
-	 * Postcondiciones: La letra será de la A a la Z
+	 * Postcondiciones: La letra será de la A a la Z, excepto si el dni mandado está mal que devolverá un asterisco
 	 * E/S: No hay
 	 */
 	public char calcularLetra(String dni)
 	{
-		String letrasDNI="TRWAGMYFPDXBNJZSQVHLCKET";
-		String letras=dni.substring(0, 8);
-		int aux,posicion;
-		char letra;
-		aux=Integer.parseInt(letras);
-		posicion=aux%23;
-		letra=letrasDNI.charAt(posicion);
+		char letra='*';
+		if(dni.length()==9)
+		{
+			String letrasDNI="TRWAGMYFPDXBNJZSQVHLCKET";
+			String letras=dni.substring(0, 8);
+			int aux,posicion;
+			
+			aux=Integer.parseInt(letras);
+			posicion=aux%23;
+			letra=letrasDNI.charAt(posicion);
+		}
 		return letra;
 	}
 	
