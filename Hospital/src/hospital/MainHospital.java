@@ -330,8 +330,7 @@ public class MainHospital
 		double seguroPrivado = 0.0;
 		GestoraJaraneitor jaraneitor=new GestoraJaraneitor();
 		GestoraHospital goumes = new GestoraHospital ();
-		MergePacientesEdad mergeEdad=new MergePacientesEdad();
-		MergePacientesGenero mergeGenero=new MergePacientesGenero();
+		MergePacientesEdad merge=new MergePacientesEdad();
 		do
 		{
 			//PrintMenuPrincipalLeerValidarOpcion*
@@ -432,26 +431,24 @@ public class MainHospital
 												{
 													//caso 1: Por departamento *
 													case 1:
-														
 													break;
 													//caso 1: Por departamento
 												
 													//caso 2: Por edad *
 													case 2:
-														mergeEdad.run();
+														merge.run();
 														jaraneitor.listarPacientes();
 													break;
 													//Fin caso 2: Por edad
-										
+												
 													//caso 3: Por género *
 													case 3:
-														mergeGenero.run();
-														jaraneitor.listarPacientes();
 													break;
 													//Fin caso 3: Por género
 												
 												}//fin_segun
 											}//fin_si
+											
 											
 											//Preguntar ListarOtraVez
 											do
@@ -461,6 +458,7 @@ public class MainHospital
 											}
 											while (listarPacientes != 's' && listarPacientes != 'n');
 											//Fin Preguntar ListarOtraVez
+											
 										}
 										while (listarPacientes == 's');//Fin_Mientras
 										
@@ -468,6 +466,7 @@ public class MainHospital
 									//Fin caso 3: Listar pacientes.
 									
 								}//fin_segun
+									
 							}//fin_si
 								
 							//LeerValidarElegirOpcion
@@ -477,7 +476,7 @@ public class MainHospital
 								repetirMenuPacientes = Character.toLowerCase(teclado.next().charAt(0));
 							}
 							while (repetirMenuPacientes != 's' && repetirMenuPacientes != 'n');
-							//Fin LeerValidarElegirOpcion
+							//Fin LeerValidarElegirOpcion	
 						}
 						while (repetirMenuPacientes == 's');
 						
@@ -604,7 +603,7 @@ public class MainHospital
 							//LeerValidarElegirOpcion
 							do
 							{
-								System.out.println("Desea volver al menu de pacientes? S/N");
+								System.out.println("Desea volver al menu de medicos? S/N");
 								repetirMenuMedicos = Character.toLowerCase(teclado.next().charAt(0));
 							}
 							while (repetirMenuMedicos != 's' && repetirMenuMedicos != 'n');

@@ -25,6 +25,7 @@ public class GestoraHospital
 		Scanner teclado = new Scanner (System.in);
 		Medico medico = null;
 		DomicilioIMPL domicilio = null;
+		GestoraJaraneitor pablo = new GestoraJaraneitor ();
 		
 		try
 		{
@@ -95,7 +96,10 @@ public class GestoraHospital
 					System.out.println(e);
 				}
 			}
-			while (medico.getDNI().length() != 9 && medico.validarNumerosDNI (medico.getDNI ()) && medico.getDNI ().charAt (8) != medico.calcularLetra (medico.getDNI ()));
+			while ((medico.getDNI().length() != 9 
+					|| !medico.validarNumerosDNI(medico.getDNI()) 
+					|| medico.getDNI().charAt(8) != medico.calcularLetra (medico.getDNI())) 
+					|| pablo.buscaDNI(medico.getDNI()));
 			
 			do
 			{
@@ -396,16 +400,14 @@ public class GestoraHospital
 	public boolean despedirMedico (String dni)
 	{
 		File medicosContratados = new File ("./src/hospital/medicosContratados.dat");
-		File auxiliar = new File ("./src/hospital/auxiliar.dat");
 		ObjectOutputStream oos = null;
 		ObjectInputStream ois = null;
 		Object aux = null;
 		boolean lee = true;
 		boolean borrado = false;
 		
-		//if (medicosContratados.exists())
-	//	{
-			
+		if (medicosContratados.exists())
+		{
 			try
 			{
 				oos = new ObjectOutputStream (new FileOutputStream (auxiliar, true))
@@ -487,10 +489,7 @@ public class GestoraHospital
 					}
 				}
 			}
-			
-			medicosContratados.delete();
-			auxiliar.renameTo(medicosContratados);
-		//}
+		}
 		
 		return borrado;
 	}
@@ -759,83 +758,6 @@ public class GestoraHospital
 		return resultado;
 	}
 	//Fin porcentajeSeguroPrivado
-	
-	/* Prototipo: void asignarPaciente (Paciente paciente, String dni)
-	 * Breve comentario: Metodo encargado de asignar un paciente a un medico
-	 * Precondiciones: Ninguna
-	 * Entradas: Un paciente y un String indicando el dni de un medico
-	 * Salidas: Ninguna
-	 * Entradas/Salidas: Ninguna
-	 * Postcondiciones: Ninguna
-	 * 
-	 * Resguardo: public void asignarPaciente (Paciente paciente, String dni)
-		{
-			System.out.println("Llamada al metodo asignarPaciente");
-		}
-	 */
-	public void asignarPaciente (Paciente paciente, String dni)
-	{
-		File medicosContratados = new File ("./src/hospital/medicosContratados.dat");
-		ObjectInputStream ois = null;
-		Object aux = null;
-		
-		try
-		{
-			ois = new ObjectInputStream (new FileInputStream (medicosContratados))
-			{
-				@Override protected void readStreamHeader () {}
-			};
-			
-			aux = ois.readObject();
-			
-			while (!aux.equals(null))
-			{
-				if (aux instanceof Medico && ((Medico) aux).getDNI().equals(dni))
-				{
-					((Medico) aux).addPaciente (paciente);
-				}
-			
-				aux = ois.readObject ();
-			}
-		}
-		
-		catch (FileNotFoundException e)
-		{
-			System.out.println("FileNotFoundException");
-		}
-		
-		catch (EOFException e)
-		{
-			
-		}
-		
-		catch (IOException e)
-		{
-			System.out.println("IOException");
-		}
-		
-		catch (ClassNotFoundException e)
-		{
-			System.out.println("ClassNotFoundException");
-		}
-		
-		finally
-		{
-			if (ois != null)
-			{
-				try
-				{
-					ois.close ();
-				}
-				
-				catch (IOException e)
-				{
-					System.out.println("IOException");
-				}
-			}
-		}
-	}
-	//Fin asignarPaciente
 	
 	
 	
