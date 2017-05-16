@@ -334,7 +334,7 @@ public class GestoraJaraneitor
 		ObjectOutputStream oos=null;
 		ObjectInputStream ois=null;
 		Paciente paciente=null;
-
+		boolean encontrado=false;
 		boolean borrado=false;
 		if(ficheroDeAltas.exists())
 		{
@@ -348,6 +348,15 @@ public class GestoraJaraneitor
 						if(paciente.getDNI().equals(dni))
 						{
 							borrado=true;
+							for(int i=0; i<paciente.getMedico().getPacienteAsignado().size()&&!encontrado;i++)
+							{
+								if(paciente.getMedico().getPacienteAsignado().get(i).equals(paciente))
+								{
+									paciente.getMedico().getPacienteAsignado().remove(i);
+									encontrado=true;
+								}
+							}
+							paciente.setMedico(new Medico()); //Le quitamos el medico que tenia asignado
 							insertarPacienteDadoDeBaja(dni);
 						}
 						else
@@ -365,6 +374,9 @@ public class GestoraJaraneitor
 				{
 					e.printStackTrace();
 				} catch (ClassNotFoundException e) 
+				{
+					e.printStackTrace();
+				} catch (HospitalException e) 
 				{
 					e.printStackTrace();
 				}finally
