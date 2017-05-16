@@ -330,7 +330,11 @@ public class MainHospital
 		double seguroPrivado = 0.0;
 		GestoraJaraneitor jaraneitor=new GestoraJaraneitor();
 		GestoraHospital goumes = new GestoraHospital ();
-		MergePacientesEdad merge=new MergePacientesEdad();
+		MergePacientesEdad mergePacienteEdad=new MergePacientesEdad();
+		MergePacienteDepartamento mergePacienteDepartamento=new MergePacienteDepartamento();
+		MergeMedicosDepartamento mergeMedicosDepartamento=new MergeMedicosDepartamento();
+		MergePacientesGenero mergePacientesGenero=new MergePacientesGenero();
+		MergeMedicosEdad mergeMedicosEdad=new MergeMedicosEdad();
 		do
 		{
 			//PrintMenuPrincipalLeerValidarOpcion*
@@ -431,18 +435,22 @@ public class MainHospital
 												{
 													//caso 1: Por departamento *
 													case 1:
+														mergePacienteDepartamento.run();
+														jaraneitor.listarPacientes();
 													break;
 													//caso 1: Por departamento
 												
 													//caso 2: Por edad *
 													case 2:
-														merge.run();
+														mergePacienteEdad.run();
 														jaraneitor.listarPacientes();
 													break;
 													//Fin caso 2: Por edad
 												
 													//caso 3: Por género *
 													case 3:
+														mergePacientesGenero.run();
+														jaraneitor.listarPacientes();
 													break;
 													//Fin caso 3: Por género
 												
@@ -564,16 +572,20 @@ public class MainHospital
 												{
 													//caso 1: Por departamento *
 													case 1:
+														mergeMedicosDepartamento.run();
+														goumes.listarMedicos();
 													break;
 													//Fin caso 1: Por departamento
-												
 													//caso 2: Por edad *
 													case 2:
+														mergeMedicosEdad.run();
+														goumes.listarMedicos();
 													break;
 													//Fin caso 2: Por edad
 												
 													//caso 3: Pacientes asignados *
 													case 3:
+														
 													break;
 													//Fin caso 3: Pacientes asignados
 												}//fin_segun
@@ -757,7 +769,7 @@ public class MainHospital
 										
 										else
 										{
-											System.out.println("No existe el fichero");
+											System.out.println("No hay pacientes en el hospital");
 										}
 									break;
 									//Fin caso 3: Porcentaje de pacientes con seguro privado

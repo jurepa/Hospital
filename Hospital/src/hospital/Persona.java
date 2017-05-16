@@ -11,6 +11,7 @@ public interface Persona
 	int getEdad ();
 	void setEdad (int edad)throws HospitalException;
 	
+	void setDNI(String dni) throws HospitalException;
 	String getDNI ();
 	
 	char getSexo ();

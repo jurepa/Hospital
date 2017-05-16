@@ -484,7 +484,7 @@ public class GestoraJaraneitor
 			paciente=(Paciente)ois.readObject();
 			while(!paciente.equals(null))
 			{
-				System.out.println(paciente.toString()+paciente.getMedico().getEspecialidad());
+				System.out.println(paciente.toString()+","+paciente.getMedico().getEspecialidad());
 				paciente=(Paciente)ois.readObject();
 			}
 		} catch (FileNotFoundException e) 
