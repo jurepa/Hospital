@@ -65,9 +65,7 @@ import java.util.Objects;
 
 public class PersonaIMPL implements Cloneable, Comparable <Persona>, Persona, Serializable{
 	
-
-
-	private static final long serialVersionUID = 5387853321990952046L;
+	private static final long serialVersionUID = 2666064817179045905L;
 	private String nombre;
 	private String apellidos;
 	private int edad;

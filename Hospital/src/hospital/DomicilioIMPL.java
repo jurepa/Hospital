@@ -38,6 +38,7 @@ import java.util.Objects;
  */
 public class DomicilioIMPL implements Cloneable, Domicilio, Serializable {
 	
+	private static final long serialVersionUID = 7955303337738562585L;
 	private String calle;
 	private int numero;
 	private String ciudad;
