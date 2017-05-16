@@ -400,10 +400,10 @@ public class GestoraHospital
 	public boolean despedirMedico (String dni)
 	{
 		File medicosContratados = new File ("./src/hospital/medicosContratados.dat");
+		File auxiliar = new File("./src/hospital/auxiliar.dat");
 		ObjectOutputStream oos = null;
 		ObjectInputStream ois = null;
 		Object aux = null;
-		boolean lee = true;
 		boolean borrado = false;
 		
 		if (medicosContratados.exists())
@@ -490,6 +490,9 @@ public class GestoraHospital
 				}
 			}
 		}
+		
+		medicosContratados.delete();
+		auxiliar.renameTo (medicosContratados);
 		
 		return borrado;
 	}
@@ -759,105 +762,199 @@ public class GestoraHospital
 	}
 	//Fin porcentajeSeguroPrivado
 	
-	
-	
-	//pruebas
-	public static void main (String [] args)
+	/* Prototipo: void asignarPaciente (Paciente paciente, String dni)
+	 * Breve comentario: Metodo encargado de asignar un paciente a un medico
+	 * Precondiciones: Ninguna
+	 * Entradas: Un paciente y un String indicando el dni de un medico
+	 * Salidas: Ninguna
+	 * Entradas/Salidas: Ninguna
+	 * Postcondiciones: Ninguna
+	 * 
+	 * Resguardo: public void asignarPaciente (Paciente paciente, String dni)
+		{
+			System.out.println("Llamada al metodo asignarPaciente");
+		}
+	 */
+	public void asignarPaciente (Paciente paciente, String dni)
 	{
-		
-		Object pAux = null;
-		
-		File pepejava = new File ("pepejava.dat");
+		File medicosContratados = new File ("./src/hospital/medicosContratados.dat");
+		File auxiliar = new File ("./src/hospital/auxiliar.dat");
 		ObjectInputStream ois = null;
-		
-		PersonaIMPL p0 = null;
-		PersonaIMPL p1 = null;
-		PersonaIMPL p2 = null;
-		PersonaIMPL p3 = null;
-		
-		// String nombre, String apellidos, int edad, String dni, char sexo, String telefono, Domicilio domicilio (calle, ciudad y numero)
+		ObjectOutputStream oos = null;
+		Object aux = null;
 		
 		try
 		{
-			
-			FileOutputStream fos = new FileOutputStream (pepejava);
-			ObjectOutputStream oos = new ObjectOutputStream (fos);
-
-			p0 = new PersonaIMPL ("Pablo", "Chavalator1", 16, "77925631", 'h', "954456545", new DomicilioIMPL ("Pepejava1 Street", "El kelo", 3));
-			p1 = new PersonaIMPL ("Juan", "Chavalator2", 17, "77924651", 'h', "954236545", new DomicilioIMPL ("Pepejava2 Street", "El kelo", 4));
-			p2 = new PersonaIMPL ("Nzhdeh", "Chavalator3", 18, "77225651", 'h', "952256545", new DomicilioIMPL ("Pepejava3 Street", "El kelo", 5));
-			p3 = new PersonaIMPL ("Firewall", "Chavalator4", 19, "71925651", 'h', "954266545", new DomicilioIMPL ("Pepejava4 Street", "El kelo", 6));
-				
-			
-			oos.writeObject(p0);
-			oos.writeObject(p1);
-			oos.writeObject(p2);
-			oos.writeObject(p3);
-			
-			oos.close();
-			
-		}
-		
-		catch (IOException e)
-		{
-			System.out.println("rip in pepperonnis");
-		}
-		
-		catch (HospitalException e)
-		{
-			System.out.println(e);
-		}
-		
-		
-		try
-		{
-			FileInputStream fis = new FileInputStream (pepejava);
-			ois = new ObjectInputStream (fis);
-			
-			pAux = ois.readObject();
-			
-			if (pAux instanceof PersonaIMPL)
+			ois = new ObjectInputStream (new FileInputStream (medicosContratados))
 			{
-				while (true)
-				{
-					System.out.println(((PersonaIMPL) pAux).toString ());
-					
-					pAux = ois.readObject();
-				}
-			}
+				@Override protected void readStreamHeader () {}
+			};
 			
-			ois.close();
+			oos = new ObjectOutputStream (new FileOutputStream (auxiliar, true))
+			{
+				@Override protected void writeStreamHeader () {}
+			};
+			
+			aux = ois.readObject();
+			
+			while (!aux.equals(null))
+			{
+				if (aux instanceof Medico && ((Medico) aux).getDNI().equals(dni))
+				{
+					((Medico) aux).addPaciente (paciente);
+				}
+				
+				oos.writeObject(aux);
+				aux = ois.readObject ();
+			}
 		}
 		
-		catch (ClassNotFoundException e)
+		catch (FileNotFoundException e)
 		{
-			System.out.println("ClassNotFound");
+			System.out.println("FileNotFoundException");
 		}
 		
 		catch (EOFException e)
 		{
-			System.out.println("xd");
+			
 		}
+		
 		catch (IOException e)
 		{
 			System.out.println("IOException");
 		}
 		
-		finally 
+		catch (ClassNotFoundException e)
 		{
-			try
+			System.out.println("ClassNotFoundException");
+		}
+		
+		finally
+		{
+			if (ois != null)
 			{
-				if (ois != null)
+				try
 				{
 					ois.close ();
 				}
+				
+				catch (IOException e)
+				{
+					System.out.println("IOException");
+				}
 			}
-			catch (IOException e)
+			
+			if (oos != null)
 			{
-				System.out.println("IOE");
+				try
+				{
+					oos.close ();
+				}
+				
+				catch (IOException e)
+				{
+					System.out.println("IOException");
+				}
+			}
+		}
+		
+		medicosContratados.delete();
+		auxiliar.renameTo (medicosContratados);
+	}
+	//Fin asignarPaciente
+	
+	/* Prototipo: void listarPacientesMedico (String dni)
+	 * Breve comentario: Imprime la lista de los pacientes asignados a un médico
+	 * Precondiciones: Ninguna
+	 * Entradas: Un String que indica el dni
+	 * Salidas: Ninguna
+	 * Entradas/Salidas: Ninguna
+	 * Postcondiciones: Ninguna
+	 * 
+	 * Resguardo: public void listarPacientesMedico ()
+		{
+			System.out.println("Llamada al metodo listarPacientesMedico");
+		}
+	 */
+	public void listarPacientesMedico (String dni)
+	{
+		File medicosContratados = new File ("./src/hospital/medicosContratados.dat");
+		ObjectInputStream ois = null;
+		Object aux = null;
+		
+		try
+		{
+			ois = new ObjectInputStream (new FileInputStream (medicosContratados))
+				{
+					@Override protected void readStreamHeader () {}
+				};
+				
+			if (medicosContratados.exists())
+			{
+			
+				aux = ois.readObject();
+				
+				while (!aux.equals(null))
+				{
+					if (aux instanceof Medico)
+					{
+						if (((Medico) aux).getDNI ().equals (dni))
+						{
+							System.out.println("Medico: ");
+							System.out.println(((Medico) aux).toString());
+							
+							System.out.println();
+							System.out.println("Pacientes: ");
+							System.out.println();
+	
+							for (int i = 0; i < ((Medico) aux).getPacienteAsignado().size(); i++)
+							{
+								System.out.println(((Medico) aux).getPacienteAsignado().get (i).toString ());
+							}
+						}
+					}
+					
+					aux = ois.readObject ();
+				}
+			}
+		}
+		
+		catch (FileNotFoundException e)
+		{
+			e.printStackTrace();
+		}
+		
+		catch (EOFException e)
+		{
+			
+		}
+		
+		catch (IOException e)
+		{
+			e.printStackTrace();
+		}
+		
+		catch (ClassNotFoundException e)
+		{
+			e.printStackTrace ();
+		}
+		
+		finally 
+		{
+			if (ois != null)
+			{
+				try
+				{
+					ois.close();
+				}
+				
+				catch (IOException e)
+				{
+					e.printStackTrace();
+				}
 			}
 		}
 	}
-	//pruebas
+	//Fin listarPacientesMedico ()
 
 }

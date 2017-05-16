@@ -10,15 +10,17 @@ public class TestGestoraHospital
 		GestoraHospital prueba = new GestoraHospital ();
 		Object aux = null;
 		ObjectInputStream ois = null;
-		File archivo = new File ("./src/hospital/medicosDespedidos.dat");
+		File archivo = new File ("./src/hospital/medicosContratados.dat");
 		
 		//Paciente paciente = new Paciente("Pepe","Jimene",23,"77925651H",'h',new DomicilioIMPL("Almirante Topete", "Sevilla",6),"653706957","Mapfre", true,new Medico());
 		
 		//prueba.registrarMedico ();
 		//prueba.insertarMedicoDespedido("77925651H");
-		//prueba.despedirMedico("13121432R");
+		//prueba.despedirMedico("77925651H");
 		//prueba.listarMedicos();
 		//prueba.asignarPaciente(paciente, "77925651H");
+		prueba.listarPacientesMedico("77925651H");
+		//prueba.asignarPaciente(new Paciente("Pepe","Jimene",23,"77925651H",'h',new DomicilioIMPL("Almirante Topete", "Sevilla",6),"653706957","mapfre", true,new Medico()), "77925651H");
 		
 		try
 		{
