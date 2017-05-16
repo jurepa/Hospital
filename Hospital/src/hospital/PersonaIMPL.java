@@ -67,7 +67,7 @@ public class PersonaIMPL implements Cloneable, Comparable <Persona>, Persona, Se
 	
 
 
-	private static final long serialVersionUID = 2666064817179045905L;
+	private static final long serialVersionUID = 5387853321990952046L;
 	private String nombre;
 	private String apellidos;
 	private int edad;
@@ -126,7 +126,7 @@ public class PersonaIMPL implements Cloneable, Comparable <Persona>, Persona, Se
 					throw new HospitalException("Edad incorrecta, debe ser mayor a 0");
 				}
 				
-				else if (dni.length () == 9 && validarNumerosDNI (dni) && dni.charAt (8) == calcularLetra (dni))
+				else if ((dni.length () != 9 || !validarNumerosDNI (dni) || dni.charAt (8) != calcularLetra (dni)))
 				{
 					throw new HospitalException("DNI incorrecto, debes introducir los 8 números de tu DNI");
 				}
