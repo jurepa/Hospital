@@ -29,9 +29,9 @@ public class MergePacienteDepartamento
 	 */
    public  void run() 
    {
-	   String INPUT= ".\\Hospital\\src\\hospital\\pacientesIngresados.dat" ;
-	   String AUX1  =  ".\\Hospital\\src\\hospital\\aux1.dat" ;
-	   String AUX2  =  ".\\Hospital\\src\\hospital\\aux2.dat" ;
+	   String INPUT= ".\\src\\hospital\\pacientesIngresados.dat" ;
+	   String AUX1  =  ".\\src\\hospital\\aux1.dat" ;
+	   String AUX2  =  ".\\src\\hospital\\aux2.dat" ;
      boolean sorted = split(INPUT, AUX1, AUX2);
        while (!sorted) { //Mientras no estén ordenados, divide y vencerás
          merge(AUX1, AUX2, INPUT);

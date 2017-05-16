@@ -700,7 +700,7 @@ public class GestoraHospital
 			{
 				if (aux instanceof Paciente)
 				{
-					if (((Paciente) aux).getSeguroPrivado() != "no")
+					if (((Paciente) aux).getSeguroPrivado().equals("no"))
 					{
 						contadorSeguro++;
 					}
