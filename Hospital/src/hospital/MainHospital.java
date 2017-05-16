@@ -144,13 +144,15 @@ public class MainHospital
 	 */
 	public static void menuHospital ()
 	{
-			System.out.println("--------------------------------------------------------");
-			System.out.println("------ Bienvenidos al hospital 'Habersinomemuero' ------");
-			System.out.println("--------------------- 1. Pacientes ---------------------");
-			System.out.println("---------------------- 2. Médicos ----------------------");
-			System.out.println("-------------------- 3. Estadísticas -------------------");
-			System.out.println("------------------------- 0. Salir ---------------------");
-			System.out.println("--------------------------------------------------------");
+			System.out.println("HOSPITAL 'HABERSINOMEMUERO'");
+			System.out.println();
+			System.out.println("	   Menu Principal");
+			System.out.println();
+			System.out.println("1. Pacientes");
+			System.out.println("2. Médicos");
+			System.out.println("3. Estadísticas");
+			System.out.println("0. Salir");
+			System.out.println();
 	}
 	//fin menuPrincipal
 	
@@ -169,13 +171,15 @@ public class MainHospital
 	 */
 	public static void menuPacientes ()
 	{
-			System.out.println("------------------------------------------------------------------------------");
-			System.out.println("------ Bienvenidos al menu de pacientes del hospital 'Habersinomemuero' ------");
-			System.out.println("------------------------- 1. Dar de alta un paciente -------------------------");
-			System.out.println("------------------------- 2. Dar de baja un paciente -------------------------");
-			System.out.println("----------------------------- 3. Listar pacientes ----------------------------");
-			System.out.println("------------------------------------ 0. Salir --------------------------------");
-			System.out.println("------------------------------------------------------------------------------");
+			System.out.println("HOSPITAL 'HABERSINOMEMUERO'");
+			System.out.println();
+			System.out.println("      Menu de pacientes");
+			System.out.println();
+			System.out.println("1. Dar de alta un paciente");
+			System.out.println("2. Dar de baja un paciente");
+			System.out.println("3. Listar pacientes");
+			System.out.println("0. Salir");
+			System.out.println();
 	}
 	//fin menuPacientes
 	
@@ -194,14 +198,16 @@ public class MainHospital
 	 */
 	public static void menuMedicos ()
 	{
-			System.out.println("------------------------------------------------------------------------------");
-			System.out.println("------- Bienvenidos al menu de medicos del hospital 'Habersinomemuero' -------");
-			System.out.println("-------------------------- 1. Contratar a un médico --------------------------");
-			System.out.println("-------------------------- 2. Despedir a un médico ---------------------------");
-			System.out.println("------------------------------ 3. Listar médicos -----------------------------");
-			System.out.println("-----------------------------4. Asignar un paciente --------------------------");
-			System.out.println("------------------------------------ 0. Salir --------------------------------");
-			System.out.println("------------------------------------------------------------------------------");
+			System.out.println("HOSPITAL 'HABERSINOMEMUERO'");
+			System.out.println();
+			System.out.println("      Menu de medicos");
+			System.out.println();
+			System.out.println("1. Contratar a un médico");
+			System.out.println("2. Despedir a un médico");
+			System.out.println("3. Listar médicos");
+			System.out.println("4. Asignar un paciente");
+			System.out.println("0. Salir");
+			System.out.println();
 	}
 	//fin menuMedicos
 	
@@ -220,13 +226,15 @@ public class MainHospital
 	 */
 	public static void menuListarMedicos ()
 	{
-			System.out.println("-------------------------------------------------------------------------------------");
-			System.out.println("------- Bienvenidos al menu de listar medicos del hospital 'Habersinomemuero' -------");
-			System.out.println("-------------------------------- 1. Por departamento --------------------------------");
-			System.out.println("------------------------------------ 2. Por edad ------------------------------------");
-			System.out.println("------------------------------- 3. Pacientes asignados ------------------------------");
-			System.out.println("--------------------------------------- 0. Salir ------------------------------------");
-			System.out.println("-------------------------------------------------------------------------------------");
+			System.out.println("HOSPITAL 'HABERSINOMEMUERO'");
+			System.out.println();
+			System.out.println("  Menu de listar medicos");
+			System.out.println();
+			System.out.println("1. Por departamento");
+			System.out.println("2. Por edad");
+			System.out.println("3. Pacientes asignados");
+			System.out.println("0. Salir");
+			System.out.println();
 	}
 	//fin menuListarMedicos
 	
@@ -245,13 +253,15 @@ public class MainHospital
 	 */
 	public static void menuListarPacientes ()
 	{
-			System.out.println("---------------------------------------------------------------------------------------");
-			System.out.println("------- Bienvenidos al menu de listar pacientes del hospital 'Habersinomemuero' -------");
-			System.out.println("--------------------------------- 1. Por departamento ---------------------------------");
-			System.out.println("------------------------------------- 2. Por edad -------------------------------------");
-			System.out.println("------------------------------------- 3. Por género -----------------------------------");
-			System.out.println("---------------------------------------- 0. Salir -------------------------------------");
-			System.out.println("---------------------------------------------------------------------------------------");
+			System.out.println("HOSPITAL 'HABERSINOMEMUERO'");
+			System.out.println();
+			System.out.println("  Menu de listar pacientes");
+			System.out.println();
+			System.out.println("1. Por departamento");
+			System.out.println("2. Por edad");
+			System.out.println("3. Por género");
+			System.out.println("0. Salir");
+			System.out.println();
 	}
 	//fin menuListarPacientes
 	
@@ -270,13 +280,15 @@ public class MainHospital
 	 */
 	public static void menuListarEstadisticas ()
 	{
-			System.out.println("------------------------------------------------------------------------------------------------------------------------------");
-			System.out.println("----------------------------- Bienvenidos al menu de estadísticas del hospital 'Habersinomemuero' ----------------------------");
-			System.out.println("----------------------------------------- 1. Porcentaje de pacientes hospitalizados ------------------------------------------");
-			System.out.println("------------------------------------- 2. Porcentajes de mujeres y hombres hospitalizados -------------------------------------");
-			System.out.println("----------------------------------------- 3. Porcentaje de pacientes con seguro privado --------------------------------------");
-			System.out.println("----------------------------------------------------------- 0. Salir ---------------------------------------------------------");
-			System.out.println("------------------------------------------------------------------------------------------------------------------------------");
+			System.out.println("HOSPITAL 'HABERSINOMEMUERO'");
+			System.out.println();
+			System.out.println("   Menu de estadísticas");
+			System.out.println();
+			System.out.println("1. Porcentaje de pacientes hospitalizados");
+			System.out.println("2. Porcentajes de mujeres y hombres hospitalizados");
+			System.out.println("3. Porcentaje de pacientes con seguro privado");
+			System.out.println("0. Salir");
+			System.out.println();
 	}
 	//fin menuListarEstadisticas
 	
@@ -294,14 +306,16 @@ public class MainHospital
 		}
 	 */
 	public static void menuEstadisticasPacientesHospitalizados ()
-	{
-			System.out.println("-------------------------------------------------------------------------------------------------------------------------------------------");
-			System.out.println("----------------------------- Bienvenidos al menu de estadísticas de pacientes del hospital 'Habersinomemuero' ----------------------------");
-			System.out.println("----------------------------------------------------------------- 1. Niños ----------------------------------------------------------------");
-			System.out.println("----------------------------------------------------------------- 2. Jovenes --------------------------------------------------------------");
-			System.out.println("----------------------------------------------------------------- 3. Adultos --------------------------------------------------------------");
-			System.out.println("------------------------------------------------------------------ 0. Salir ---------------------------------------------------------------");
-			System.out.println("-------------------------------------------------------------------------------------------------------------------------------------------");
+	{		System.out.println("HOSPITAL 'HABERSINOMEMUERO'");
+			System.out.println();
+			System.out.println("   Menu de estadísticas");
+			System.out.println("de pacientes hospitalizados");
+			System.out.println();
+			System.out.println("1. Niños");
+			System.out.println("2. Jovenes");
+			System.out.println("3. Adultos");
+			System.out.println("0. Salir");
+			System.out.println();
 	}
 	//fin menuEstadisticasPacientesHospitalizados
 	
@@ -326,7 +340,8 @@ public class MainHospital
 		int opcion5 = 0;
 		int opcion6 = 0;
 		int opcion7 = 0;
-		String dni=null;
+		String dni = null;
+		String dni2 = null;
 		double seguroPrivado = 0.0;
 		GestoraJaraneitor jaraneitor=new GestoraJaraneitor();
 		GestoraHospital goumes = new GestoraHospital ();
@@ -518,30 +533,30 @@ public class MainHospital
 								{
 									//caso 1: Contratar a un médico. *
 									case 1:
-									goumes.registrarMedico ();
-									System.out.println("El médico ha sido contratado con éxito");
+										goumes.registrarMedico ();
+										System.out.println("El médico ha sido contratado con éxito");
 									break;
 									//Fin caso 1: Contratar a un médico.
 								
 									//caso 2: Despedir a un médico. *
 									case 2:
-									do
-									{
-										System.out.println("Introduzca el DNI del medico a despedir.");
-										dni = tecladoString.readLine();
-									}
-									while (dni.length() != 9);
+										do
+										{
+											System.out.println("Introduzca el DNI del medico a despedir.");
+											dni = tecladoString.readLine();
+										}
+										while (dni.length() != 9);
+											
 										
-									
-									if (goumes.despedirMedico(dni))
-									{
-										System.out.println("El médico ha sido despedido con éxito");
-									}
-									
-									else
-									{
-										System.out.println("No se ha despedido al medico");
-									}
+										if (goumes.despedirMedico(dni))
+										{
+											System.out.println("El médico ha sido despedido con éxito");
+										}
+										
+										else
+										{
+											System.out.println("No se ha despedido al medico");
+										}
 									break;
 									//Fin caso 2: Despedir a un médico.
 								
@@ -586,6 +601,14 @@ public class MainHospital
 													//caso 3: Pacientes asignados *
 													case 3:
 														
+														do
+														{
+															System.out.println("Introduzca el DNI del medico cuyos pacientes desea listar.");
+															dni = tecladoString.readLine();
+														}
+														while (dni.length() != 9);
+														
+														goumes.listarPacientesMedico(dni);
 													break;
 													//Fin caso 3: Pacientes asignados
 												}//fin_segun
@@ -607,6 +630,24 @@ public class MainHospital
 								
 									//caso 4: Asignar un paciente. *
 									case 4:
+										
+										do
+										{
+											System.out.println("Introduzca el DNI del medico al que le quiera asignar un paciente");
+											dni = tecladoString.readLine();
+										}
+										while (dni.length() != 9);
+										
+										do
+										{
+											System.out.println("Introduzca el DNI del paciente.");
+											dni2 = tecladoString.readLine();
+										}
+										while (dni2.length() != 9);
+										
+										goumes.asignarPaciente(dni2, dni);
+										
+										System.out.println("El paciente se ha asignado con éxito.");
 									break;
 									//Fin caso 4: Asignar un paciente.
 								

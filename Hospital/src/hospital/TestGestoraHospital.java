@@ -8,9 +8,10 @@ public class TestGestoraHospital
 	public static void main (String [] args) throws HospitalException
 	{
 		GestoraHospital prueba = new GestoraHospital ();
+		GestoraJaraneitor prueba2 = new GestoraJaraneitor ();
 		Object aux = null;
 		ObjectInputStream ois = null;
-		File archivo = new File ("./src/hospital/medicosContratados.dat");
+		File archivo = new File ("./src/hospital/pacientesIngresados.dat");
 		
 		//Paciente paciente = new Paciente("Pepe","Jimene",23,"77925651H",'h',new DomicilioIMPL("Almirante Topete", "Sevilla",6),"653706957","Mapfre", true,new Medico());
 		
@@ -20,6 +21,7 @@ public class TestGestoraHospital
 		//prueba.listarMedicos();
 		//prueba.asignarPaciente(paciente, "77925651H");
 		prueba.listarPacientesMedico("77925651H");
+		prueba2.listarPacientes();
 		//prueba.asignarPaciente(new Paciente("Pepe","Jimene",23,"77925651H",'h',new DomicilioIMPL("Almirante Topete", "Sevilla",6),"653706957","mapfre", true,new Medico()), "77925651H");
 		
 		try

@@ -775,17 +775,26 @@ public class GestoraHospital
 			System.out.println("Llamada al metodo asignarPaciente");
 		}
 	 */
-	public void asignarPaciente (Paciente paciente, String dni)
+	public void asignarPaciente (String dni2, String dni)
 	{
 		File medicosContratados = new File ("./src/hospital/medicosContratados.dat");
+		File pacientesIngresados = new File ("./src/hospital/pacientesIngresados.dat");
 		File auxiliar = new File ("./src/hospital/auxiliar.dat");
 		ObjectInputStream ois = null;
+		ObjectInputStream ois2 = null;
 		ObjectOutputStream oos = null;
 		Object aux = null;
+		Object aux2 = null;
+		boolean salir = false;
 		
 		try
 		{
 			ois = new ObjectInputStream (new FileInputStream (medicosContratados))
+			{
+				@Override protected void readStreamHeader () {}
+			};
+			
+			ois2 = new ObjectInputStream (new FileInputStream (pacientesIngresados))
 			{
 				@Override protected void readStreamHeader () {}
 			};
@@ -796,12 +805,27 @@ public class GestoraHospital
 			};
 			
 			aux = ois.readObject();
+			aux2 = ois2.readObject();
+			
+			while (!aux2.equals(null) && !salir)
+			{
+				if (aux2 instanceof Paciente && ((Paciente) aux2).getDNI().equals(dni2))
+				{
+					salir = true;
+				}
+				
+				else
+				{
+					aux2 = ois2.readObject ();
+				}
+				
+			}
 			
 			while (!aux.equals(null))
 			{
 				if (aux instanceof Medico && ((Medico) aux).getDNI().equals(dni))
 				{
-					((Medico) aux).addPaciente (paciente);
+					((Medico) aux).addPaciente ((Paciente)aux2);
 				}
 				
 				oos.writeObject(aux);
@@ -832,6 +856,19 @@ public class GestoraHospital
 		finally
 		{
 			if (ois != null)
+			{
+				try
+				{
+					ois.close ();
+				}
+				
+				catch (IOException e)
+				{
+					System.out.println("IOException");
+				}
+			}
+			
+			if (ois2 != null)
 			{
 				try
 				{
