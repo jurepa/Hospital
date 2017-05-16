@@ -343,6 +343,7 @@ public class MainHospital
 		String dni = null;
 		String dni2 = null;
 		double seguroPrivado = 0.0;
+		int resultadoAsignar = 0;
 		GestoraJaraneitor jaraneitor=new GestoraJaraneitor();
 		GestoraHospital goumes = new GestoraHospital ();
 		MergePacientesEdad mergePacienteEdad=new MergePacientesEdad();
@@ -645,9 +646,28 @@ public class MainHospital
 										}
 										while (dni2.length() != 9);
 										
-										goumes.asignarPaciente(dni2, dni);
+resultadoAsignar = goumes.asignarPaciente(dni2, dni);
 										
-										System.out.println("El paciente se ha asignado con éxito.");
+										if (resultadoAsignar == 0)
+										{
+											System.out.println("El paciente se ha asignado con éxito.");
+										}
+										
+										else if (resultadoAsignar == 1)
+										{
+											System.out.println("Ese medico no existe en nuestra base de datos.");
+										}
+										
+										else if (resultadoAsignar == 2)
+										{
+											System.out.println("Ese paciente no existe en nuestra base de datos.");
+										}
+										
+										else if (resultadoAsignar == 3)
+										{
+											System.out.println("Ni el medico ni el paciente existen en nuestra base de datos");
+										}
+										
 									break;
 									//Fin caso 4: Asignar un paciente.
 								

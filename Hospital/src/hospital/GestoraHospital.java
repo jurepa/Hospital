@@ -146,13 +146,22 @@ public class GestoraHospital
 				{
 					System.out.println(e);
 				}
-			}
-			while (medico.getEspecialidad ().equals("") || medico.getEspecialidad ().equals(null) 
-					|| (medico.getEspecialidad ().equals("alergo") == false 
+				
+				if (medico.getEspecialidad ().equals("alergo") == false 
 						&& medico.getEspecialidad().equals("trauma") == false 
 						&& medico.getEspecialidad ().equals("pediatra") == false
-						&& medico.getEspecialidad ().equals("neuro")
-						&& medico.getEspecialidad ().equals("cardio")));
+						&& medico.getEspecialidad ().equals("neuro") == false
+						&& medico.getEspecialidad ().equals("cardio") == false)
+				{
+					System.out.println("Las especialides pueden ser: 'Alergo', 'Trauma', 'Pediatra', 'Neuro', 'Cardio'");
+				}
+			}
+			while (medico.getEspecialidad ().equals("") || medico.getEspecialidad ().equals(null) 
+					|| (medico.getEspecialidad ().equals("alergo")
+						|| !medico.getEspecialidad().equals("trauma") 
+						|| !medico.getEspecialidad ().equals("pediatra")
+						|| !medico.getEspecialidad ().equals("neuro")
+						|| !medico.getEspecialidad ().equals("cardio")));
 			
 			do
 			{
@@ -167,6 +176,7 @@ public class GestoraHospital
 				{
 					System.out.println(e);
 				}
+				
 			}
 			while (domicilio.getCalle().equals("") || domicilio.getCalle().equals(null));
 			
@@ -700,7 +710,7 @@ public class GestoraHospital
 			{
 				if (aux instanceof Paciente)
 				{
-					if (((Paciente) aux).getSeguroPrivado().equals("no"))
+					if (!((Paciente) aux).getSeguroPrivado().equals("no"))
 					{
 						contadorSeguro++;
 					}
@@ -766,16 +776,16 @@ public class GestoraHospital
 	 * Breve comentario: Metodo encargado de asignar un paciente a un medico
 	 * Precondiciones: Ninguna
 	 * Entradas: Un paciente y un String indicando el dni de un medico
-	 * Salidas: Ninguna
+	 * Salidas: Un entero
 	 * Entradas/Salidas: Ninguna
-	 * Postcondiciones: Ninguna
+	 * Postcondiciones: Un entero con valor 0 si se ha asignado correctamente, con valor 1 si el médico no existe, con valor 2 si el paciente no existe y con valor 3 si ninguno de los dos existe
 	 * 
 	 * Resguardo: public void asignarPaciente (Paciente paciente, String dni)
 		{
 			System.out.println("Llamada al metodo asignarPaciente");
 		}
 	 */
-	public void asignarPaciente (String dni2, String dni)
+	public int asignarPaciente (String dni2, String dni)
 	{
 		File medicosContratados = new File ("./src/hospital/medicosContratados.dat");
 		File pacientesIngresados = new File ("./src/hospital/pacientesIngresados.dat");
@@ -786,6 +796,9 @@ public class GestoraHospital
 		Object aux = null;
 		Object aux2 = null;
 		boolean salir = false;
+		boolean existePaciente = true;
+		boolean existeMedico = false;
+		int resultado = 0;
 		
 		try
 		{
@@ -811,12 +824,14 @@ public class GestoraHospital
 			{
 				if (aux2 instanceof Paciente && ((Paciente) aux2).getDNI().equals(dni2))
 				{
+					existePaciente = true;
 					salir = true;
 				}
 				
 				else
 				{
 					aux2 = ois2.readObject ();
+					existePaciente = false;
 				}
 				
 			}
@@ -826,6 +841,26 @@ public class GestoraHospital
 				if (aux instanceof Medico && ((Medico) aux).getDNI().equals(dni))
 				{
 					((Medico) aux).addPaciente ((Paciente)aux2);
+					existeMedico = true;
+					resultado = 0;
+				}
+				
+				else
+				{
+					if (!existePaciente && !existeMedico)
+					{
+						resultado = 3;
+					}
+					
+					else if (existePaciente && !existeMedico)
+					{
+						resultado = 1;
+					}
+					
+					else if (!existePaciente && existeMedico)
+					{
+						resultado = 2;
+					}
 				}
 				
 				oos.writeObject(aux);
@@ -897,6 +932,8 @@ public class GestoraHospital
 		
 		medicosContratados.delete();
 		auxiliar.renameTo (medicosContratados);
+		
+		return resultado;
 	}
 	//Fin asignarPaciente
 	

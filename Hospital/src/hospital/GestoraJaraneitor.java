@@ -82,7 +82,10 @@ public class GestoraJaraneitor
 				{
 					System.out.println("El DNI introducido ya existe");
 				}
-			}while((paciente.getDNI().length()!=9&&paciente.validarNumerosDNI(paciente.getDNI())&&paciente.getDNI().charAt(8)!=paciente.calcularLetra(paciente.getDNI()))||buscaDNI(paciente.getDNI()));
+			}while((paciente.getDNI().length() != 9 
+					|| !paciente.validarNumerosDNI(paciente.getDNI()) 
+					|| paciente.getDNI().charAt(8) != paciente.calcularLetra (paciente.getDNI())) 
+					|| buscaDNI(paciente.getDNI()));
 			do
 			{
 				try
@@ -692,7 +695,7 @@ public class GestoraJaraneitor
 		{
 			ois=new ObjectInputStream(new FileInputStream(pacientes)){@Override protected void readStreamHeader(){}};
 			paciente=(Paciente)ois.readObject();
-			while(paciente.equals(null))
+			while(!paciente.equals(null))
 			{
 				if(paciente.getEdad()>=1&&paciente.getEdad()<=13)
 				{
