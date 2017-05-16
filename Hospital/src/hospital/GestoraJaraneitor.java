@@ -71,22 +71,18 @@ public class GestoraJaraneitor
 				{
 					System.out.println("Introduzca el DNI, con la letra en mayúscula: ");
 					paciente.setDNI(tecladoString.readLine());
+					
 				}
 				
 				catch (HospitalException e)
 				{
 					System.out.println(e);
 				}
-				
 				if(buscaDNI(paciente.getDNI()))
 				{
 					System.out.println("El DNI introducido ya existe");
 				}
-				
-			}while((paciente.getDNI().length() != 9 
-					|| !paciente.validarNumerosDNI(paciente.getDNI()) 
-					|| paciente.getDNI().charAt(8) != paciente.calcularLetra (paciente.getDNI())) 
-					|| buscaDNI(paciente.getDNI()));
+			}while((paciente.getDNI().length()!=9&&paciente.validarNumerosDNI(paciente.getDNI())&&paciente.getDNI().charAt(8)!=paciente.calcularLetra(paciente.getDNI()))||buscaDNI(paciente.getDNI()));
 			do
 			{
 				try
@@ -488,7 +484,7 @@ public class GestoraJaraneitor
 			paciente=(Paciente)ois.readObject();
 			while(!paciente.equals(null))
 			{
-				System.out.println(paciente.toString());
+				System.out.println(paciente.toString()+paciente.getMedico().getEspecialidad());
 				paciente=(Paciente)ois.readObject();
 			}
 		} catch (FileNotFoundException e) 
@@ -886,7 +882,7 @@ public class GestoraJaraneitor
 	 */
 	public boolean buscaDNI(String dni)
 	{
-		File pacientesAlta=new File("./src/hospital/pacientesIngresados.dat");
+		File pacientesAlta=new File("./Hospital/src/hospital/pacientesIngresados.dat");
 		ObjectInputStream oisAlta=null;
 		Paciente paciente=null;
 		boolean encontrado=false;
