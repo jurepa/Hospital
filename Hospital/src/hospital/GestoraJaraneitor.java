@@ -330,7 +330,7 @@ public class GestoraJaraneitor
 	public boolean eliminarPaciente(String dni)
 	{
 		File ficheroDeAltas=new File("./Hospital/src/hospital/pacientesIngresados.dat");
-		File aux=new File("./src/hospital/auxiliar.dat");
+		File aux=new File("./Hospital/src/hospital/auxiliar.dat");
 		ObjectOutputStream oos=null;
 		ObjectInputStream ois=null;
 		Paciente paciente=null;
