@@ -129,5 +129,12 @@ public class Medico extends PersonaIMPL implements Serializable {
 	public void addPaciente(Paciente paciente)
 	{
 		this.pacientesAsignados.add(paciente);
+		try 
+		{
+			paciente.setMedico(this);
+		} catch (HospitalException e) 
+		{
+			e.printStackTrace();
+		}
 	}
 }

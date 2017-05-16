@@ -330,7 +330,8 @@ public class MainHospital
 		double seguroPrivado = 0.0;
 		GestoraJaraneitor jaraneitor=new GestoraJaraneitor();
 		GestoraHospital goumes = new GestoraHospital ();
-		MergePacientesEdad merge=new MergePacientesEdad();
+		MergePacientesEdad mergeEdad=new MergePacientesEdad();
+		MergePacientesGenero mergeGenero=new MergePacientesGenero();
 		do
 		{
 			//PrintMenuPrincipalLeerValidarOpcion*
@@ -431,18 +432,21 @@ public class MainHospital
 												{
 													//caso 1: Por departamento *
 													case 1:
+														
 													break;
 													//caso 1: Por departamento
 												
 													//caso 2: Por edad *
 													case 2:
-														merge.run();
+														mergeEdad.run();
 														jaraneitor.listarPacientes();
 													break;
 													//Fin caso 2: Por edad
-												
+										
 													//caso 3: Por género *
 													case 3:
+														mergeGenero.run();
+														jaraneitor.listarPacientes();
 													break;
 													//Fin caso 3: Por género
 												

@@ -9,8 +9,7 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 
-public class MergePacientesGenero {
-	
+public class MergeMedicosDepartamento {
 	/*
 	 * Interfaz
 	 * 
@@ -29,7 +28,7 @@ public class MergePacientesGenero {
 	 */
    public  void run() 
    {
-	   String INPUT= ".\\Hospital\\src\\hospital\\pacientesIngresados.dat" ;
+	   String INPUT= ".\\Hospital\\src\\hospital\\medicosContratados.dat" ;
 	   String AUX1  =  ".\\Hospital\\src\\hospital\\aux1.dat" ;
 	   String AUX2  =  ".\\Hospital\\src\\hospital\\aux2.dat" ;
      boolean sorted = split(INPUT, AUX1, AUX2);
@@ -58,7 +57,7 @@ public class MergePacientesGenero {
 
     public boolean split(String input,String output1,String output2)  {
     
-     ComparatorGenero comparator= new ComparatorGenero();
+     ComparatorMedicoDepartamento comparator= new ComparatorMedicoDepartamento();
      File aux1=new File(output1);
      File aux2=new File(output2);
      ObjectInputStream in =null; 
@@ -71,25 +70,25 @@ public class MergePacientesGenero {
     	 in=new ObjectInputStream(new FileInputStream(input)){@Override protected void readStreamHeader(){}}; 
     	 out=new ObjectOutputStream(new FileOutputStream(output1)){@Override protected void writeStreamHeader(){}};
     	 other=new ObjectOutputStream(new FileOutputStream(output2)){@Override protected void writeStreamHeader(){}};
-	     Paciente pacienteAnterior=null;
-	     Paciente pacienteActual =(Paciente) in.readObject();
-	     out.writeObject(pacienteActual);
-	     pacienteAnterior= pacienteActual;
-	     pacienteActual = (Paciente)in.readObject();
+	     Medico medicoAnterior=null;
+	     Medico medicoActual =(Medico) in.readObject();
+	     out.writeObject(medicoActual);
+	     medicoAnterior= medicoActual;
+	     medicoActual = (Medico)in.readObject();
 	     while (lee) 
 	     { 
 
-	       if (comparator.compare(pacienteAnterior, pacienteActual)>0) 
+	       if (comparator.compare(medicoAnterior, medicoActual)>0) 
 	       {
 	         sorted = false;
 	         ObjectOutputStream tmp = out;
 	         out = other;
 	         other = tmp;
 	       }
-	       out.writeObject(pacienteActual);
+	       out.writeObject(medicoActual);
 	
-	       pacienteAnterior = pacienteActual;
-	       pacienteActual = (Paciente)in.readObject();
+	       medicoAnterior = medicoActual;
+	       medicoActual = (Medico)in.readObject();
 	     }
      }catch(EOFException e)
      {
@@ -159,13 +158,13 @@ public class MergePacientesGenero {
      */
    public void merge(String input1,String input2, String output)  {
 	 
-	 ComparatorGenero comparator=new ComparatorGenero();
+	 ComparatorMedicoDepartamento comparator=new ComparatorMedicoDepartamento ();
      ObjectInputStream in1 = null;
      ObjectInputStream in2 = null;
      ObjectOutputStream out = null;
      boolean lee1=true,lee2=true;
-     Paciente pacienteActual1 = null;
-     Paciente pacienteActual2 = null;
+     Medico medicoActual1 = null;
+     Medico medicoActual2 = null;
     // try
    //  {
 	 try 
@@ -182,7 +181,7 @@ public class MergePacientesGenero {
 	 }
 	 try 
     	{
-			pacienteActual1=(Paciente)in1.readObject();
+			medicoActual1=(Medico)in1.readObject();
 		} catch (ClassNotFoundException e) 
     	{							
 			e.printStackTrace();
@@ -196,7 +195,7 @@ public class MergePacientesGenero {
     	 
     	 try 
     	{
-			pacienteActual2=(Paciente)in2.readObject();
+			medicoActual2=(Medico)in2.readObject();
 		} catch (ClassNotFoundException e) 
     	{							
 			e.printStackTrace();
@@ -210,12 +209,12 @@ public class MergePacientesGenero {
 	     while (lee1&&lee2) 
 	     {
 	    	 
-	    	if (comparator.compare(pacienteActual1, pacienteActual2)<=0)
+	    	if (comparator.compare(medicoActual1, medicoActual2)<=0)
 	    	{
 	    		try
 	    		{
-			         out.writeObject(pacienteActual1);
-			         pacienteActual1 = (Paciente)in1.readObject();
+			         out.writeObject(medicoActual1);
+			         medicoActual1 = (Medico)in1.readObject();
 	    		}catch(EOFException e)
 	    		{
 	    			lee1=false;
@@ -229,8 +228,8 @@ public class MergePacientesGenero {
 	    	{
 		         try 
 		         {
-					out.writeObject(pacienteActual2);
-		        	pacienteActual2 =(Paciente) in2.readObject();
+					out.writeObject(medicoActual2);
+		        	medicoActual2 =(Medico) in2.readObject();
 		         }catch(EOFException e)
 		         {
 		        	 lee2=false;
@@ -261,8 +260,8 @@ public class MergePacientesGenero {
 	     {
 		     while (lee1) 
 		     {
-		       out.writeObject(pacienteActual1);
-		       pacienteActual1 = (Paciente)in1.readObject();
+		       out.writeObject(medicoActual1);
+		       medicoActual1 = (Medico)in1.readObject();
 		     }
 	     }catch(EOFException e)
 	     {
@@ -281,8 +280,8 @@ public class MergePacientesGenero {
 		{
 		     while (lee2) 
 		     {
-		       out.writeObject(pacienteActual2);
-		       pacienteActual2 = (Paciente)in2.readObject();
+		       out.writeObject(medicoActual2);
+		       medicoActual2 = (Medico)in2.readObject();
 		     }
 		}catch(EOFException e)
 		{
@@ -308,6 +307,3 @@ public class MergePacientesGenero {
 
    }
 }
-
-
-
