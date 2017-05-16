@@ -330,7 +330,7 @@ public class MainHospital
 		double seguroPrivado = 0.0;
 		GestoraJaraneitor jaraneitor=new GestoraJaraneitor();
 		GestoraHospital goumes = new GestoraHospital ();
-		Merge merge=new Merge();
+		MergePacientesEdad merge=new MergePacientesEdad();
 		do
 		{
 			//PrintMenuPrincipalLeerValidarOpcion*
