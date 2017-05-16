@@ -89,7 +89,6 @@ public class GestoraJaraneitor
 				{
 					System.out.println("Introduzca la edad: ");
 					paciente.setEdad(teclado.nextInt());
-					
 				}
 				
 				catch (HospitalException e)
@@ -204,7 +203,7 @@ public class GestoraJaraneitor
 	 */
 	public void insertarPaciente(Paciente paciente) 
 	{
-		File pacientesIngresados=new File("./src/hospital/pacientesIngresados.dat");
+		File pacientesIngresados=new File("./Hospital/src/hospital/pacientesIngresados.dat");
 		ObjectOutputStream oos=null;
 		
 			try 
@@ -248,8 +247,8 @@ public class GestoraJaraneitor
 	public void insertarPacienteDadoDeBaja(String dni)
 	{
 		
-		File pacientesBaja=new File("./src/hospital/pacientesDadosDeBaja.dat");
-		File pacientesAlta=new File("./src/hospital/pacientesIngresados.dat");
+		File pacientesBaja=new File("./Hospital/src/hospital/pacientesDadosDeBaja.dat");
+		File pacientesAlta=new File("./Hospital/src/hospital/pacientesIngresados.dat");
 		ObjectOutputStream oosBaja=null;
 		ObjectInputStream oisAlta=null;
 		Paciente paciente=null;
@@ -330,7 +329,7 @@ public class GestoraJaraneitor
 	 */
 	public boolean eliminarPaciente(String dni)
 	{
-		File ficheroDeAltas=new File("./src/hospital/pacientesIngresados.dat");
+		File ficheroDeAltas=new File("./Hospital/src/hospital/pacientesIngresados.dat");
 		File aux=new File("./src/hospital/auxiliar.dat");
 		ObjectOutputStream oos=null;
 		ObjectInputStream ois=null;
@@ -419,7 +418,7 @@ public class GestoraJaraneitor
 	public int cuentaPacientes()
 	{
 		int contador=0;
-		File ficheroDeAltas=new File("./src/hospital/pacientesIngresados.dat");
+		File ficheroDeAltas=new File("./Hospital/src/hospital/pacientesIngresados.dat");
 		ObjectInputStream ois=null;
 		Paciente paciente=null;
 		try 
@@ -476,7 +475,7 @@ public class GestoraJaraneitor
 	 */
 	public void listarPacientes()
 	{
-		File ficheroDeAltas=new File("./src/hospital/pacientesIngresados.dat");
+		File ficheroDeAltas=new File("./Hospital/src/hospital/pacientesIngresados.dat");
 		ObjectInputStream ois=null;
 		Paciente paciente=null;
 		try 
@@ -604,7 +603,7 @@ public class GestoraJaraneitor
 	{
 		int contadorHombres=0;
 		ObjectInputStream ois=null;
-		File pacientes=new File("./src/hospital/pacientesIngresados.dat");
+		File pacientes=new File("./Hospital/src/hospital/pacientesIngresados.dat");
 		Paciente paciente=null;
 		double porcentaje;
 		try 
@@ -674,7 +673,7 @@ public class GestoraJaraneitor
 	{
 		int contadorNiños=0;
 		ObjectInputStream ois=null;
-		File pacientes=new File("./src/hospital/pacientesIngresados.dat");
+		File pacientes=new File("./Hospital/src/hospital/pacientesIngresados.dat");
 		Paciente paciente=null;
 		double porcentaje;
 		try 
@@ -744,7 +743,7 @@ public class GestoraJaraneitor
 	{
 		int contadorJovenes=0;
 		ObjectInputStream ois=null;
-		File pacientes=new File("./src/hospital/pacientesIngresados.dat");
+		File pacientes=new File("./Hospital/src/hospital/pacientesIngresados.dat");
 		Paciente paciente=null;
 		double porcentaje;
 		try 
@@ -814,7 +813,7 @@ public class GestoraJaraneitor
 	{
 		int contadorAdultos=0;
 		ObjectInputStream ois=null;
-		File pacientes=new File("./src/hospital/pacientesIngresados.dat");
+		File pacientes=new File("./Hospital/src/hospital/pacientesIngresados.dat");
 		Paciente paciente=null;
 		double porcentaje;
 		try 
@@ -883,7 +882,7 @@ public class GestoraJaraneitor
 	 */
 	public boolean buscaDNI(String dni)
 	{
-		File pacientesAlta=new File("./src/hospital/pacientesIngresados.dat");
+		File pacientesAlta=new File("./Hospital/src/hospital/pacientesIngresados.dat");
 		ObjectInputStream oisAlta=null;
 		Paciente paciente=null;
 		boolean encontrado=false;
