@@ -897,7 +897,7 @@ public class GestoraJaraneitor
 	 */
 	public boolean buscaDNI(String dni)
 	{
-		File pacientesAlta=new File("./Hospital/src/hospital/pacientesIngresados.dat");
+		File pacientesAlta=new File("./src/hospital/pacientesIngresados.dat");
 		ObjectInputStream oisAlta=null;
 		Paciente paciente=null;
 		boolean encontrado=false;
