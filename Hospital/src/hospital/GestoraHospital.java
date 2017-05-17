@@ -157,11 +157,11 @@ public class GestoraHospital
 				}
 			}
 			while (medico.getEspecialidad ().equals("") || medico.getEspecialidad ().equals(null) 
-					|| (medico.getEspecialidad ().equals("alergo")
-						|| !medico.getEspecialidad().equals("trauma") 
-						|| !medico.getEspecialidad ().equals("pediatra")
-						|| !medico.getEspecialidad ().equals("neuro")
-						|| !medico.getEspecialidad ().equals("cardio")));
+					|| (!medico.getEspecialidad ().equals("alergo")
+						&& !medico.getEspecialidad().equals("trauma") 
+						&& !medico.getEspecialidad ().equals("pediatra")
+						&& !medico.getEspecialidad ().equals("neuro")
+						&& !medico.getEspecialidad ().equals("cardio")));
 			
 			do
 			{
